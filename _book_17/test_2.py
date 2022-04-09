@@ -1,3 +1,8 @@
+## SOURCE >> Python Engineer  >> https://www.youtube.com/watch?v=DbeIqrwb_dE&list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4&index=3
+## PyTorch Tutorial 03 - Gradient Calculation With Autograd
+## 
+
+
 import torch 
 
 torch.manual_seed(1)
