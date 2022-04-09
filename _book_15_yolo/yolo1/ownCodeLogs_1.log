@@ -1,4 +1,9 @@
 
+git filter-branch --tree-filter 'rm -rf _book_15_yolo/yolo1/data_dump_dontGitUp/yolov4.weights' HEAD
+git filter-branch --tree-filter 'rm -rf _book_15_yolo/yolo_deepSort/yolov4-deepsort/checkpoints/yolov4-416/variables/variables.data-00000-of-00001' HEAD
+git filter-branch -f --tree-filter 'rm -rf _book_15_yolo/yolo1/data_dump_dontGitUp/yolov4.weights' HEAD
+git filter-branch -f --tree-filter 'rm -rf _book_15_yolo/yolo_deepSort/yolov4-deepsort/data/yolov4.weights' HEAD
+
 
 cd /home/dhankar/temp/03_22/yolo_1/darknet
 
