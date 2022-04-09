@@ -1,0 +1,97 @@
+
+pip uninstall opencv-python
+pip uninstall opencv-contrib-python
+
+
+pip install opencv-python==4.5.3.56 
+pip install opencv-contrib-python==4.5.3.56
+
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip uninstall opencv-python
+Found existing installation: opencv-python 3.4.8.29
+Uninstalling opencv-python-3.4.8.29:
+  Would remove:
+    /home/dhankar/anaconda3/envs/tensorflow_gpuenv/lib/python3.8/site-packages/cv2/*
+    /home/dhankar/anaconda3/envs/tensorflow_gpuenv/lib/python3.8/site-packages/opencv_python-3.4.8.29.dist-info/*
+Proceed (y/n)? y
+  Successfully uninstalled opencv-python-3.4.8.29
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip uninstall opencv-contrib-python
+Found existing installation: opencv-contrib-python 3.4.8.29
+Uninstalling opencv-contrib-python-3.4.8.29:
+  Would remove:
+    /home/dhankar/anaconda3/envs/tensorflow_gpuenv/lib/python3.8/site-packages/opencv_contrib_python-3.4.8.29.dist-info/*
+Proceed (y/n)? y
+  Successfully uninstalled opencv-contrib-python-3.4.8.29
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip install opencv-python==4.5.3.56
+Collecting opencv-python==4.5.3.56
+  Downloading opencv_python-4.5.3.56-cp38-cp38-manylinux2014_x86_64.whl (49.9 MB)
+     |████████████████████████████████| 49.9 MB 105 kB/s 
+Requirement already satisfied: numpy>=1.17.3 in ./lib/python3.8/site-packages (from opencv-python==4.5.3.56) (1.18.1)
+Installing collected packages: opencv-python
+Successfully installed opencv-python-4.5.3.56
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip install opencv-contrib-python==4.5.3.56
+Collecting opencv-contrib-python==4.5.3.56
+  Downloading opencv_contrib_python-4.5.3.56-cp38-cp38-manylinux2014_x86_64.whl (56.1 MB)
+     |████████████████████████████████| 56.1 MB 17 kB/s 
+Requirement already satisfied: numpy>=1.17.3 in ./lib/python3.8/site-packages (from opencv-contrib-python==4.5.3.56) (1.18.1)
+Installing collected packages: opencv-contrib-python
+Successfully installed opencv-contrib-python-4.5.3.56
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+
+
+
+
+
+
+
+pip install opencv-contrib-python==3.4.2.16
+ERROR: Could not find a version that satisfies the requirement opencv-contrib-python==3.4.2.16 (from versions: 3.4.8.29, 3.4.9.31, 3.4.9.33, 3.4.10.35, 3.4.10.37, 3.4.11.39, 3.4.11.41, 3.4.11.43, 3.4.11.45, 3.4.13.47, 3.4.14.51, 3.4.14.53, 3.4.15.55, 3.4.16.59, 3.4.17.61, 4.1.2.30, 4.2.0.32, 4.2.0.34, 4.3.0.36, 4.3.0.38, 4.4.0.40, 4.4.0.42, 4.4.0.44, 4.4.0.46, 4.5.1.48, 4.5.2.52, 4.5.2.54, 4.5.3.56, 4.5.4.58, 4.5.4.60, 4.5.5.62)
+ERROR: No matching distribution found for opencv-contrib-python==3.4.2.16
+
+
+
+
+
+
+(pytorch_venv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ conda activate tensorflow_gpuenv
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip uninstall opencv-python
+Found existing installation: opencv-python 4.2.0.34
+Uninstalling opencv-python-4.2.0.34:
+  Would remove:
+    /home/dhankar/anaconda3/envs/tensorflow_gpuenv/lib/python3.8/site-packages/cv2/*
+    /home/dhankar/anaconda3/envs/tensorflow_gpuenv/lib/python3.8/site-packages/opencv_python-4.2.0.34.dist-info/*
+Proceed (y/n)? y
+  Successfully uninstalled opencv-python-4.2.0.34
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip uninstall opencv-contrib-python
+WARNING: Skipping opencv-contrib-python as it is not installed.
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip install opencv-contrib-python==3.4.2.16
+ERROR: Could not find a version that satisfies the requirement opencv-contrib-python==3.4.2.16 (from versions: 3.4.8.29, 3.4.9.31, 3.4.9.33, 3.4.10.35, 3.4.10.37, 3.4.11.39, 3.4.11.41, 3.4.11.43, 3.4.11.45, 3.4.13.47, 3.4.14.51, 3.4.14.53, 3.4.15.55, 3.4.16.59, 3.4.17.61, 4.1.2.30, 4.2.0.32, 4.2.0.34, 4.3.0.36, 4.3.0.38, 4.4.0.40, 4.4.0.42, 4.4.0.44, 4.4.0.46, 4.5.1.48, 4.5.2.52, 4.5.2.54, 4.5.3.56, 4.5.4.58, 4.5.4.60, 4.5.5.62)
+ERROR: No matching distribution found for opencv-contrib-python==3.4.2.16
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip install opencv-contrib-python==3.4.8.29
+Collecting opencv-contrib-python==3.4.8.29
+  Downloading opencv_contrib_python-3.4.8.29-cp38-cp38-manylinux1_x86_64.whl (34.2 MB)
+     |████████████████████████████████| 34.2 MB 6.5 MB/s 
+Requirement already satisfied: numpy>=1.17.3 in ./lib/python3.8/site-packages (from opencv-contrib-python==3.4.8.29) (1.18.1)
+Installing collected packages: opencv-contrib-python
+Successfully installed opencv-contrib-python-3.4.8.29
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ #pip install opencv-python==3.4.8.29
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ pip install opencv-python==3.4.8.29
+Collecting opencv-python==3.4.8.29
+  WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'ReadTimeoutError("HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out. (read timeout=15)")': /packages/bd/95/f06beabb5e1fa319f02278004efce19e7ebe7a67e69dd7d1820d64b2dab8/opencv_python-3.4.8.29-cp38-cp38-manylinux1_x86_64.whl
+  Downloading opencv_python-3.4.8.29-cp38-cp38-manylinux1_x86_64.whl (28.3 MB)
+     |████████████████████████████████| 28.3 MB 12.1 MB/s 
+Requirement already satisfied: numpy>=1.17.3 in ./lib/python3.8/site-packages (from opencv-python==3.4.8.29) (1.18.1)
+ERROR: albumentations 0.4.6 has requirement opencv-python>=4.1.1, but you'll have opencv-python 3.4.8.29 which is incompatible.
+Installing collected packages: opencv-python
+Successfully installed opencv-python-3.4.8.29
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+(tensorflow_gpuenv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+
+
