@@ -1,0 +1,46 @@
+Num GPUs Available:  0
+---iter_k-- 15
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[2.1073424e-08 5.2224278e-01 5.2855337e-01 5.4607946e-01 5.8071548e-01]]
+---indices-- [[ 15  14 295 450 449]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0016.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0016.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0015.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0296.jpg
+---iter_k-- 16
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[3.3320010e-08 4.6302086e-01 4.7803700e-01 4.9381757e-01 5.0892335e-01]]
+---indices-- [[ 16  12   7   8 366]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0017.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0017.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0013.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0008.jpg
+---iter_k-- 17
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[4.4703484e-08 4.5546281e-01 5.0233084e-01 5.5129957e-01 5.5322158e-01]]
+---indices-- [[ 17 452   8   7  16]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0018.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0018.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces_easy/image_0018.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0009.jpg
+---iter_k-- 18
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[4.2146848e-08 5.1681203e-01 5.1808876e-01 5.2369940e-01 5.3223217e-01]]
+---indices-- [[ 18  16  12   4 453]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0019.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0019.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0017.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0013.jpg
+---iter_k-- 19
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[2.9802322e-08 5.3902161e-01 5.6870890e-01 5.7831991e-01 5.7869887e-01]]
+---indices-- [[ 19   1 454 436 368]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0020.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0020.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0002.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces_easy/image_0020.jpg

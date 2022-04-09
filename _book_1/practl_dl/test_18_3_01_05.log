@@ -1,0 +1,130 @@
+Num GPUs Available:  0
+-wrapper_plot_nn_images--iter--- 0
+----filenames---- ['../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg']
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 1
+----filenames---- ['../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg']
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 2
+----filenames---- ['../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg']
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 3
+----filenames---- ['../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg']
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 4
+----filenames---- ['../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg']
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 5
+----filenames---- ['../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg', '../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg']
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0201.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0198.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0205.jpg
+----filename---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0200.jpg
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+---iter_k-- 25
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[5.3726900e-08 5.7423609e-01 5.7722479e-01 5.8030856e-01 5.8970845e-01]]
+---indices-- [[ 25  21 460 242 226]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0026.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0026.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0022.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces_easy/image_0026.jpg
+---iter_k-- 26
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[3.6500243e-08 4.6384102e-01 4.6459004e-01 5.2308166e-01 5.2772743e-01]]
+---indices-- [[ 26 461  40  32  22]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0027.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0027.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces_easy/image_0027.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0041.jpg
+---iter_k-- 27
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[2.9802322e-08 5.0541687e-01 5.1801670e-01 5.2751064e-01 5.3080606e-01]]
+---indices-- [[27 28 40 59 35]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0028.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0028.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0029.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0041.jpg
+---iter_k-- 28
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[4.7121610e-08 5.0541687e-01 5.1297539e-01 5.2542788e-01 5.2697104e-01]]
+---indices-- [[ 28  27 463  22  39]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0029.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0029.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0028.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces_easy/image_0029.jpg
+---iter_k-- 29
+---distances-- (1, 5)
+---indices-- (1, 5)
+---distances-- [[5.9604645e-08 4.8003235e-01 5.1136404e-01 5.1759893e-01 5.3171802e-01]]
+---indices-- [[ 29  38 464  21  27]]
+----filenames[iter_k]---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0030.jpg
+----FileName of the DISTANCE == 0 -which is Same IMAGE-- ../datasets/caltech101/101_ObjectCategories/Faces/image_0030.jpg
+----FileName of the 1st NN---- ../datasets/caltech101/101_ObjectCategories/Faces/image_0039.jpg
+----FileName of the 2nd NN---- ../datasets/caltech101/101_ObjectCategories/Faces_easy/image_0030.jpg

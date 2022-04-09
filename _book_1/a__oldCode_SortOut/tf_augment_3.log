@@ -1,0 +1,42 @@
+---type(ImageDataGen)------ <class 'type'>
+---type(train)------ <class 'keras.preprocessing.image.ImageDataGenerator'>
+---type(validation)------ <class 'keras.preprocessing.image.ImageDataGenerator'>
+Found 875 images belonging to 2 classes.
+----train_dataset---- <keras.preprocessing.image.DirectoryIterator object at 0x7f7d59d7f4f0>
+Found 875 images belonging to 2 classes.
+----validation_dataset---- <keras.preprocessing.image.DirectoryIterator object at 0x7f7d59ca62b0>
+train_dataset.class_indices--- {'airplanes': 0, 'not_airplanes': 1}
+validation_dataset.class_indices--- {'airplanes': 0, 'not_airplanes': 1}
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 198, 198, 16)      448       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 99, 99, 16)       0         
+ )                                                               
+                                                                 
+ conv2d_1 (Conv2D)           (None, 97, 97, 32)        4640      
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 48, 48, 32)       0         
+ 2D)                                                             
+                                                                 
+ conv2d_2 (Conv2D)           (None, 46, 46, 64)        18496     
+                                                                 
+ max_pooling2d_2 (MaxPooling  (None, 23, 23, 64)       0         
+ 2D)                                                             
+                                                                 
+ flatten (Flatten)           (None, 33856)             0         
+                                                                 
+ dense (Dense)               (None, 512)               17334784  
+                                                                 
+ dense_1 (Dense)             (None, 1)                 513       
+                                                                 
+=================================================================
+Total params: 17,358,881
+Trainable params: 17,358,881
+Non-trainable params: 0
+_________________________________________________________________
+None
+------train_dataset.samples------- 875
+Epoch 1/20

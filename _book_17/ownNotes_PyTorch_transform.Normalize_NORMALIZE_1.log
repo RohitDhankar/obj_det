@@ -1,0 +1,441 @@
+
+#### FOOBAR --- below also
+
+Skip to main content
+FOOBAR PyTorch Forums -- Understanding transform.Normalize( )
+vision
+
+    profile, messages, bookmarks and preferences
+
+Understanding transform.Normalize( )
+vision
+3 months later
+3 months later
+cuixing158_1
+cuixing
+Jan '19
+
+Is there a sequence order in the transforms.Compose operation? The mean value of my image is generally in the range of [127.5, 127.5, 127.5], which is also written as transforms.Compose([transforms.Normalize(([127.5,127.5,127.5]),[127.5,127.5,127.5]]))?
+Adnan_Farooq
+InnovArul
+Jan '19
+
+There are three parameters ((0.5,0.5,0.5),(0.5,0.5,0.5)) and written twice. I recently started python with deep learning so its confusing me. As you mentioned it is defined as mean and std. then it should two mention it as (0.5, 0.5). why we have (0.5,0.5,0.5)? Whats the third 0.5 shows? and secondly why we have these values twice?
+EloiZalczer
+
+If you read the documentation here, you will see that both parameters are “Sequences for each channel”. Color images have three channels (red, green, blue), therefore you need three parameters to normalize each channel. The first tuple (0.5, 0.5, 0.5) is the mean for all three channels and the second (0.5, 0.5, 0.5) is the standard deviation for all three channels.
+rajanala
+Venkateswara Rao Rajanala
+
+I was also having same doubt…i am learning pytorch . Normalise depends on the number of channels. if MNIST its grey scale with only one channel . so you can do …transforms.Normalize((0.5,), (0.5,))… If three channel, you may need to specify for all channels for example : CIFAR10.
+EloiZalczer
+Jan '19
+
+If you read the documentation here 2.1k, you will see that both parameters are “Sequences for each channel”. Color images have three channels (red, green, blue), therefore you need three parameters to normalize each channel. The first tuple (0.5, 0.5, 0.5) is the mean for all three channels and the second (0.5, 0.5, 0.5) is the standard deviation for all three channels.
+1 month later
+dkendall
+Dustin Kendall
+bhushans23
+Mar '19
+
+But why [-1,1] when the transformation was already applied on a normalized set of [0,1]?
+bhushans23
+Bhushan Sonawane
+Mar '19
+
+this is very well explained by @InnovArul above Understanding transform.Normalize( )
+It depends which normalization method are you using.
+Using normalization transform mentioned above will transform dataset into normalized range [-1, 1]
+If dataset is already in range [0, 1] and normalized, you can choose to skip the normalization in transformation.
+You can choose to normalize and get data in range [0, 1] by tweaking mean and std in transform
+MariosOreo
+Mar '19
+
+    If dataset is already in range [0, 1], you can choose to skip the normalization in transformation.
+
+Hi,
+In my shallow view, normalization and scale are two different data preprocessing.
+Scale is used to scale your data to [0, 1]
+But normalization is to normalize your data distribution for training easily.
+
+import torchvision.transforms.functional as TF
+image = torch.randint(0,255,(5, 5, 3), dtype=torch.uint8)
+scaled_image = TF.to_tensor(np.asarray(image))
+output:
+tensor([[[0.2078, 0.3765, 0.9451],
+         [0.2039, 0.3961, 0.5176],
+         [0.2588, 0.5333, 0.2039]],
+
+        [[0.0941, 0.8980, 0.6745],
+         [0.2431, 0.7451, 0.1255],
+         [0.5412, 0.4667, 0.2471]],
+
+        [[0.2000, 0.8588, 0.6902],
+         [0.1137, 0.1255, 0.2000],
+         [0.6863, 0.2392, 0.2118]]])
+normalized_image = TF.normalize(image, mean, var)
+output:
+tensor([[[-0.5843, -0.2471,  0.8902],
+         [-0.5922, -0.2078,  0.0353],
+         [-0.4824,  0.0667, -0.5922]],
+
+        [[-0.8118,  0.7961,  0.3490],
+         [-0.5137,  0.4902, -0.7490],
+         [ 0.0824, -0.0667, -0.5059]],
+
+        [[-0.6000,  0.7176,  0.3804],
+         [-0.7725, -0.7490, -0.6000],
+         [ 0.3725, -0.5216, -0.5765]]])
+
+If I am wrong, please correct me.
+Thanks in advance.
+bhushans23
+Bhushan Sonawane
+Mar '19
+
+@MariosOreo you are correct.
+Scale and Normalization are different.
+Scale only states that data will be within given range.
+Normalization states data is proportionate within given range.
+2 months later
+BarryBA
+岚烟之喏
+InnovArul
+Apr '19
+
+Thanks.
+So how to define the mean value and std value? Are there some suggestions?
+Moreover, can we set a parameter to make the CNN find the optimal parameter for the image processing? If so, can you tell me how to set the parameter?
+BarryBA
+岚烟之喏
+bhushans23
+Apr '19
+
+May I ask, how to define the mean value and std value of each image channel? Are there some suggestions?
+Moreover, can we set a parameter to make the CNN find the optimal parameter for the image processing? If so, can you tell me how to set the parameter?
+PurpleText
+Prasanth Chettri
+EloiZalczer
+May '19
+
+What if the image is grey scale?
+laochanlam
+Lao Chon Lam
+BarryBA
+May '19
+
+The link below might help you.
+Deep Learning Course Forums – 1 May 18
+Image normalization in PyTorch 1.6k
+
+Hi, yes. You need to calculate the mean and std in advance. I did it the following way: transform = transforms.Compose([ transforms.ToPILImage(), transforms.ToTensor() ]) dataloader = torch.utils.data.DataLoader(*torch_dataset*,...
+
+8 days later
+Meltemology
+BarryBA
+May '19
+
+As I understood from several resources the normalization setting below taken from imagenet but I also wonder the intuition behind it.
+
+transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                     std=[0.229, 0.224, 0.225]) 
+
+And for the images with pixel values between [0-1] such normalization may ruin the image as I experienced, I may be wrong though.
+ptrblck
+May '19
+
+For image tensors with values in [0, 1] this transformation will standardize it, so that the mean of the data should be ~0 and the std ~1.
+This is also known as Standard score 345 or z-score in the literature, and usually helps your training.
+Meltemology
+May '19
+
+Thank you very much for the information.
+I should admit that it is my first week to start on pytorch and I found this forums extremely valuable learning source.
+
+I have a toy data-set to classify dog images when I perform normalization as mentioned above and without changing any other settings on data loaders
+
+dataiter = iter(load_data['train'])
+images, labels = dataiter.next()
+images = images.numpy() 
+fig = plt.figure(figsize=(20, 4))
+for idx in np.arange(10):
+    ax = fig.add_subplot(2, 10/2, idx+1, xticks=[], yticks=[])
+    plt.imshow(np.transpose(images[idx], (1, 2, 0)))
+    ax.set_title(class_names[labels[idx]])
+
+I get this result as shown in the image
+Screenshot%20from%202019-05-14%2011-49-54
+Screenshot from 2019-05-14 11-49-54.png794×172 139 KB
+
+When I delete the normalization it plots normal dog images. When I print the tensor I can see values are positive between [0-1] for input data, after normalization they become between [-1 1]
+I do not know if it’s the error of normalization or matplotlib snippet ?
+torch version is 0.41 python 3.5
+
+ptrblck
+May '19
+
+The messy output is quite normal, as matplotlib either slips the input or tries to scale it, which creates these kind of artifacts (also because you are normalizing channel-wise with different values).
+
+If you would like to visualize the images, you should use the raw images (in [0, 255]) or the normalized ones (in [0, 1]).
+Alternatively, you could also unnormalize them, but I think the first approach would be simpler.
+
+If you are using a custom Dataset, just add another load_data function and use it for visualization:
+
+class MyDataset(Dataset):
+    def __init__(self, image_paths, targets, transform=None):
+        self.image_paths = image_paths
+        self.targets = targets
+        self.transform = transform
+
+    def load_image(self, index):
+        image_path = self.image_paths[index]
+        img = Image.open(image_path)
+        return img
+
+    def __getitem__(self, index):
+        x = self.load_image(index)
+        y = self.targets[index]
+        
+        if self.transform:
+            x = self.transform(x)
+            
+        return x, y
+    
+    def __len__(self):
+        return len(self.image_paths)
+
+image_paths = [...]
+targets = ...
+dataset = MyDataset(image_paths, targets, transform=transforms.ToTensor())
+img_to_vis = dataset.load_image(index=0)
+
+PS: Unrelated to your question, but your PyTorch version is quite old. I would recommend to update it to the latest stable version. You’ll find the install instructions here 26.
+2 months later
+bolt25
+Dharmik Bhatt
+bhushans23
+Jul '19
+
+@bhushans23 what do u mean when u say proportionate in given range?
+Thank you in advance!
+2 months later
+bkonk
+Sep '19
+
+If you are starting with range 0-255 .png images, do you first need to convert to 0-1 and some other image format before utilizing transforms.normalize()? Or can I just transform these as-is with means/stds more like transforms.Normalize((120,120,120),(30,30,30))?
+
+
+
+##### FOOBAR 
+
+
+Skip to main content
+PyTorch Forums
+Normalization in the mnist example
+
+    profile, messages, bookmarks and preferences
+
+Normalization in the mnist example
+17 days later
+dlmacedo
+David Lopes de Macêdo
+Mar '17
+
+What an honor to be replied by you, smth.
+
+But the pytorch imagenet example is also very different from 0.5, 0.5, 0.5.
+
+normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225])
+
+train_loader = torch.utils.data.DataLoader(
+    datasets.ImageFolder(traindir, transforms.Compose([
+        transforms.RandomSizedCrop(224),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        normalize,
+    ])),
+    batch_size=args.batch_size, shuffle=True,
+    num_workers=args.workers, pin_memory=True)
+
+I guess in the pytorch tutorial we are getting a normalization from a range 0 to 1 to -1 to 1 for each image, not considering the mean-std of the whole dataset.
+
+David
+smth
+PyTorch Dev, Facebook AI Research
+Mar '17
+
+Yes. On Imagenet, we’ve done a pass on the dataset and calculated per-channel mean/std. In CIFAR10, I thought that this was unncessary to be introduced to the reader, and we quite often just use 0.5, 0.5, 0.5 on many datasets to rerange them to [-1, +1]. Sorry if this was confusing :slight_smile:
+dlmacedo
+David Lopes de Macêdo
+Mar '17
+
+Ok.
+
+Thank you very much for your answer.
+
+David
+2 months later
+achaiah
+smth
+May '17
+
+Any way you could share the code with which you compute mean/std on the dataset? Do you use the dataset class and iterate over it?
+
+Thanks
+padamsethia
+
+Did you figure out the code for calculating the mean and std within pytorch ?
+dlmacedo
+David Lopes de Macêdo
+
+import argparse
+import os
+import numpy as np
+import torchvision
+import torchvision.transforms as transforms
+
+dataset_names = ('cifar10','cifar100','mnist')
+
+parser = argparse.ArgumentParser(description='PyTorchLab')
+parser.add_argument('-d', '--dataset', metavar='DATA', default='cifar10', choices=dataset_names,
+                    help='dataset to be used: ' + ' | '.join(dataset_names) + ' (default: cifar10)')
+
+args = parser.parse_args()
+
+data_dir = os.path.join('.', args.dataset)
+
+print(args.dataset)
+
+if args.dataset == "cifar10":
+    train_transform = transforms.Compose([transforms.ToTensor()])
+    train_set = torchvision.datasets.CIFAR10(root=data_dir, train=True, download=True, transform=train_transform)
+    #print(vars(train_set))
+    print(train_set.train_data.shape)
+    print(train_set.train_data.mean(axis=(0,1,2))/255)
+    print(train_set.train_data.std(axis=(0,1,2))/255)
+
+elif args.dataset == "cifar100":
+    train_transform = transforms.Compose([transforms.ToTensor()])
+    train_set = torchvision.datasets.CIFAR100(root=data_dir, train=True, download=True, transform=train_transform)
+    #print(vars(train_set))
+    print(train_set.train_data.shape)
+    print(np.mean(train_set.train_data, axis=(0,1,2))/255)
+    print(np.std(train_set.train_data, axis=(0,1,2))/255)
+
+elif args.dataset == "mnist":
+    train_transform = transforms.Compose([transforms.ToTensor()])
+    train_set = torchvision.datasets.MNIST(root=data_dir, train=True, download=True, transform=train_transform)
+    #print(vars(train_set))
+    print(list(train_set.train_data.size()))
+    print(train_set.train_data.float().mean()/255)
+    print(train_set.train_data.float().std()/255)
+
+10 days later
+padamsethia
+May '17
+
+Did you figure out the code for calculating the mean and std within pytorch ?
+1 month later
+adamvest
+Jun '17
+
+Should just be able to use the ImageFolder or some other dataloader to iterate over imagenet and then use the standard formulas to compute mean and std. at the channel level E.g., for mean keep 3 running sums, one for the R, G, and B channel values as well as a total pixel count (if you are using Python2 watch for int overflow on the pixel count, could need a different strategy). Then simply divide the running sums by the pixel count
+8 days later
+dlmacedo
+David Lopes de Macêdo
+achaiah
+Jun '17
+
+import argparse
+import os
+import numpy as np
+import torchvision
+import torchvision.transforms as transforms
+
+dataset_names = ('cifar10','cifar100','mnist')
+
+parser = argparse.ArgumentParser(description='PyTorchLab')
+parser.add_argument('-d', '--dataset', metavar='DATA', default='cifar10', choices=dataset_names,
+                    help='dataset to be used: ' + ' | '.join(dataset_names) + ' (default: cifar10)')
+
+args = parser.parse_args()
+
+data_dir = os.path.join('.', args.dataset)
+
+print(args.dataset)
+
+if args.dataset == "cifar10":
+    train_transform = transforms.Compose([transforms.ToTensor()])
+    train_set = torchvision.datasets.CIFAR10(root=data_dir, train=True, download=True, transform=train_transform)
+    #print(vars(train_set))
+    print(train_set.train_data.shape)
+    print(train_set.train_data.mean(axis=(0,1,2))/255)
+    print(train_set.train_data.std(axis=(0,1,2))/255)
+
+elif args.dataset == "cifar100":
+    train_transform = transforms.Compose([transforms.ToTensor()])
+    train_set = torchvision.datasets.CIFAR100(root=data_dir, train=True, download=True, transform=train_transform)
+    #print(vars(train_set))
+    print(train_set.train_data.shape)
+    print(np.mean(train_set.train_data, axis=(0,1,2))/255)
+    print(np.std(train_set.train_data, axis=(0,1,2))/255)
+
+elif args.dataset == "mnist":
+    train_transform = transforms.Compose([transforms.ToTensor()])
+    train_set = torchvision.datasets.MNIST(root=data_dir, train=True, download=True, transform=train_transform)
+    #print(vars(train_set))
+    print(list(train_set.train_data.size()))
+    print(train_set.train_data.float().mean()/255)
+    print(train_set.train_data.float().std()/255)
+
+1 month later
+isalirezag
+Aug '17
+
+So How should I know what mean and std should I use to transfer my images to? it is different for MNIST, CIFAR10, and ImageNEt…
+
+Any role that I need to stick with?
+
+Thanks
+Jing
+Aug '17
+
+Just caculate them on the whole datasets like @dlmacedo did.
+3 months later
+jdhao
+Nov '17
+
+The code is not widely applicable, if the training images are not the same size and in image format, you can not use the code to calculate per channel mean and std
+Royi
+Nov '17
+
+I tired, using transforms.Lambda(), to even try to normalize data per pixel from the whole data set.
+For some reason it made results worse though I’d think it would be better strategy.
+
+I wonder about something, Let’s say the first layer is Linear Layer (Fully Connected).
+What’s the point in removing the mean from the data, as there is a Bias term is is optimized, wouldn’t it calculate the best term to begin with?
+jdhao
+Nov '17
+
+By normalizing the input, SGD algorithm will work better. If the feature scale is not approximately the same, it will takes longer time to find the minimum.
+Royi
+Nov '17
+
+@jdhao, I wasn’t talking about the scaling, I was talking about the bias term.
+Moreover, in the case of images all pixels are within the same range so stuff like normalizing different features units doesn’t apply here.
+
+Put my question differently, after this “Centering” does the Bias of the first layer filter is around 0?
+SimonW
+Simon Wang
+Nov '17
+
+Training is more stable and faster when parameters are small. As a fact, none of these first order optimization method guarantees finding minimum for arbitrary network (in fact, they can’t even find it for the simple ones). Therefore, although scaling & offsetting is equivalent to scaling the weights and offsetting bias at first linear layer, normalization proves to often give better results.
+
+Moreover, you shouldn’t normalize using every pixel’s mean and std. Since conv is an operation on channels, you should just use each channel’s mean and std.
+2 months later
+lkins
+smth
+Jan '18
+
+Do we need tensors to be in the range of [-1,1] or is [0,1] okay? I have my own dataset of RGB images with a range of [0,1]. I manually normalized the dataset but the tensors are still in the range of [0,1]. What is the benefit of transforming the range to [-1,1]?

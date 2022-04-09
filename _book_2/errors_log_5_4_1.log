@@ -1,0 +1,134 @@
+(base) dhankar@dhankar-1:~/.../PyTorch_main_March22$ cd face
+bash: cd: face: No such file or directory
+(base) dhankar@dhankar-1:~/.../PyTorch_main_March22$ cd face_recog22/
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ conda activate pytorch_venv
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ cd _book_2/
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ ls
+1_code_.py  logging_2_code_1.log       logging_2_code_.log             logging_2_code_not_plane_3.log  train
+2_code_.py  logging_2_code_2.log       logging_2_code_not_plane_1.log  logging_2_code_not_plane_4.log  val
+book_code   logging_2_code_cats_1.log  logging_2_code_not_plane_2.log  test
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ python 2_code_.py > log_2Code_5Apr_1.log
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ python 2_code_.py > log_2Code_5Apr_2.log
+Traceback (most recent call last):
+  File "2_code_.py", line 143, in <module>
+    train_data = torchvision.datasets.ImageFolder(root=train_data_path,transform=img_transforms, is_valid_file=check_image)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 310, in __init__
+    super().__init__(
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 145, in __init__
+    classes, class_to_idx = self.find_classes(self.root)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 219, in find_classes
+    return find_classes(directory)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 43, in find_classes
+    raise FileNotFoundError(f"Couldn't find any class folder in {directory}.")
+FileNotFoundError: Couldn't find any class folder in ./train/glass/.
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ python 2_code_.py > log_2Code_5Apr_2.log
+Traceback (most recent call last):
+  File "2_code_.py", line 143, in <module>
+    train_data = torchvision.datasets.ImageFolder(root=train_data_path,transform=img_transforms, is_valid_file=check_image)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 310, in __init__
+    super().__init__(
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 145, in __init__
+    classes, class_to_idx = self.find_classes(self.root)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 219, in find_classes
+    return find_classes(directory)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/datasets/folder.py", line 43, in find_classes
+    raise FileNotFoundError(f"Couldn't find any class folder in {directory}.")
+FileNotFoundError: Couldn't find any class folder in ./train/glass/.
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ python 2_code_.py > log_2Code_5Apr_2.log
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [0,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [4,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [15,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [17,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [18,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [24,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [25,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [28,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [31,0,0] Assertion `t >= 0 && t < n_classes` failed.
+Traceback (most recent call last):
+  File "2_code_.py", line 176, in <module>
+    train(simplenet, optimizer,torch.nn.CrossEntropyLoss(), train_data_loader,val_data_loader, epochs=10, device=device)
+  File "2_code_.py", line 107, in train
+    loss.backward()
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: CUDA error: CUBLAS_STATUS_ALLOC_FAILED when calling `cublasCreate(handle)`
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ python 2_code_.py > log_2Code_5Apr_2.log
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [0,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [3,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [4,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [5,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [6,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [8,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [9,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [11,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [15,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [17,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [18,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [23,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [30,0,0] Assertion `t >= 0 && t < n_classes` failed.
+Traceback (most recent call last):
+  File "2_code_.py", line 176, in <module>
+    train(simplenet, optimizer,torch.nn.CrossEntropyLoss(), train_data_loader,val_data_loader, epochs=10, device=device)
+  File "2_code_.py", line 107, in train
+    loss.backward()
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: CUDA error: CUBLAS_STATUS_ALLOC_FAILED when calling `cublasCreate(handle)`
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ python 2_code_.py > log_2Code_5Apr_2.log
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [2,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [6,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [7,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [8,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [9,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [12,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [16,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [19,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [25,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [29,0,0] Assertion `t >= 0 && t < n_classes` failed.
+Traceback (most recent call last):
+  File "2_code_.py", line 176, in <module>
+    train(simplenet, optimizer,torch.nn.CrossEntropyLoss(), train_data_loader,val_data_loader, epochs=10, device=device)
+  File "2_code_.py", line 107, in train
+    loss.backward()
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor.py", line 363, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph, inputs=inputs)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/autograd/__init__.py", line 173, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: CUDA error: CUBLAS_STATUS_ALLOC_FAILED when calling `cublasCreate(handle)`
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ python 2_code_.py > log_2Code_5Apr_2.log
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [8,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [10,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [11,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [15,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [23,0,0] Assertion `t >= 0 && t < n_classes` failed.
+../aten/src/ATen/native/cuda/Loss.cu:257: nll_loss_forward_reduce_cuda_kernel_2d: block: [0,0,0], thread: [25,0,0] Assertion `t >= 0 && t < n_classes` failed.
+Traceback (most recent call last):
+  File "2_code_.py", line 178, in <module>
+    train(simplenet, optimizer,torch.nn.CrossEntropyLoss(), train_data_loader,val_data_loader, epochs=10, device=device)
+  File "2_code_.py", line 107, in train
+    print("--train>>-model-loss---",loss)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor.py", line 305, in __repr__
+    return torch._tensor_str._str(self)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor_str.py", line 434, in _str
+    return _str_intern(self)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor_str.py", line 409, in _str_intern
+    tensor_str = _tensor_str(self, indent)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor_str.py", line 264, in _tensor_str
+    formatter = _Formatter(get_summarized_data(self) if summarize else self)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/_tensor_str.py", line 100, in __init__
+    nonzero_finite_vals = torch.masked_select(tensor_view, torch.isfinite(tensor_view) & tensor_view.ne(0))
+RuntimeError: CUDA error: device-side assert triggered
+CUDA kernel errors might be asynchronously reported at some other API call,so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1.
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_2$ 

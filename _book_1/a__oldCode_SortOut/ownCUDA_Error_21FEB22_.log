@@ -1,0 +1,635 @@
+#### FOOBAR_Issue_Broken__cuda-11-0 --->> Own Old Log from 2020 --> 
+https://github.com/RohitDhankar/cv2020/blob/master/READMEs_Errors_Installs_etc/README_search_cuda.md
+
+
+
+# Add NVIDIA package repositories
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+sudo apt-get update
+
+wget http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+
+sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+sudo apt-get update
+
+wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+sudo apt install ./libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+sudo apt-get update
+
+# Install development and runtime libraries (~4GB)
+sudo apt-get install --no-install-recommends \
+    cuda-11-0 \
+    libcudnn8=8.0.4.30-1+cuda11.0  \
+    libcudnn8-dev=8.0.4.30-1+cuda11.0
+
+# Reboot. Check that GPUs are visible using the command: nvidia-smi
+
+# Install TensorRT. Requires that libcudnn8 is installed above.
+sudo apt-get install -y --no-install-recommends libnvinfer7=7.1.3-1+cuda11.0 \
+    libnvinfer-dev=7.1.3-1+cuda11.0 \
+    libnvinfer-plugin7=7.1.3-1+cuda11.0
+
+
+
+
+
+
+
+
+
+$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+--2022-02-21 21:44:36--  https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
+Resolving developer.download.nvidia.com (developer.download.nvidia.com)... 152.199.39.144
+Connecting to developer.download.nvidia.com (developer.download.nvidia.com)|152.199.39.144|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 190 [application/octet-stream]
+Saving to: ‘cuda-ubuntu1804.pin’
+
+cuda-ubuntu1804.pin                 100%[=================================================================>]     190  --.-KB/s    in 0s      
+
+2022-02-21 21:44:36 (5.39 MB/s) - ‘cuda-ubuntu1804.pin’ saved [190/190]
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600
+[sudo] password for dhankar: 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+Executing: /tmp/apt-key-gpghome.YOy5gQiEZ8/gpg.1.sh --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+gpg: requesting key from 'https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub'
+gpg: key F60F4B3D7FA2AF80: "cudatools <cudatools@nvidia.com>" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /"
+Get:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Ign:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B]
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B]
+Hit:3 https://download.docker.com/linux/ubuntu bionic InRelease
+Hit:5 http://dl.google.com/linux/chrome/deb stable InRelease                                                                                 
+Hit:6 https://dl.winehq.org/wine-builds/ubuntu bionic InRelease                                                                              
+Ign:7 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 InRelease                                                                    
+Hit:8 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 Release                                                                      
+Hit:9 http://packages.microsoft.com/repos/vscode stable InRelease                                                                            
+Hit:10 http://in.archive.ubuntu.com/ubuntu bionic InRelease                                                                                  
+Hit:11 http://in.archive.ubuntu.com/ubuntu bionic-updates InRelease                                                                          
+Hit:12 http://in.archive.ubuntu.com/ubuntu bionic-backports InRelease                                                                        
+Ign:13 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 InRelease                                                                  
+Ign:14 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 InRelease                                                                  
+Hit:15 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease                                                                 
+Hit:17 http://ppa.launchpad.net/alexlarsson/flatpak/ubuntu bionic InRelease                                                                  
+Get:18 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                                                                 
+Hit:19 https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bionic pgadmin4 InRelease                                                         
+Hit:20 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 Release                                                                    
+Hit:21 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 Release                                                                    
+Hit:22 http://ppa.launchpad.net/apandada1/brightness-controller/ubuntu bionic InRelease                                                      
+Ign:23 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease                                                 
+Get:24 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Release [696 B]                                           
+Get:26 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Release.gpg [836 B]                                       
+Get:25 http://packages.ros.org/ros/ubuntu bionic InRelease [4,680 B]                                                                         
+Ign:28 https://kx.studio/repo stable InRelease                                                                                               
+Hit:29 https://repo.fortinet.com/repo/ubuntu /bionic InRelease                                                                               
+Hit:30 http://ppa.launchpad.net/cybermax-dexter/sdl2-backport/ubuntu bionic InRelease                                                        
+Ign:32 https://kx.studio/repo gcc5 InRelease                                                                                                 
+Hit:34 https://kx.studio/repo stable Release                                                                                                 
+Get:33 https://deb.torproject.org/torproject.org bionic InRelease [3,524 B]                                                                  
+Get:35 https://repo.skype.com/deb stable InRelease [4,502 B]                                                                                 
+Hit:36 https://kx.studio/repo gcc5 Release                                                                                                   
+Hit:38 http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic InRelease                                                                 
+Hit:41 http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic InRelease                                                                
+Hit:42 https://packages.microsoft.com/repos/ms-teams stable InRelease                           
+Get:43 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Packages [917 kB]                    
+Hit:44 http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic InRelease                                                              
+Err:25 http://packages.ros.org/ros/ubuntu bionic InRelease                                                                                   
+  The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+Hit:45 http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic InRelease                                                                 
+Err:33 https://deb.torproject.org/torproject.org bionic InRelease                                                      
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+Hit:27 https://scala.jfrog.io/artifactory/debian all InRelease                                                         
+Err:35 https://repo.skype.com/deb stable InRelease                                              
+  The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+Ign:31 https://scala.jfrog.io/artifactory/debian  InRelease                                    
+Hit:48 http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic InRelease                
+Hit:49 http://ppa.launchpad.net/mixxx/mixxx/ubuntu bionic InRelease                                                        
+Hit:50 http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic InRelease            
+Hit:39 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease                  
+Hit:51 https://scala.jfrog.io/artifactory/debian  Release                                                                                    
+Get:53 https://qgis.org/ubuntugis bionic InRelease [3,705 B]                                                                                 
+Err:53 https://qgis.org/ubuntugis bionic InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Get:54 https://qgis.org/ubuntu bionic InRelease [3,705 B]
+Err:54 https://qgis.org/ubuntu bionic InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Reading package lists... Done 
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://packages.ros.org/ros/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+W: GPG error: https://deb.torproject.org/torproject.org bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+E: The repository 'https://deb.torproject.org/torproject.org bionic InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://repo.skype.com/deb stable InRelease: The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntugis bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntu bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo apt-get update
+Get:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Ign:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B]                                                                             
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B]                                                                             
+Hit:3 http://in.archive.ubuntu.com/ubuntu bionic InRelease                                                                                   
+Hit:4 http://in.archive.ubuntu.com/ubuntu bionic-updates InRelease                                                                           
+Hit:5 http://in.archive.ubuntu.com/ubuntu bionic-backports InRelease                                                                         
+Hit:6 https://dl.winehq.org/wine-builds/ubuntu bionic InRelease                                                                              
+Hit:8 https://download.docker.com/linux/ubuntu bionic InRelease                                                                              
+Hit:9 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease                                                                  
+Hit:10 http://dl.google.com/linux/chrome/deb stable InRelease                                                                                
+Hit:11 http://packages.microsoft.com/repos/vscode stable InRelease                                                                           
+Hit:12 http://ppa.launchpad.net/alexlarsson/flatpak/ubuntu bionic InRelease                                                                  
+Get:13 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                                                                 
+Ign:14 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease                                                 
+Hit:15 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Release                                                   
+Ign:16 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 InRelease                                                                  
+Ign:18 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 InRelease                                                                  
+Hit:19 http://ppa.launchpad.net/apandada1/brightness-controller/ubuntu bionic InRelease                                                      
+Ign:20 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 InRelease                                                                   
+Get:17 http://packages.ros.org/ros/ubuntu bionic InRelease [4,680 B]                                                                         
+Hit:21 https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bionic pgadmin4 InRelease                                                         
+Ign:22 https://kx.studio/repo stable InRelease                                                                                               
+Hit:24 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 Release                                                                    
+Hit:25 http://ppa.launchpad.net/cybermax-dexter/sdl2-backport/ubuntu bionic InRelease                                                        
+Hit:26 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 Release                                                                     
+Hit:27 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 Release                                                                    
+Hit:28 https://repo.fortinet.com/repo/ubuntu /bionic InRelease                                                                               
+Ign:30 https://kx.studio/repo gcc5 InRelease                                                                                                 
+Get:23 https://deb.torproject.org/torproject.org bionic InRelease [3,524 B]                                                                  
+Hit:31 http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic InRelease                                                                 
+Hit:32 https://kx.studio/repo stable Release                                                                          
+Get:34 https://repo.skype.com/deb stable InRelease [4,502 B]                                                                                 
+Hit:35 http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic InRelease                                                                
+Hit:36 http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic InRelease                                                              
+Hit:37 https://kx.studio/repo gcc5 Release                                                                                                 
+Hit:39 http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic InRelease                                                                 
+Err:17 http://packages.ros.org/ros/ubuntu bionic InRelease                                                              
+  The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+Hit:41 http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic InRelease                                                  
+Hit:43 https://packages.microsoft.com/repos/ms-teams stable InRelease                                                                        
+Hit:45 http://ppa.launchpad.net/mixxx/mixxx/ubuntu bionic InRelease                                                        
+Hit:47 http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic InRelease                                                         
+Get:44 https://qgis.org/ubuntugis bionic InRelease [3,705 B]                                    
+Get:46 https://qgis.org/ubuntu bionic InRelease [3,705 B]                                                    
+Hit:29 https://scala.jfrog.io/artifactory/debian all InRelease                                              
+Err:23 https://deb.torproject.org/torproject.org bionic InRelease
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+Ign:33 https://scala.jfrog.io/artifactory/debian  InRelease
+Hit:40 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease              
+Err:34 https://repo.skype.com/deb stable InRelease                              
+  The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+Hit:51 https://scala.jfrog.io/artifactory/debian  Release                                                                                    
+Err:44 https://qgis.org/ubuntugis bionic InRelease                                                                                           
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Err:46 https://qgis.org/ubuntu bionic InRelease                                                                                              
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Reading package lists... Done                                                                                                                
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://packages.ros.org/ros/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+W: GPG error: https://deb.torproject.org/torproject.org bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+E: The repository 'https://deb.torproject.org/torproject.org bionic InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://repo.skype.com/deb stable InRelease: The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntugis bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntu bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo apt install ./nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Note, selecting 'nvidia-machine-learning-repo-ubuntu1804' instead of './nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb'
+The following packages were automatically installed and are no longer required:
+  libappindicator1 libindicator7 linux-hwe-5.4-headers-5.4.0-47 linux-hwe-5.4-headers-5.4.0-48 linux-hwe-5.4-headers-5.4.0-51
+  linux-hwe-5.4-headers-5.4.0-52 linux-hwe-5.4-headers-5.4.0-58 linux-hwe-5.4-headers-5.4.0-60 linux-hwe-5.4-headers-5.4.0-62
+  linux-hwe-5.4-headers-5.4.0-65 linux-hwe-5.4-headers-5.4.0-66 linux-hwe-5.4-headers-5.4.0-67 linux-hwe-5.4-headers-5.4.0-70
+  linux-hwe-5.4-headers-5.4.0-72 linux-hwe-5.4-headers-5.4.0-73 linux-hwe-5.4-headers-5.4.0-74 linux-hwe-5.4-headers-5.4.0-77
+  linux-hwe-5.4-headers-5.4.0-80 linux-hwe-5.4-headers-5.4.0-81 linux-hwe-5.4-headers-5.4.0-84 linux-hwe-5.4-headers-5.4.0-86
+  linux-hwe-5.4-headers-5.4.0-87 linux-hwe-5.4-headers-5.4.0-89 linux-hwe-5.4-headers-5.4.0-90 linux-hwe-5.4-headers-5.4.0-91
+  linux-hwe-5.4-headers-5.4.0-92 linux-hwe-5.4-headers-5.4.0-94 linux-hwe-5.4-headers-5.4.0-96
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  nvidia-machine-learning-repo-ubuntu1804
+0 upgraded, 1 newly installed, 0 to remove and 241 not upgraded.
+Need to get 0 B/2,926 B of archives.
+After this operation, 37.9 kB of additional disk space will be used.
+Get:1 /home/dhankar/Desktop/face_1/face_recog22/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb nvidia-machine-learning-repo-ubuntu1804 amd64 1.0.0-1 [2,926 B]
+Selecting previously unselected package nvidia-machine-learning-repo-ubuntu1804.
+(Reading database ... 810693 files and directories currently installed.)
+Preparing to unpack .../nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb ...
+Unpacking nvidia-machine-learning-repo-ubuntu1804 (1.0.0-1) ...
+Setting up nvidia-machine-learning-repo-ubuntu1804 (1.0.0-1) ...
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+
+
+
+
+$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo apt-get update
+Get:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Ign:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B]                                                                             
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B]                                                                             
+Hit:3 http://in.archive.ubuntu.com/ubuntu bionic InRelease                                                                                   
+Hit:4 http://in.archive.ubuntu.com/ubuntu bionic-updates InRelease                                                                           
+Hit:5 http://in.archive.ubuntu.com/ubuntu bionic-backports InRelease                                                                         
+Hit:6 https://dl.winehq.org/wine-builds/ubuntu bionic InRelease                                                                              
+Hit:7 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease                                                                  
+Hit:9 https://download.docker.com/linux/ubuntu bionic InRelease                                                                              
+Hit:10 http://dl.google.com/linux/chrome/deb stable InRelease                                                                                
+Hit:11 http://packages.microsoft.com/repos/vscode stable InRelease                                                                           
+Hit:12 http://ppa.launchpad.net/alexlarsson/flatpak/ubuntu bionic InRelease                                                                  
+Get:13 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                                                                 
+Ign:14 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 InRelease                                                                   
+Ign:16 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 InRelease                                                                  
+Ign:17 http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease                                      
+Get:18 http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release [564 B]                                
+Hit:19 http://ppa.launchpad.net/apandada1/brightness-controller/ubuntu bionic InRelease                                                      
+Get:20 http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release.gpg [833 B]                            
+Get:15 http://packages.ros.org/ros/ubuntu bionic InRelease [4,680 B]                                                                         
+Ign:21 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 InRelease                                                                  
+Hit:22 https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bionic pgadmin4 InRelease                                                         
+Ign:24 https://kx.studio/repo stable InRelease                                                                                               
+Hit:25 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 Release                                                                     
+Hit:26 http://ppa.launchpad.net/cybermax-dexter/sdl2-backport/ubuntu bionic InRelease                                                        
+Hit:28 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 Release                                                                    
+Hit:29 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 Release                                                                    
+Ign:30 https://kx.studio/repo gcc5 InRelease                                                                                                 
+Hit:31 https://repo.fortinet.com/repo/ubuntu /bionic InRelease                                                                               
+Ign:32 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease                                                 
+Hit:33 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Release                                                   
+Get:23 https://qgis.org/ubuntugis bionic InRelease [3,705 B]                                                                                 
+Hit:35 http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic InRelease                                                                 
+Hit:36 https://kx.studio/repo stable Release                                                                                                 
+Get:27 https://qgis.org/ubuntu bionic InRelease [3,705 B]                                                                                    
+Hit:38 https://kx.studio/repo gcc5 Release                                                                                                   
+Hit:39 http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic InRelease                                                 
+Hit:41 http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic InRelease                                                     
+Get:42 https://repo.skype.com/deb stable InRelease [4,502 B]                                       
+Get:40 https://deb.torproject.org/torproject.org bionic InRelease [3,524 B]                          
+Get:43 http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Packages [73.8 kB]   
+Hit:44 http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic InRelease          
+Err:15 http://packages.ros.org/ros/ubuntu bionic InRelease                                             
+  The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+Hit:45 http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic InRelease
+Hit:46 http://ppa.launchpad.net/mixxx/mixxx/ubuntu bionic InRelease
+Hit:48 http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic InRelease                                          
+Err:23 https://qgis.org/ubuntugis bionic InRelease                                               
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Hit:53 https://packages.microsoft.com/repos/ms-teams stable InRelease               
+Err:27 https://qgis.org/ubuntu bionic InRelease                             
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Hit:34 https://scala.jfrog.io/artifactory/debian all InRelease             
+Ign:37 https://scala.jfrog.io/artifactory/debian  InRelease
+Err:42 https://repo.skype.com/deb stable InRelease  
+  The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+Err:40 https://deb.torproject.org/torproject.org bionic InRelease                                                                            
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+Hit:51 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease                                                               
+Hit:56 https://scala.jfrog.io/artifactory/debian  Release                                                                                    
+Reading package lists... Done                                                                                                                
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://packages.ros.org/ros/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntugis bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntu bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://repo.skype.com/deb stable InRelease: The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+W: GPG error: https://deb.torproject.org/torproject.org bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+E: The repository 'https://deb.torproject.org/torproject.org bionic InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+
+
+
+
+
+
+ase) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+--2022-02-21 21:53:32--  https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+Resolving developer.download.nvidia.com (developer.download.nvidia.com)... 152.199.39.144
+Connecting to developer.download.nvidia.com (developer.download.nvidia.com)|152.199.39.144|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 90642928 (86M) [application/x-deb]
+Saving to: ‘libnvinfer7_7.1.3-1+cuda11.0_amd64.deb’
+
+libnvinfer7_7.1.3-1+cuda11.0_amd64. 100%[=================================================================>]  86.44M  21.4MB/s    in 4.0s    
+
+2022-02-21 21:53:36 (21.7 MB/s) - ‘libnvinfer7_7.1.3-1+cuda11.0_amd64.deb’ saved [90642928/90642928]
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+
+base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo apt install ./libnvinfer7_7.1.3-1+cuda11.0_amd64.deb
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Note, selecting 'libnvinfer7' instead of './libnvinfer7_7.1.3-1+cuda11.0_amd64.deb'
+The following packages were automatically installed and are no longer required:
+  libappindicator1 libindicator7 linux-hwe-5.4-headers-5.4.0-47 linux-hwe-5.4-headers-5.4.0-48 linux-hwe-5.4-headers-5.4.0-51
+  linux-hwe-5.4-headers-5.4.0-52 linux-hwe-5.4-headers-5.4.0-58 linux-hwe-5.4-headers-5.4.0-60 linux-hwe-5.4-headers-5.4.0-62
+  linux-hwe-5.4-headers-5.4.0-65 linux-hwe-5.4-headers-5.4.0-66 linux-hwe-5.4-headers-5.4.0-67 linux-hwe-5.4-headers-5.4.0-70
+  linux-hwe-5.4-headers-5.4.0-72 linux-hwe-5.4-headers-5.4.0-73 linux-hwe-5.4-headers-5.4.0-74 linux-hwe-5.4-headers-5.4.0-77
+  linux-hwe-5.4-headers-5.4.0-80 linux-hwe-5.4-headers-5.4.0-81 linux-hwe-5.4-headers-5.4.0-84 linux-hwe-5.4-headers-5.4.0-86
+  linux-hwe-5.4-headers-5.4.0-87 linux-hwe-5.4-headers-5.4.0-89 linux-hwe-5.4-headers-5.4.0-90 linux-hwe-5.4-headers-5.4.0-91
+  linux-hwe-5.4-headers-5.4.0-92 linux-hwe-5.4-headers-5.4.0-94 linux-hwe-5.4-headers-5.4.0-96
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  libnvinfer7
+0 upgraded, 1 newly installed, 0 to remove and 241 not upgraded.
+Need to get 90.6 MB of archives.
+After this operation, 422 MB of additional disk space will be used.
+Get:1 http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  libnvinfer7 7.1.3-1+cuda11.0 [90.6 MB]
+Fetched 90.6 MB in 4s (23.0 MB/s)       
+Selecting previously unselected package libnvinfer7.
+(Reading database ... 810696 files and directories currently installed.)
+Preparing to unpack .../libnvinfer7_7.1.3-1+cuda11.0_amd64.deb ...
+Unpacking libnvinfer7 (7.1.3-1+cuda11.0) ...
+Setting up libnvinfer7 (7.1.3-1+cuda11.0) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo apt-get update
+Get:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Ign:1 file:/var/cuda-repo-ubuntu1804-11-0-local  InRelease
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B]
+Get:2 file:/var/cuda-repo-ubuntu1804-11-0-local  Release [564 B] 
+Hit:3 http://in.archive.ubuntu.com/ubuntu bionic InRelease                                                                   
+Hit:4 http://in.archive.ubuntu.com/ubuntu bionic-updates InRelease                                                                           
+Hit:5 https://download.docker.com/linux/ubuntu bionic InRelease                                                                              
+Hit:7 http://in.archive.ubuntu.com/ubuntu bionic-backports InRelease                                                                         
+Hit:8 https://dl.winehq.org/wine-builds/ubuntu bionic InRelease                                                                              
+Ign:9 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 InRelease                                                                   
+Hit:10 http://dl.google.com/linux/chrome/deb stable InRelease                                                                                
+Ign:11 http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  InRelease                                      
+Hit:12 http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64  Release                                        
+Hit:13 http://packages.microsoft.com/repos/vscode stable InRelease                                                                           
+Hit:14 http://ppa.launchpad.net/alexlarsson/flatpak/ubuntu bionic InRelease                                                                  
+Get:15 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]                                                                 
+Ign:16 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 InRelease                                                                   
+Hit:17 https://cloud.r-project.org/bin/linux/ubuntu bionic-cran40/ InRelease                                                                 
+Ign:18 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  InRelease                                                 
+Ign:19 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 InRelease                                                                  
+Hit:20 http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 Release                                                                     
+Hit:21 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64  Release                                                   
+Hit:22 https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 Release                                                                    
+Hit:23 https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 Release                                                                    
+Hit:24 http://ppa.launchpad.net/apandada1/brightness-controller/ubuntu bionic InRelease                                                      
+Hit:26 http://ppa.launchpad.net/cybermax-dexter/sdl2-backport/ubuntu bionic InRelease                                                        
+Hit:29 https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bionic pgadmin4 InRelease                                                         
+Ign:33 https://kx.studio/repo stable InRelease                                                                                               
+Hit:34 http://ppa.launchpad.net/kxstudio-debian/libs/ubuntu bionic InRelease                                                                 
+Get:30 https://deb.torproject.org/torproject.org bionic InRelease [3,524 B]                                                                  
+Get:27 http://packages.ros.org/ros/ubuntu bionic InRelease [4,680 B]                                                                         
+Get:25 https://qgis.org/ubuntugis bionic InRelease [3,705 B]                                                                                 
+Ign:36 https://kx.studio/repo gcc5 InRelease                                                                                                 
+Get:31 https://qgis.org/ubuntu bionic InRelease [3,705 B]                                                                  
+Hit:37 http://ppa.launchpad.net/kxstudio-debian/music/ubuntu bionic InRelease                                                                
+Hit:38 https://kx.studio/repo stable Release                                                                               
+Get:39 https://repo.skype.com/deb stable InRelease [4,502 B]                                                                                 
+Hit:40 https://repo.fortinet.com/repo/ubuntu /bionic InRelease                                                                               
+Hit:41 https://kx.studio/repo gcc5 Release                                                                                                   
+Hit:42 http://ppa.launchpad.net/kxstudio-debian/plugins/ubuntu bionic InRelease                                         
+Hit:45 http://ppa.launchpad.net/kxstudio-debian/apps/ubuntu bionic InRelease                                              
+Hit:47 http://ppa.launchpad.net/kxstudio-debian/kxstudio/ubuntu bionic InRelease                 
+Hit:50 http://ppa.launchpad.net/mixxx/mixxx/ubuntu bionic InRelease                                        
+Hit:51 https://packages.microsoft.com/repos/ms-teams stable InRelease                                      
+Hit:52 http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu bionic InRelease                 
+Err:30 https://deb.torproject.org/torproject.org bionic InRelease            
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+Err:27 http://packages.ros.org/ros/ubuntu bionic InRelease                  
+  The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+Hit:32 https://scala.jfrog.io/artifactory/debian all InRelease              
+Err:25 https://qgis.org/ubuntugis bionic InRelease  
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Ign:35 https://scala.jfrog.io/artifactory/debian  InRelease
+Err:31 https://qgis.org/ubuntu bionic InRelease     
+  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+Err:39 https://repo.skype.com/deb stable InRelease  
+  The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+Hit:49 https://packagecloud.io/slacktechnologies/slack/debian jessie InRelease
+Hit:55 https://scala.jfrog.io/artifactory/debian  Release                                                                                    
+Reading package lists... Done                                                                                                                
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: GPG error: https://deb.torproject.org/torproject.org bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 74A941BA219EC810
+E: The repository 'https://deb.torproject.org/torproject.org bionic InRelease' is not signed.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: http://packages.ros.org/ros/ubuntu bionic InRelease: The following signatures were invalid: EXPKEYSIG F42ED6FBAB17C654 Open Robotics <info@osrfoundation.org>
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntugis bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://qgis.org/ubuntu bionic InRelease: The following signatures couldn't be verified because the public key is not available: NO_PUBKEY 46B5721DBBD2996A
+W: An error occurred during the signature verification. The repository is not updated and the previous index files will be used. GPG error: https://repo.skype.com/deb stable InRelease: The following signatures were invalid: EXPKEYSIG 1F3045A5DF7587C3 Skype Linux Client Repository <se-um@microsoft.com>
+W: Target Packages (stable/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Packages (stable/binary-all/Packages) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en_IN) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target Translations (stable/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-amd64.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11 (stable/dep11/Components-all.yml) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons-small (stable/dep11/icons-48x48.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target DEP-11-icons (stable/dep11/icons-64x64.tar) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+W: Target CNF (stable/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list:61 and /etc/apt/sources.list.d/docker.list:1
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+
+
+
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Mon Feb 21 21:57:44 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+|  0%   44C    P8     4W /  75W |    648MiB /  3910MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2687      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      3120      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A      6595      G   /usr/bin/gnome-shell               49MiB |
+|    0   N/A  N/A      8756      G   /usr/lib/xorg/Xorg                151MiB |
+|    0   N/A  N/A      9048      G   /usr/bin/gnome-shell              116MiB |
+|    0   N/A  N/A     14357      G   ...AAAAAAAAA= --shared-files      127MiB |
+|    0   N/A  N/A     15036      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     15085      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     15178      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     15308      G   ...AAAAAAAAA= --shared-files      173MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+ase) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+#### FOOBAR_Issue_Broken__cuda-11-0 --->> Own Old Log from 2020 --> 
+https://github.com/RohitDhankar/cv2020/blob/master/READMEs_Errors_Installs_etc/README_search_cuda.md
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ # Install development and runtime libraries (~4GB)
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo apt-get install --no-install-recommends \
+>     cuda-11-0 \
+>     libcudnn8=8.0.4.30-1+cuda11.0  \
+>     libcudnn8-dev=8.0.4.30-1+cuda11.0
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ cuda-11-0 : Depends: cuda-runtime-11-0 (>= 11.0.3) but 11.0.2-1 is to be installed
+E: Unable to correct problems, you have held broken packages.
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Mon Feb 21 22:08:47 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+|  0%   44C    P8     4W /  75W |    650MiB /  3910MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1997      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A      2687      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      3120      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A      6595      G   /usr/bin/gnome-shell               49MiB |
+|    0   N/A  N/A      8756      G   /usr/lib/xorg/Xorg                151MiB |
+|    0   N/A  N/A      9048      G   /usr/bin/gnome-shell              116MiB |
+|    0   N/A  N/A     14357      G   ...AAAAAAAAA= --shared-files      127MiB |
+|    0   N/A  N/A     15036      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     15085      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     15178      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     15308      G   ...AAAAAAAAA= --shared-files      174MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+

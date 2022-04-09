@@ -1,0 +1,10 @@
+-------train_data---- <class 'torchvision.datasets.folder.ImageFolder'>
+-------val_data---- <class 'torchvision.datasets.folder.ImageFolder'>
+-------test_data---- <class 'torchvision.datasets.folder.ImageFolder'>
+-------train_data_loader---- <class 'torch.utils.data.dataloader.DataLoader'>
+-----type(simplenet-------
+ <class '__main__.SimpleNet'>
+-----type(optimizer-------
+ <class 'torch.optim.adam.Adam'>
+--1-torch.cuda.memory_allocated---> 0.00 GB
+--2-torch.cuda.memory_allocated---> 0.00 GB

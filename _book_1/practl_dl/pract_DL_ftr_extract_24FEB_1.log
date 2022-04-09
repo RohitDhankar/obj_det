@@ -1,0 +1,55 @@
+Num GPUs Available:  0
+-wrapper_plot_nn_images--iter--- 0
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 1
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 2
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 3
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 4
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3
+-wrapper_plot_nn_images--iter--- 5
+---plot_nn_images--len(images---- 4
+---plot_nn_images--type(images[0]---- <class 'numpy.ndarray'>
+---plot_nn_images-->>iter_n--- 0
+--plot_nn_images-img_className- Faces
+--plot_nn_images-img_fileName- image_0201.jpg
+---plot_nn_images-->>iter_n--- 1
+---plot_nn_images-->>iter_n--- 2
+---plot_nn_images-->>iter_n--- 3

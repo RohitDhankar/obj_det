@@ -1,0 +1,71 @@
+
+
+
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_15_yolo$ python test_1.py 
+Downloading https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz to ./data/cifar-10-python.tar.gz
+170499072it [00:43, 3896432.05it/s]                                                                                                                    
+Extracting ./data/cifar-10-python.tar.gz to ./data
+Files already downloaded and verified
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /home/dhankar/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████| 44.7M/44.7M [00:01<00:00, 30.7MB/s]
+Epoch 1/5
+^CTraceback (most recent call last):
+  File "test_1.py", line 168, in <module>
+    tl_feature_extractor(epochs=5)
+  File "test_1.py", line 138, in tl_feature_extractor
+    train_model(model, loss_function, optimizer, train_loader)
+  File "test_1.py", line 75, in train_model
+    current_loss += loss.item() * inputs.size(0)
+KeyboardInterrupt
+
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_15_yolo$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_15_yolo$ 
+
+
+
+Setting >> requires_grad ----should be the main way you control which parts of the model are part of the gradient computation, 
+for example, if you need to freeze parts of your pretrained model during model fine-tuning.
+
+To freeze parts of your model, simply apply .requires_grad_(False) --- to the parameters that you don’t want updated. 
+And as described above, since computations that use these parameters as inputs would not be recorded in the 
+forward pass, they won’t have their .grad fields updated in the backward pass because they won’t be part of 
+the backward graph in the first place, as desired.
+
+
+
+model.eval() ---- Testing == Inference == Eval	
+https://stackoverflow.com/questions/60018578/what-does-model-eval-do-in-pytorch	
+
+model.eval() is a kind of switch for some specific layers/parts 
+of the model that behave differently 
+during training and inference (evaluating) time. 
+For example, Dropouts Layers, BatchNorm Layers etc. 
+You need to turn off them during model evaluation, and .eval() will do it for you. 
+In addition, the common practice for evaluating/validation is using torch.no_grad() in pair with model.eval() 
+to turn off gradients computation:
+model.eval() ---- Testing == Inference == Eval	https://stackoverflow.com/questions/60018578/what-does-model-eval-do-in-pytorch	 torch.no_grad() is a context manager, so you should use it in a form of with torch.no_grad():, that guarantees when leaving with ... block model will turn on gradients computations automatically –  trsvchn Feb 1, 2020 at 17:18 14 so, model.train() and model.eval() have effect only on Layers, not on gradients, by default grad comp is switch on, but using context manager torch.no_grad() during evaluation allows you easily turn off and then autimatically turn on gradients comp at the end –
+
+
+
+
+
+
+### FOOBAR -- zero_grad 
+Zero the gradients of the optimizer to prevent accumulation from theprevious iterations.
+https://stackoverflow.com/questions/48001598/why-do-we-need-to-call-zero-grad-in-pytorch
+
+In PyTorch, for every mini-batch during the training phase, 
+we typically want to explicitly set the gradients to zero before 
+starting to do backpropragation 
+(i.e., updating the Weights and biases) because PyTorch accumulates 
+the gradients on subsequent backward passes. 
+This accumulating behaviour is convenient while training RNNs 
+or when we want to compute the gradient of the loss summed over multiple mini-batches. 
+So, the default action has been set to accumulate (i.e. sum) the gradients on every loss.backward() call.
+
+Because of this, when you start your training loop, 
+ideally you should zero out the gradients so that you do the parameter update correctly.
+ Otherwise, the gradient would be a combination of the old gradient,
+  which you have already used to update your model parameters, and the newly-computed gradient. 
+  It would therefore point in some other direction than the intended direction towards the minimum 
+  (or maximum, in case of maximization objectives).

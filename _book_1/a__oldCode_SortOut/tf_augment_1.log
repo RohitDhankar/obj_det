@@ -1,0 +1,148 @@
+---type(ImageDataGen)------ <class 'type'>
+---type(train)------ <class 'keras.preprocessing.image.ImageDataGenerator'>
+---type(validation)------ <class 'keras.preprocessing.image.ImageDataGenerator'>
+Found 875 images belonging to 2 classes.
+----train_dataset---- <keras.preprocessing.image.DirectoryIterator object at 0x7fcb737c74f0>
+Found 875 images belonging to 2 classes.
+----validation_dataset---- <keras.preprocessing.image.DirectoryIterator object at 0x7fcb736ee2b0>
+train_dataset.class_indices--- {'airplanes': 0, 'not_airplanes': 1}
+validation_dataset.class_indices--- {'airplanes': 0, 'not_airplanes': 1}
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 222, 222, 8)       224       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 111, 111, 8)      0         
+ )                                                               
+                                                                 
+ conv2d_1 (Conv2D)           (None, 109, 109, 16)      1168      
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 54, 54, 16)       0         
+ 2D)                                                             
+                                                                 
+ conv2d_2 (Conv2D)           (None, 52, 52, 32)        4640      
+                                                                 
+ max_pooling2d_2 (MaxPooling  (None, 26, 26, 32)       0         
+ 2D)                                                             
+                                                                 
+ flatten (Flatten)           (None, 21632)             0         
+                                                                 
+ dense (Dense)               (None, 64)                1384512   
+                                                                 
+ dense_1 (Dense)             (None, 2)                 130       
+                                                                 
+=================================================================
+Total params: 1,390,674
+Trainable params: 1,390,674
+Non-trainable params: 0
+_________________________________________________________________
+None
+Epoch 1/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 0.4917 - accuracy: 1.0000
+3/3 [==============================] - 2s 841ms/step - loss: 0.2942 - accuracy: 1.0000 - val_loss: 0.2837 - val_accuracy: 0.9143
+Epoch 2/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 0.1199 - accuracy: 1.0000
+3/3 [==============================] - 2s 814ms/step - loss: 0.0739 - accuracy: 1.0000 - val_loss: 0.3471 - val_accuracy: 0.9143
+Epoch 3/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 1.0098 - accuracy: 0.6667
+3/3 [==============================] - 2s 814ms/step - loss: 0.3452 - accuracy: 0.8889 - val_loss: 0.3866 - val_accuracy: 0.9143
+Epoch 4/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 0.0166 - accuracy: 1.0000
+3/3 [==============================] - 2s 819ms/step - loss: 0.0115 - accuracy: 1.0000 - val_loss: 0.4267 - val_accuracy: 0.9143
+Epoch 5/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 0.0029 - accuracy: 1.0000
+3/3 [==============================] - 2s 847ms/step - loss: 0.0043 - accuracy: 1.0000 - val_loss: 0.4628 - val_accuracy: 0.9143
+Epoch 6/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 1.6153 - accuracy: 0.6667
+3/3 [==============================] - 2s 886ms/step - loss: 0.5410 - accuracy: 0.8889 - val_loss: 0.4353 - val_accuracy: 0.9143
+Epoch 7/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 0.0035 - accuracy: 1.0000
+3/3 [==============================] - 2s 840ms/step - loss: 0.0038 - accuracy: 1.0000 - val_loss: 0.4174 - val_accuracy: 0.9143
+Epoch 8/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 1.2180 - accuracy: 0.6667
+3/3 [==============================] - 2s 837ms/step - loss: 0.4104 - accuracy: 0.8889 - val_loss: 0.3784 - val_accuracy: 0.9143
+Epoch 9/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 0.0198 - accuracy: 1.0000
+3/3 [==============================] - 2s 834ms/step - loss: 0.3806 - accuracy: 0.8889 - val_loss: 0.3489 - val_accuracy: 0.9143
+Epoch 10/10
+
+1/3 [=========>....................] - ETA: 0s - loss: 1.5407 - accuracy: 0.6667
+3/3 [==============================] - 2s 837ms/step - loss: 0.5262 - accuracy: 0.8889 - val_loss: 0.3003 - val_accuracy: 0.9143
+--------history------- <keras.callbacks.History object at 0x7fcaf80e55b0>
+--------history.params------- {'verbose': 1, 'epochs': 10, 'steps': 3}
+--------history.history.keys()------ dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+
+
+
+
+
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ python test_tf_augment.py > tf_augment_3.log
+2022-02-25 19:24:34.624080: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:936] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-02-25 19:24:34.628754: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory
+2022-02-25 19:24:34.629537: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2022-02-25 19:24:34.629841: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/optimizer_v2/rmsprop.py:130: UserWarning: The `lr` argument is deprecated, use `learning_rate` instead.
+  super(RMSprop, self).__init__(name, **kwargs)
+Traceback (most recent call last):
+  File "test_tf_augment.py", line 96, in <module>
+    history = model.fit(train_dataset,
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 67, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/tensorflow/python/eager/execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Graph execution error:
+
+Detected at node 'sequential/flatten/Reshape' defined at (most recent call last):
+    File "test_tf_augment.py", line 96, in <module>
+      history = model.fit(train_dataset,
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/training.py", line 1384, in fit
+      tmp_logs = self.train_function(iterator)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/training.py", line 1021, in train_function
+      return step_function(self, iterator)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/training.py", line 1010, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/training.py", line 1000, in run_step
+      outputs = model.train_step(data)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/training.py", line 859, in train_step
+      y_pred = self(x, training=True)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/base_layer.py", line 1096, in __call__
+      outputs = call_fn(inputs, *args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 92, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/sequential.py", line 374, in call
+      return super(Sequential, self).call(inputs, training=training, mask=mask)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/functional.py", line 451, in call
+      return self._run_internal_graph(
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/functional.py", line 589, in _run_internal_graph
+      outputs = node.layer(*args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 64, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/engine/base_layer.py", line 1096, in __call__
+      outputs = call_fn(inputs, *args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 92, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/keras/layers/core/flatten.py", line 96, in call
+      return tf.reshape(inputs, flattened_shape)
+Node: 'sequential/flatten/Reshape'
+Input to reshape is a tensor with 4326400 values, but the requested shape requires a multiple of 33856
+         [[{{node sequential/flatten/Reshape}}]] [Op:__inference_train_function_1115]
+2022-02-25 19:24:36.179599: W tensorflow/core/kernels/data/generator_dataset_op.cc:107] Error occurred when finalizing GeneratorDataset iterator: FAILED_PRECONDITION: Python interpreter state is not initialized. The process may be terminated.
+         [[{{node PyFunc}}]]
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+

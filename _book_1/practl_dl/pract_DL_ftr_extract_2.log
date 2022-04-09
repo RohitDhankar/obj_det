@@ -1,0 +1,40 @@
+----Type(model--- <class 'keras.engine.functional.Functional'>
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (2048,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 2048
+len(normalized_features)----- [0.0071645  0.00608523 0.00214268 0.02964642 0.02748901]
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (2048,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 2048
+len(normalized_features)----- [0.00498615 0.01147142 0.01114192 0.037599   0.00934835]
+---file_list---- ['./known_face_dir/trump/trump_5.jpeg', './known_face_dir/trump/trump_1.png', './known_face_dir/trump/trump_3.jpeg', './known_face_dir/trump/trump_4.jpeg', './known_face_dir/trump/trump_2.jpeg']
+  0%|          | 0/5 [00:00<?, ?it/s]
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (2048,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 2048
+len(normalized_features)----- [0.0071645  0.00608523 0.00214268 0.02964642 0.02748901]
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (2048,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 2048
+len(normalized_features)----- [0.00498615 0.01147142 0.01114192 0.037599   0.00934835]
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (2048,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 2048
+len(normalized_features)----- [0.00760019 0.0103178  0.00050241 0.04143738 0.02859827]
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (2048,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 2048
+len(normalized_features)----- [0.         0.00952663 0.         0.04117947 0.04108371]
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (2048,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 2048
+len(normalized_features)----- [0.01199199 0.01920073 0.         0.02273569 0.00759406]
+---len(feature_list---- 5
+---len(feature_list[0]---- 2048

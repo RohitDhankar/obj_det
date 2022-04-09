@@ -1,0 +1,14 @@
+----Type(model--- <class 'keras.engine.functional.Functional'>
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (100352,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 100352
+len(normalized_features)----- [0.        0.        0.        0.0019345 0.       ]
+type(normalized_features)--- <class 'numpy.ndarray'>
+---normalized_features.shape--- (100352,)
+---normalized_features.ndim--- 1
+len(normalized_features)----- 100352
+len(normalized_features)----- [0.        0.        0.        0.0022689 0.       ]
+---file_list---- ['./known_face_dir/trump/trump_5.jpeg', './known_face_dir/trump/trump_1.png', './known_face_dir/trump/trump_3.jpeg', './known_face_dir/trump/trump_4.jpeg', './known_face_dir/trump/trump_2.jpeg']
+
+

@@ -1,0 +1,131 @@
+
+
+Files already downloaded and verified
+Files already downloaded and verified
+--type(model.parameters()---
+ <class 'generator'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+----type(param---
+ <class 'torch.nn.parameter.Parameter'>
+Epoch 1/1

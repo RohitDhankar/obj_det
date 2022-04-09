@@ -1,0 +1,65 @@
+---type(ImageDataGen)------ <class 'type'>
+---type(train)------ <class 'keras.preprocessing.image.ImageDataGenerator'>
+---type(validation)------ <class 'keras.preprocessing.image.ImageDataGenerator'>
+Found 875 images belonging to 2 classes.
+----train_dataset---- <keras.preprocessing.image.DirectoryIterator object at 0x7f0c28b214f0>
+Found 875 images belonging to 2 classes.
+----validation_dataset---- <keras.preprocessing.image.DirectoryIterator object at 0x7f0c28a482b0>
+train_dataset.class_indices--- {'airplanes': 0, 'not_airplanes': 1}
+validation_dataset.class_indices--- {'airplanes': 0, 'not_airplanes': 1}
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ conv2d (Conv2D)             (None, 222, 222, 8)       224       
+                                                                 
+ max_pooling2d (MaxPooling2D  (None, 111, 111, 8)      0         
+ )                                                               
+                                                                 
+ conv2d_1 (Conv2D)           (None, 109, 109, 16)      1168      
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 54, 54, 16)       0         
+ 2D)                                                             
+                                                                 
+ conv2d_2 (Conv2D)           (None, 52, 52, 32)        4640      
+                                                                 
+ max_pooling2d_2 (MaxPooling  (None, 26, 26, 32)       0         
+ 2D)                                                             
+                                                                 
+ flatten (Flatten)           (None, 21632)             0         
+                                                                 
+ dense (Dense)               (None, 64)                1384512   
+                                                                 
+ dense_1 (Dense)             (None, 2)                 130       
+                                                                 
+=================================================================
+Total params: 1,390,674
+Trainable params: 1,390,674
+Non-trainable params: 0
+_________________________________________________________________
+None
+Epoch 1/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.7202 - accuracy: 0.33333/3 [==============================] - 2s 833ms/step - loss: 0.4076 - accuracy: 0.7778 - val_loss: 0.3135 - val_accuracy: 0.9143
+Epoch 2/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.1244 - accuracy: 1.00003/3 [==============================] - 2s 827ms/step - loss: 0.0636 - accuracy: 1.0000 - val_loss: 0.4041 - val_accuracy: 0.9143
+Epoch 3/10
+1/3 [=========>....................] - ETA: 0s - loss: 1.2639 - accuracy: 0.66673/3 [==============================] - 2s 836ms/step - loss: 0.4288 - accuracy: 0.8889 - val_loss: 0.4432 - val_accuracy: 0.9143
+Epoch 4/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.0121 - accuracy: 1.00003/3 [==============================] - 2s 832ms/step - loss: 0.6056 - accuracy: 0.8889 - val_loss: 0.4601 - val_accuracy: 0.9143
+Epoch 5/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.0177 - accuracy: 1.00003/3 [==============================] - 2s 831ms/step - loss: 0.6254 - accuracy: 0.8889 - val_loss: 0.4085 - val_accuracy: 0.9143
+Epoch 6/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.0129 - accuracy: 1.00003/3 [==============================] - 2s 837ms/step - loss: 0.5304 - accuracy: 0.8889 - val_loss: 0.3502 - val_accuracy: 0.9143
+Epoch 7/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.0437 - accuracy: 1.00003/3 [==============================] - 2s 825ms/step - loss: 1.4092 - accuracy: 0.6667 - val_loss: 0.3045 - val_accuracy: 0.9143
+Epoch 8/10
+1/3 [=========>....................] - ETA: 0s - loss: 1.3708 - accuracy: 0.66673/3 [==============================] - 2s 828ms/step - loss: 0.5431 - accuracy: 0.8889 - val_loss: 0.3342 - val_accuracy: 0.9143
+Epoch 9/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.1935 - accuracy: 1.00003/3 [==============================] - 2s 831ms/step - loss: 0.2200 - accuracy: 1.0000 - val_loss: 0.3837 - val_accuracy: 0.9143
+Epoch 10/10
+1/3 [=========>....................] - ETA: 0s - loss: 0.3071 - accuracy: 1.00003/3 [==============================] - 2s 829ms/step - loss: 0.3645 - accuracy: 0.8889 - val_loss: 0.3783 - val_accuracy: 0.9143
+--------history------- <keras.callbacks.History object at 0x7f0bb01275e0>
+--------history.params------- {'verbose': 1, 'epochs': 10, 'steps': 3}
+--------history.history.keys()------ dict_keys(['loss', 'accuracy', 'val_loss', 'val_accuracy'])
+------pred_val---- [[1. 0.]]
+------pred_val.argmax()----- 0

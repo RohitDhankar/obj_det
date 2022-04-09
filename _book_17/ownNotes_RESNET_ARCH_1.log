@@ -1,0 +1,639 @@
+
+
+
+
+Resnet_ARCHITECTURE__Layers	
+https://github.com/FrancescoSaverioZuppichini/ResNet	
+Resnet_ARCHITECTURE__Layers
+
+
+
+Towards Data Science
+Published in
+Towards Data Science -- Francesco Zuppichini
+
+This is your last free member-only story this month. Sign up for Medium and get an extra one
+
+Francesco Zuppichini
+Francesco Zuppichini
+Jul 3, 2019
+
+·
+14 min read
+·
+
+Listen
+
+
+Residual Networks: Implementing ResNet in Pytorch
+Today we are going to implement the famous ResNet from Kaiming He et al. (Microsoft Research) in Pytorch. It won the 1st place on the ILSVRC 2015 classification task.
+ResNet and all its variants have been implemented in my library glasses
+Code is here, an interactive version of this article can be downloaded here The original paper can be read from here (it is very easy to follow) and additional material can be found in this quora answer
+
+Introduction
+This is not a technical article and I am not smart enough to explain residual connection better than the original authors. So we will limit ourself to a quick overview.
+Deeper neural networks are more difficult to train. Why? One big problem of a deep network is the vanishing gradient problem. Basically, the deeper the harder to train.
+To solve this problem, the authors proposed to use a reference to the previous layer to compute the output at a given layer. In ResNet, the output from the previous layer, called residual, is added to the output of the current layer. The following picture visualizes this operation
+We are going to make our implementation as scalable as possible using one thing unknown to most of the data scientists: object-oriented programming
+Basic Block
+Okay, the first thing is to think about what we need. Well, first of all, we must have a convolution layer and since PyTorch does not have the ‘auto’ padding in Conv2d, we will have to code ourself!
+
+
+Conv2dAuto(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+Next, we use ModuleDict to create a dictionary with different activation functions, this will be handy later.
+
+If you are unfamiliar with ModuleDict I suggest to read my previous article Pytorch: how and when to use Module, Sequential, ModuleList and ModuleDict
+Residual Block
+To create a clean code is mandatory to think about the main building blocks of the application, or of the network in our case. The residual block takes an input with in_channels, applies some blocks of convolutional layers to reduce it to out_channels and sum it up to the original input. If their sizes mismatch, then the input goes into an identity. We can abstract this process and create an interface that can be extended.
+
+ResidualBlock(
+  (blocks): Identity()
+  (activate): ReLU(inplace)
+  (shortcut): Identity()
+)
+Let’s test it with a dummy vector with one one, we should get a vector with two
+tensor([[[[2.]]]])
+In ResNet, each block has an expansion parameter in order to increase the out_channels if needed. Also, the identity is defined as a Convolution followed by a BatchNorm layer, this is referred to as shortcut. Then, we can just extend ResidualBlock and defined the shortcut function.
+ResNetResidualBlock(
+  (blocks): Identity()
+  (activate): ReLU(inplace)
+  (shortcut): Sequential(
+    (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+Basic Block
+A basic ResNet block is composed by two layers of 3x3 conv/batchnorm/relu. In the picture, the lines represent the residual operation. The dotted line means that the shortcut was applied to match the input and the output dimension.
+
+Basic ResNet Block
+Let’s first create a handy function to stack one conv and batchnorm layer
+ResNetBasicBlock(
+  (blocks): Sequential(
+    (0): Sequential(
+      (0): Conv2dAuto(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ReLU(inplace)
+    (2): Sequential(
+      (0): Conv2dAuto(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (activate): ReLU(inplace)
+  (shortcut): Sequential(
+    (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+BottleNeck
+To increase the network depth while keeping the parameters size as low as possible, the authors defined a BottleNeck block that “The three layers are 1x1, 3x3, and 1x1 convolutions, where the 1×1 layers are responsible for reducing and then increasing (restoring) dimensions, leaving the 3×3 layer a bottleneck with smaller input/output dimensions.” We can extend the ResNetResidualBlock and create these blocks.
+ResNetBottleNeckBlock(
+  (blocks): Sequential(
+    (0): Sequential(
+      (0): Conv2dAuto(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (1): ReLU(inplace)
+    (2): Sequential(
+      (0): Conv2dAuto(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+    (3): ReLU(inplace)
+    (4): Sequential(
+      (0): Conv2dAuto(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+      (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    )
+  )
+  (activate): ReLU(inplace)
+  (shortcut): Sequential(
+    (0): Conv2d(32, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+    (1): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+)
+Layer
+A ResNet’s layer is composed of the same blocks stacked one after the other.
+
+ResNet Layer
+We can easily define it by just stuck n blocks one after the other, 
+just remember that the first convolution block has a stride of 
+two since "We perform downsampling directly by convolutional layers 
+that have a stride of 2".
+
+torch.Size([1, 128, 24, 24])
+
+Encoder
+Similarly, an Encoder is composed of multiple layers at increasing features size.
+
+ResNet Encoder
+Decoder
+The decoder is the last piece we need to create the full network. It is a fully connected layer that maps the features learned by the network to their respective classes. Easily, we can define it as:
+ResNet
+Finally, we can put all the pieces together and create the final model.
+
+ResNet34
+We can now define the five models proposed by the authors, 
+resnet18,34,50,101,152
+Let’s use torchsummary to test the model
+
+
+
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 64, 112, 112]           9,408
+       BatchNorm2d-2         [-1, 64, 112, 112]             128
+              ReLU-3         [-1, 64, 112, 112]               0
+         MaxPool2d-4           [-1, 64, 56, 56]               0
+        Conv2dAuto-5           [-1, 64, 56, 56]          36,864
+       BatchNorm2d-6           [-1, 64, 56, 56]             128
+              ReLU-7           [-1, 64, 56, 56]               0
+        Conv2dAuto-8           [-1, 64, 56, 56]          36,864
+       BatchNorm2d-9           [-1, 64, 56, 56]             128
+             ReLU-10           [-1, 64, 56, 56]               0
+ ResNetBasicBlock-11           [-1, 64, 56, 56]               0
+       Conv2dAuto-12           [-1, 64, 56, 56]          36,864
+      BatchNorm2d-13           [-1, 64, 56, 56]             128
+             ReLU-14           [-1, 64, 56, 56]               0
+       Conv2dAuto-15           [-1, 64, 56, 56]          36,864
+      BatchNorm2d-16           [-1, 64, 56, 56]             128
+             ReLU-17           [-1, 64, 56, 56]               0
+ ResNetBasicBlock-18           [-1, 64, 56, 56]               0
+      ResNetLayer-19           [-1, 64, 56, 56]               0
+           Conv2d-20          [-1, 128, 28, 28]           8,192
+      BatchNorm2d-21          [-1, 128, 28, 28]             256
+       Conv2dAuto-22          [-1, 128, 28, 28]          73,728
+      BatchNorm2d-23          [-1, 128, 28, 28]             256
+             ReLU-24          [-1, 128, 28, 28]               0
+       Conv2dAuto-25          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-26          [-1, 128, 28, 28]             256
+             ReLU-27          [-1, 128, 28, 28]               0
+ ResNetBasicBlock-28          [-1, 128, 28, 28]               0
+       Conv2dAuto-29          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-30          [-1, 128, 28, 28]             256
+             ReLU-31          [-1, 128, 28, 28]               0
+       Conv2dAuto-32          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-33          [-1, 128, 28, 28]             256
+             ReLU-34          [-1, 128, 28, 28]               0
+ ResNetBasicBlock-35          [-1, 128, 28, 28]               0
+      ResNetLayer-36          [-1, 128, 28, 28]               0
+           Conv2d-37          [-1, 256, 14, 14]          32,768
+      BatchNorm2d-38          [-1, 256, 14, 14]             512
+       Conv2dAuto-39          [-1, 256, 14, 14]         294,912
+      BatchNorm2d-40          [-1, 256, 14, 14]             512
+             ReLU-41          [-1, 256, 14, 14]               0
+       Conv2dAuto-42          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-43          [-1, 256, 14, 14]             512
+             ReLU-44          [-1, 256, 14, 14]               0
+ ResNetBasicBlock-45          [-1, 256, 14, 14]               0
+       Conv2dAuto-46          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-47          [-1, 256, 14, 14]             512
+             ReLU-48          [-1, 256, 14, 14]               0
+       Conv2dAuto-49          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-50          [-1, 256, 14, 14]             512
+             ReLU-51          [-1, 256, 14, 14]               0
+ ResNetBasicBlock-52          [-1, 256, 14, 14]               0
+      ResNetLayer-53          [-1, 256, 14, 14]               0
+           Conv2d-54            [-1, 512, 7, 7]         131,072
+      BatchNorm2d-55            [-1, 512, 7, 7]           1,024
+       Conv2dAuto-56            [-1, 512, 7, 7]       1,179,648
+      BatchNorm2d-57            [-1, 512, 7, 7]           1,024
+             ReLU-58            [-1, 512, 7, 7]               0
+       Conv2dAuto-59            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-60            [-1, 512, 7, 7]           1,024
+             ReLU-61            [-1, 512, 7, 7]               0
+ ResNetBasicBlock-62            [-1, 512, 7, 7]               0
+       Conv2dAuto-63            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-64            [-1, 512, 7, 7]           1,024
+             ReLU-65            [-1, 512, 7, 7]               0
+       Conv2dAuto-66            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-67            [-1, 512, 7, 7]           1,024
+             ReLU-68            [-1, 512, 7, 7]               0
+ ResNetBasicBlock-69            [-1, 512, 7, 7]               0
+      ResNetLayer-70            [-1, 512, 7, 7]               0
+    ResNetEncoder-71            [-1, 512, 7, 7]               0
+AdaptiveAvgPool2d-72            [-1, 512, 1, 1]               0
+           Linear-73                 [-1, 1000]         513,000
+    ResnetDecoder-74                 [-1, 1000]               0
+================================================================
+Total params: 11,689,512
+Trainable params: 11,689,512
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.57
+Forward/backward pass size (MB): 65.86
+Params size (MB): 44.59
+Estimated Total Size (MB): 111.03
+----------------------------------------------------------------
+To check the correctness let’s see the number of parameters with the original implementation
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 64, 112, 112]           9,408
+       BatchNorm2d-2         [-1, 64, 112, 112]             128
+              ReLU-3         [-1, 64, 112, 112]               0
+         MaxPool2d-4           [-1, 64, 56, 56]               0
+            Conv2d-5           [-1, 64, 56, 56]          36,864
+       BatchNorm2d-6           [-1, 64, 56, 56]             128
+              ReLU-7           [-1, 64, 56, 56]               0
+            Conv2d-8           [-1, 64, 56, 56]          36,864
+       BatchNorm2d-9           [-1, 64, 56, 56]             128
+             ReLU-10           [-1, 64, 56, 56]               0
+       BasicBlock-11           [-1, 64, 56, 56]               0
+           Conv2d-12           [-1, 64, 56, 56]          36,864
+      BatchNorm2d-13           [-1, 64, 56, 56]             128
+             ReLU-14           [-1, 64, 56, 56]               0
+           Conv2d-15           [-1, 64, 56, 56]          36,864
+      BatchNorm2d-16           [-1, 64, 56, 56]             128
+             ReLU-17           [-1, 64, 56, 56]               0
+       BasicBlock-18           [-1, 64, 56, 56]               0
+           Conv2d-19          [-1, 128, 28, 28]          73,728
+      BatchNorm2d-20          [-1, 128, 28, 28]             256
+             ReLU-21          [-1, 128, 28, 28]               0
+           Conv2d-22          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-23          [-1, 128, 28, 28]             256
+           Conv2d-24          [-1, 128, 28, 28]           8,192
+      BatchNorm2d-25          [-1, 128, 28, 28]             256
+             ReLU-26          [-1, 128, 28, 28]               0
+       BasicBlock-27          [-1, 128, 28, 28]               0
+           Conv2d-28          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-29          [-1, 128, 28, 28]             256
+             ReLU-30          [-1, 128, 28, 28]               0
+           Conv2d-31          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-32          [-1, 128, 28, 28]             256
+             ReLU-33          [-1, 128, 28, 28]               0
+       BasicBlock-34          [-1, 128, 28, 28]               0
+           Conv2d-35          [-1, 256, 14, 14]         294,912
+      BatchNorm2d-36          [-1, 256, 14, 14]             512
+             ReLU-37          [-1, 256, 14, 14]               0
+           Conv2d-38          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-39          [-1, 256, 14, 14]             512
+           Conv2d-40          [-1, 256, 14, 14]          32,768
+      BatchNorm2d-41          [-1, 256, 14, 14]             512
+             ReLU-42          [-1, 256, 14, 14]               0
+       BasicBlock-43          [-1, 256, 14, 14]               0
+           Conv2d-44          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-45          [-1, 256, 14, 14]             512
+             ReLU-46          [-1, 256, 14, 14]               0
+           Conv2d-47          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-48          [-1, 256, 14, 14]             512
+             ReLU-49          [-1, 256, 14, 14]               0
+       BasicBlock-50          [-1, 256, 14, 14]               0
+           Conv2d-51            [-1, 512, 7, 7]       1,179,648
+      BatchNorm2d-52            [-1, 512, 7, 7]           1,024
+             ReLU-53            [-1, 512, 7, 7]               0
+           Conv2d-54            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-55            [-1, 512, 7, 7]           1,024
+           Conv2d-56            [-1, 512, 7, 7]         131,072
+      BatchNorm2d-57            [-1, 512, 7, 7]           1,024
+             ReLU-58            [-1, 512, 7, 7]               0
+       BasicBlock-59            [-1, 512, 7, 7]               0
+           Conv2d-60            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-61            [-1, 512, 7, 7]           1,024
+             ReLU-62            [-1, 512, 7, 7]               0
+           Conv2d-63            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-64            [-1, 512, 7, 7]           1,024
+             ReLU-65            [-1, 512, 7, 7]               0
+       BasicBlock-66            [-1, 512, 7, 7]               0
+AdaptiveAvgPool2d-67            [-1, 512, 1, 1]               0
+           Linear-68                 [-1, 1000]         513,000
+================================================================
+Total params: 11,689,512
+Trainable params: 11,689,512
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.57
+Forward/backward pass size (MB): 62.79
+Params size (MB): 44.59
+Estimated Total Size (MB): 107.96
+----------------------------------------------------------------
+It’s the same!
+
+
+Customization
+One advantage of Object Orienting Programming is that we can easily customize our network.
+Change the Block
+What if we want to use a different basic block? 
+Maybe we want only one 3x3 conv and maybe with Dropout?. 
+In this case, we can just subclass ResNetResidualBlock 
+and change the .blocks field!
+
+
+Let’s pass this new block to resnet18 and create a new architecture!
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 64, 112, 112]           9,408
+       BatchNorm2d-2         [-1, 64, 112, 112]             128
+              ReLU-3         [-1, 64, 112, 112]               0
+         MaxPool2d-4           [-1, 64, 56, 56]               0
+        Conv2dAuto-5           [-1, 64, 56, 56]          36,864
+         Dropout2d-6           [-1, 64, 56, 56]               0
+              ReLU-7           [-1, 64, 56, 56]               0
+              ReLU-8           [-1, 64, 56, 56]               0
+AnOtherResNetBlock-9           [-1, 64, 56, 56]               0
+       Conv2dAuto-10           [-1, 64, 56, 56]          36,864
+        Dropout2d-11           [-1, 64, 56, 56]               0
+             ReLU-12           [-1, 64, 56, 56]               0
+             ReLU-13           [-1, 64, 56, 56]               0
+AnOtherResNetBlock-14           [-1, 64, 56, 56]               0
+      ResNetLayer-15           [-1, 64, 56, 56]               0
+           Conv2d-16          [-1, 128, 28, 28]           8,192
+      BatchNorm2d-17          [-1, 128, 28, 28]             256
+       Conv2dAuto-18          [-1, 128, 28, 28]          73,728
+        Dropout2d-19          [-1, 128, 28, 28]               0
+             ReLU-20          [-1, 128, 28, 28]               0
+             ReLU-21          [-1, 128, 28, 28]               0
+AnOtherResNetBlock-22          [-1, 128, 28, 28]               0
+       Conv2dAuto-23          [-1, 128, 28, 28]         147,456
+        Dropout2d-24          [-1, 128, 28, 28]               0
+             ReLU-25          [-1, 128, 28, 28]               0
+             ReLU-26          [-1, 128, 28, 28]               0
+AnOtherResNetBlock-27          [-1, 128, 28, 28]               0
+      ResNetLayer-28          [-1, 128, 28, 28]               0
+           Conv2d-29          [-1, 256, 14, 14]          32,768
+      BatchNorm2d-30          [-1, 256, 14, 14]             512
+       Conv2dAuto-31          [-1, 256, 14, 14]         294,912
+        Dropout2d-32          [-1, 256, 14, 14]               0
+             ReLU-33          [-1, 256, 14, 14]               0
+             ReLU-34          [-1, 256, 14, 14]               0
+AnOtherResNetBlock-35          [-1, 256, 14, 14]               0
+       Conv2dAuto-36          [-1, 256, 14, 14]         589,824
+        Dropout2d-37          [-1, 256, 14, 14]               0
+             ReLU-38          [-1, 256, 14, 14]               0
+             ReLU-39          [-1, 256, 14, 14]               0
+AnOtherResNetBlock-40          [-1, 256, 14, 14]               0
+      ResNetLayer-41          [-1, 256, 14, 14]               0
+           Conv2d-42            [-1, 512, 7, 7]         131,072
+      BatchNorm2d-43            [-1, 512, 7, 7]           1,024
+       Conv2dAuto-44            [-1, 512, 7, 7]       1,179,648
+        Dropout2d-45            [-1, 512, 7, 7]               0
+             ReLU-46            [-1, 512, 7, 7]               0
+             ReLU-47            [-1, 512, 7, 7]               0
+AnOtherResNetBlock-48            [-1, 512, 7, 7]               0
+       Conv2dAuto-49            [-1, 512, 7, 7]       2,359,296
+        Dropout2d-50            [-1, 512, 7, 7]               0
+             ReLU-51            [-1, 512, 7, 7]               0
+             ReLU-52            [-1, 512, 7, 7]               0
+AnOtherResNetBlock-53            [-1, 512, 7, 7]               0
+      ResNetLayer-54            [-1, 512, 7, 7]               0
+    ResNetEncoder-55            [-1, 512, 7, 7]               0
+AdaptiveAvgPool2d-56            [-1, 512, 1, 1]               0
+           Linear-57                 [-1, 1000]         513,000
+    ResnetDecoder-58                 [-1, 1000]               0
+================================================================
+Total params: 5,414,952
+Trainable params: 5,414,952
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.57
+Forward/backward pass size (MB): 54.38
+Params size (MB): 20.66
+Estimated Total Size (MB): 75.61
+----------------------------------------------------------------
+Change activation function
+Easy peasy
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 64, 112, 112]           9,408
+       BatchNorm2d-2         [-1, 64, 112, 112]             128
+         LeakyReLU-3         [-1, 64, 112, 112]               0
+         MaxPool2d-4           [-1, 64, 56, 56]               0
+        Conv2dAuto-5           [-1, 64, 56, 56]          36,864
+       BatchNorm2d-6           [-1, 64, 56, 56]             128
+         LeakyReLU-7           [-1, 64, 56, 56]               0
+        Conv2dAuto-8           [-1, 64, 56, 56]          36,864
+       BatchNorm2d-9           [-1, 64, 56, 56]             128
+        LeakyReLU-10           [-1, 64, 56, 56]               0
+ ResNetBasicBlock-11           [-1, 64, 56, 56]               0
+       Conv2dAuto-12           [-1, 64, 56, 56]          36,864
+      BatchNorm2d-13           [-1, 64, 56, 56]             128
+        LeakyReLU-14           [-1, 64, 56, 56]               0
+       Conv2dAuto-15           [-1, 64, 56, 56]          36,864
+      BatchNorm2d-16           [-1, 64, 56, 56]             128
+        LeakyReLU-17           [-1, 64, 56, 56]               0
+ ResNetBasicBlock-18           [-1, 64, 56, 56]               0
+      ResNetLayer-19           [-1, 64, 56, 56]               0
+           Conv2d-20          [-1, 128, 28, 28]           8,192
+      BatchNorm2d-21          [-1, 128, 28, 28]             256
+       Conv2dAuto-22          [-1, 128, 28, 28]          73,728
+      BatchNorm2d-23          [-1, 128, 28, 28]             256
+        LeakyReLU-24          [-1, 128, 28, 28]               0
+       Conv2dAuto-25          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-26          [-1, 128, 28, 28]             256
+        LeakyReLU-27          [-1, 128, 28, 28]               0
+ ResNetBasicBlock-28          [-1, 128, 28, 28]               0
+       Conv2dAuto-29          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-30          [-1, 128, 28, 28]             256
+        LeakyReLU-31          [-1, 128, 28, 28]               0
+       Conv2dAuto-32          [-1, 128, 28, 28]         147,456
+      BatchNorm2d-33          [-1, 128, 28, 28]             256
+        LeakyReLU-34          [-1, 128, 28, 28]               0
+ ResNetBasicBlock-35          [-1, 128, 28, 28]               0
+      ResNetLayer-36          [-1, 128, 28, 28]               0
+           Conv2d-37          [-1, 256, 14, 14]          32,768
+      BatchNorm2d-38          [-1, 256, 14, 14]             512
+       Conv2dAuto-39          [-1, 256, 14, 14]         294,912
+      BatchNorm2d-40          [-1, 256, 14, 14]             512
+        LeakyReLU-41          [-1, 256, 14, 14]               0
+       Conv2dAuto-42          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-43          [-1, 256, 14, 14]             512
+        LeakyReLU-44          [-1, 256, 14, 14]               0
+ ResNetBasicBlock-45          [-1, 256, 14, 14]               0
+       Conv2dAuto-46          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-47          [-1, 256, 14, 14]             512
+        LeakyReLU-48          [-1, 256, 14, 14]               0
+       Conv2dAuto-49          [-1, 256, 14, 14]         589,824
+      BatchNorm2d-50          [-1, 256, 14, 14]             512
+        LeakyReLU-51          [-1, 256, 14, 14]               0
+ ResNetBasicBlock-52          [-1, 256, 14, 14]               0
+      ResNetLayer-53          [-1, 256, 14, 14]               0
+           Conv2d-54            [-1, 512, 7, 7]         131,072
+      BatchNorm2d-55            [-1, 512, 7, 7]           1,024
+       Conv2dAuto-56            [-1, 512, 7, 7]       1,179,648
+      BatchNorm2d-57            [-1, 512, 7, 7]           1,024
+        LeakyReLU-58            [-1, 512, 7, 7]               0
+       Conv2dAuto-59            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-60            [-1, 512, 7, 7]           1,024
+        LeakyReLU-61            [-1, 512, 7, 7]               0
+ ResNetBasicBlock-62            [-1, 512, 7, 7]               0
+       Conv2dAuto-63            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-64            [-1, 512, 7, 7]           1,024
+        LeakyReLU-65            [-1, 512, 7, 7]               0
+       Conv2dAuto-66            [-1, 512, 7, 7]       2,359,296
+      BatchNorm2d-67            [-1, 512, 7, 7]           1,024
+        LeakyReLU-68            [-1, 512, 7, 7]               0
+ ResNetBasicBlock-69            [-1, 512, 7, 7]               0
+      ResNetLayer-70            [-1, 512, 7, 7]               0
+    ResNetEncoder-71            [-1, 512, 7, 7]               0
+AdaptiveAvgPool2d-72            [-1, 512, 1, 1]               0
+           Linear-73                 [-1, 1000]         513,000
+    ResnetDecoder-74                 [-1, 1000]               0
+================================================================
+Total params: 11,689,512
+Trainable params: 11,689,512
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.57
+Forward/backward pass size (MB): 65.86
+Params size (MB): 44.59
+Estimated Total Size (MB): 111.03
+----------------------------------------------------------------
+Conclusions
+In this article, we have seen how to implement ResNet in a nice, scalable and customizable way. In the next article, we are going to further expand this architecture, train it and use two more tricks: Preactivation and Squeeze and Excitation.
+All the code is here
+If you are interested in understanding better neural network I suggest you read one other article that I made
+A journey into Convolutional Neural Network visualization
+Francesco Saverio Zuppichini
+towardsdatascience.com
+
+Thank you for reading
+Francesco Saverio Zuppichini
+546
+
+
+2
+
+546
+
+
+2
+
+
+
+Sign up for The Variable
+By Towards Data Science
+Every Thursday, the Variable delivers the very best of Towards Data Science: from hands-on tutorials and cutting-edge research to original features you don't want to miss. Take a look.
+
+
+Get this newsletter
+More from Towards Data Science
+Follow
+Your home for data science. A Medium publication sharing concepts, ideas and codes.
+
+Jun Wu
+Jun Wu
+
+·Jul 3, 2019
+
+20 Python Programming Tips and Tricks for Beginners
+Python Tricks For Coding More Efficiently: String, List, Dictionary, Matrix, Operators,Initialization — Python is an high level general-purpose language. It’s dynamically typed and garbage-collected. It supports many programming paradigms: procedural, object-oriented, and functional. Historically, Python was conceived as a successor to the ABC language. Python strives to make developers happy by its simpler, less-cluttered syntax and grammar.
+
+Programming
+3 min read
+
+20 Python Programming Tips and Tricks for Beginners
+Share your ideas with millions of readers.
+
+Write on Medium
+Kang Choon Kiat
+Kang Choon Kiat
+
+·Jul 3, 2019
+
+Financial Analytics — Exploratory Data Analysis of stock data
+With an increase in the penetration of analytics into numerous facets of our lives, Finance is definitely one of the earliest to catch onto this trend. Given the burgeoning market size in fintech and finance, it would be great to impart some financial skills! Note: This article is meant to…
+
+Data Science
+5 min read
+
+Financial Analytics — Exploratory Data Analysis of stock data
+Julio Cezar Silva
+Julio Cezar Silva
+
+·Jul 3, 2019
+
+How We Finished 3rd and Still Won a Data Science Competition
+We had a lot of work to do — even after the final scores were published. — It was a first-timers duo versus veteran scientists worldwide, so you can imagine how it ends. A few months ago, we were just two students building up Data Science knowledge and striving to enter the field professionally. At the time, Victor was a…
+
+Data Science
+13 min read
+
+How We Finished 3rd and Still Won a Data Science Competition
+Toby Manders
+Toby Manders
+
+·Jul 3, 2019
+
+Scraping and Exploring the Entire English Audible Catalog
+Last week I wrote a script using the HTML-Requests package for Python to scrape information from Audible about programs included in their current 2-for-1 credit sale. After experimenting with threading hyperparameters I managed to get my script’s performance up to about 55 entries per second, which meant Audible’s entire English-language…
+
+Data Science
+8 min read
+
+Scraping and Exploring the Entire English Audible Catalog
+Jerry Wei
+Jerry Wei
+
+·Jul 3, 2019
+
+AlexNet: The Architecture that Challenged CNNs
+A few years back, we still used small datasets like CIFAR and NORB consisting of tens of thousands of images. These datasets were sufficient for machine learning models to learn basic recognition tasks. However, real life is never simple and has many more variables than are captured in these small…
+
+Machine Learning
+4 min read
+
+AlexNet: The Architecture that Challenged CNNs
+Read more from Towards Data Science
+More from Medium
+
+How We Can Predict Roadway Accidents
+By: Jeremy Roland
+Data Science world required a multi-disciplinary approach!
+Engineering tips for your next Data Science project
+An impromptu photo of my (very dirty) desk.
+Homebrew and Pyenv Python Playing Pleasantly in Partnership
+
+7 Highlights from CODS-COMADS 2017
+Three members of Next Tech Lab were awarded travel grants to attend CODS COMADS 2017. Here are some highlights from their experience.
+
+Lessons Learnt From Stumbling into Data Science
+
+PyTorch Lightning Tutorial #1: Getting Started
+
+Harnessing the Power of Big Data for COVID-19
+
+Do you really have a data strategy?
+Many companies claim of having a data strategy. Let’s see what makes this real.
+Get started
+Sign In
+
+Search
+Francesco Zuppichini
+Francesco Zuppichini
+1.2K Followers
+
+“quam minimum credula postero” https://francescozuppichini.carrd.co/
+
+Follow
+
+Related
+
+Simple 3D MRI classification ranked bronze on Kaggle
+
+Titanic survival prediction using PyTorch
+I want to learn how to use PyTorch. What better way to learn something than experimenting with it. While trying it out, I wanted to…
+
+Speed up EfficientNet model training on Amazon SageMaker with PyTorch and SageMaker distributed…
+widedeep architecture
+Learn to use the widedeep PyTorch framework
+Then start building cutting edge multimodal models
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Knowable
+
+

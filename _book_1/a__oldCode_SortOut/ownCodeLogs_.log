@@ -1,0 +1,538 @@
+
+
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ git fsck --unreachable --name-objects > unreachable_blobs_2.log
+Checking object directories: 100% (256/256), done.
+Checking objects: 100% (1935/1935), done.
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ git fsck > unreachable_blobs_2.log
+Checking object directories: 100% (256/256), done.
+Checking objects: 100% (1935/1935), done.
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ git gc --prune
+Counting objects: 1951, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (1151/1151), done.
+Writing objects: 100% (1951/1951), done.
+Total 1951 (delta 797), reused 1923 (delta 782)
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+
+
+
+
+
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ conda info -v
+
+     active environment : pytorch_venv
+    active env location : /home/dhankar/anaconda3/envs/pytorch_venv
+            shell level : 2
+       user config file : /home/dhankar/.condarc
+ populated config files : 
+          conda version : 4.8.3
+    conda-build version : 3.18.9
+         python version : 3.7.4.final.0
+       virtual packages : __cuda=11.0
+                          __glibc=2.27
+       base environment : /home/dhankar/anaconda3  (writable)
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /home/dhankar/anaconda3/pkgs
+                          /home/dhankar/.conda/pkgs
+       envs directories : /home/dhankar/anaconda3/envs
+                          /home/dhankar/.conda/envs
+               platform : linux-64
+             user-agent : conda/4.8.3 requests/2.26.0 CPython/3.7.4 Linux/5.4.0-100-generic ubuntu/18.04.5 glibc/2.27
+                UID:GID : 1000:1000
+             netrc file : None
+           offline mode : False
+
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ python 
+Python 3.8.5 (default, Aug  5 2020, 08:36:46) 
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+KeyboardInterrupt
+>>> 
+[1]+  Stopped                 python
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+
+/home/dhankar/Desktop/face_1/face_recog22
+
+
+tensorflow_gpuenv        
+cd /home/dhankar/anaconda3/envs/tensorflow_gpuenv
+
+base                     /home/dhankar/anaconda3
+dbfs_env                 /home/dhankar/anaconda3/envs/dbfs_env
+dc_dev_venv              /home/dhankar/anaconda3/envs/dc_dev_venv
+dc_info_venv             /home/dhankar/anaconda3/envs/dc_info_venv
+drf_venv                 /home/dhankar/anaconda3/envs/drf_venv
+ibm_venv                 /home/dhankar/anaconda3/envs/ibm_venv
+mlflow-1abc00771765dd9dd15731cbda4938c765fbb90b     /home/dhankar/anaconda3/envs/mlflow-1abc00771765dd9dd15731cbda4938c765fbb90b
+pytorch_venv          *  /home/dhankar/anaconda3/envs/pytorch_venv
+tensorflow_gpuenv        /home/dhankar/anaconda3/envs/tensorflow_gpuenv
+ts_env                   /home/dhankar/anaconda3/envs/ts_env
+
+dhankar@dhankar-1:~/.../tensorflow_gpuenv$ ls -lahtr
+total 76K
+drwxr-xr-x  3 dhankar dhankar 4.0K May 31  2020 x86_64-conda_cos6-linux-gnu
+drwxr-xr-x  3 dhankar dhankar 4.0K May 31  2020 ssl
+drwxr-xr-x 10 dhankar dhankar  12K May 31  2020 include
+drwxr-xr-x 16 dhankar dhankar  12K May 31  2020 lib
+drwxr-xr-x  2 dhankar dhankar 4.0K May 31  2020 compiler_compat
+drwxr-xr-x  2 dhankar dhankar 4.0K May 31  2020 conda-meta
+drwxr-xr-x 11 dhankar dhankar 4.0K May 31  2020 share
+drwxr-xr-x  3 dhankar dhankar 4.0K May 31  2020 etc
+drwxr-xr-x  3 dhankar dhankar 4.0K Jun 11  2020 laspytest
+-rw-r--r--  1 dhankar dhankar  12K Jun 15  2020 LICENSE
+drwxr-xr-x 12 dhankar dhankar 4.0K Jun 15  2020 .
+drwxr-xr-x  3 dhankar dhankar 4.0K Aug 26  2020 bin
+drwxr-xr-x 11 dhankar dhankar 4.0K Aug 23  2021 ..
+(pytorch_venv) dhankar@dhankar-1:~/.../tensorflow_gpuenv$ 
+
+#
+
+
+
+
+
+
+
+RUN SCORE -- Confusion Matrix -- 1 MissClassified out of 10 
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ python tf_augmnt_1.py > tf_augment_4.log
+--Test image_name == image_0017.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0018.jpg
+--got image Class__airplanes_0___     ### FOOBAR-- 1 MissClassified out of 10 - All Were == not_airplanes
+--Test image_name == image_0025.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0022.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0026.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0021.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0024.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0019.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0023.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0020.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0027.jpg
+--got image Class__not_airplanes_1___
+
+
+RUN SCORE -- Confusion Matrix -- 2--Correct 12  MissClassified out of 14
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ python tf_augmnt_1.py > tf_augment_5.log
+--Test image_name == image_0017.jpg
+--got image Class__airplanes_0___
+--Test image_name == air_image_0020.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0018.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0025.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0022.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0026.jpg
+--got image Class__airplanes_0___
+--Test image_name == air_image_0016.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0021.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0024.jpg
+--got image Class__not_airplanes_1___
+--Test image_name == image_0019.jpg
+--got image Class__airplanes_0___
+--Test image_name == air_image_0021.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0023.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0020.jpg
+--got image Class__airplanes_0___
+--Test image_name == image_0027.jpg
+--got image Class__airplanes_0___
+
+
+
+
+RUN -- practical deep learn 
+python pract_dl_1.py > pract_DL_ftr_extract_24FEB_1.log
+
+RUN -- TF_augment
+python test_tf_augment.py > tf_augment_1.log
+
+
+
+
+
+
+
+
+
+
+
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ pip install face_recognition
+Collecting face_recognition
+  Downloading face_recognition-1.3.0-py2.py3-none-any.whl (15 kB)
+Collecting Click>=6.0
+  Downloading click-8.0.4-py3-none-any.whl (97 kB)
+     |████████████████████████████████| 97 kB 1.0 MB/s 
+Collecting dlib>=19.7
+  Downloading dlib-19.23.0.tar.gz (3.2 MB)
+     |████████████████████████████████| 3.2 MB 28.5 MB/s 
+Requirement already satisfied: numpy in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from face_recognition) (1.19.1)
+Collecting face-recognition-models>=0.3.0
+  Downloading face_recognition_models-0.3.0.tar.gz (100.1 MB)
+     |████████████████████████████████| 100.1 MB 21 kB/s 
+Requirement already satisfied: Pillow in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from face_recognition) (7.2.0)
+Building wheels for collected packages: dlib, face-recognition-models
+  Building wheel for dlib (setup.py) ... done
+  Created wheel for dlib: filename=dlib-19.23.0-cp38-cp38-linux_x86_64.whl size=3841977 sha256=9fb0c5ac44e5c1aebd3eaf1de69b1788970f9c7a56fb01944a0b7a486d92cf99
+  Stored in directory: /home/dhankar/.cache/pip/wheels/38/38/d8/d2d11261a395e84a36ab2602a5386745f10a384d618d652556
+  Building wheel for face-recognition-models (setup.py) ... done
+  Created wheel for face-recognition-models: filename=face_recognition_models-0.3.0-py2.py3-none-any.whl size=100566172 sha256=2a6a07f218694a224558e8e613eb3ae49667d117d3aaf09dc3d023b7dd9effa7
+  Stored in directory: /home/dhankar/.cache/pip/wheels/b4/4b/8f/751e99d45f089bdf366a7d3e5066db3c2b84a62e4377f534d7
+Successfully built dlib face-recognition-models
+Installing collected packages: Click, dlib, face-recognition-models, face-recognition
+Successfully installed Click-8.0.4 dlib-19.23.0 face-recognition-1.3.0 face-recognition-models-0.3.0
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+ pip install tensorflow
+Collecting tensorflow
+  Downloading tensorflow-2.8.0-cp38-cp38-manylinux2010_x86_64.whl (497.6 MB)
+     |████████████████████████████████| 497.6 MB 1.3 kB/s 
+Requirement already satisfied: setuptools in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (49.2.0.post20200714)
+Collecting gast>=0.2.1
+  Downloading gast-0.5.3-py3-none-any.whl (19 kB)
+Collecting tf-estimator-nightly==2.8.0.dev2021122109
+  Downloading tf_estimator_nightly-2.8.0.dev2021122109-py2.py3-none-any.whl (462 kB)
+     |████████████████████████████████| 462 kB 22.1 MB/s 
+Collecting libclang>=9.0.1
+  Downloading libclang-13.0.0-py2.py3-none-manylinux1_x86_64.whl (14.5 MB)
+     |████████████████████████████████| 14.5 MB 57.4 MB/s 
+Collecting tensorflow-io-gcs-filesystem>=0.23.1
+  Downloading tensorflow_io_gcs_filesystem-0.24.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (2.1 MB)
+     |████████████████████████████████| 2.1 MB 52.2 MB/s 
+Requirement already satisfied: protobuf>=3.9.2 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (3.13.0)
+Collecting wrapt>=1.11.0
+  Downloading wrapt-1.13.3-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (84 kB)
+     |████████████████████████████████| 84 kB 516 kB/s 
+Collecting typing-extensions>=3.6.6
+  Downloading typing_extensions-4.1.1-py3-none-any.whl (26 kB)
+Collecting numpy>=1.20
+  Downloading numpy-1.22.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)
+     |████████████████████████████████| 16.8 MB 48.4 MB/s 
+Collecting termcolor>=1.1.0
+  Using cached termcolor-1.1.0.tar.gz (3.9 kB)
+Requirement already satisfied: six>=1.12.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.15.0)
+Collecting h5py>=2.9.0
+  Downloading h5py-3.6.0-cp38-cp38-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (4.5 MB)
+     |████████████████████████████████| 4.5 MB 115.1 MB/s 
+Collecting astunparse>=1.6.0
+  Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Collecting flatbuffers>=1.12
+  Downloading flatbuffers-2.0-py2.py3-none-any.whl (26 kB)
+Requirement already satisfied: absl-py>=0.4.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (0.10.0)
+Collecting opt-einsum>=2.3.2
+  Downloading opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+     |████████████████████████████████| 65 kB 564 kB/s 
+Collecting keras-preprocessing>=1.1.1
+  Downloading Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
+     |████████████████████████████████| 42 kB 200 kB/s 
+Requirement already satisfied: grpcio<2.0,>=1.24.3 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.32.0)
+Collecting google-pasta>=0.1.1
+  Using cached google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Collecting keras<2.9,>=2.8.0rc0
+  Downloading keras-2.8.0-py2.py3-none-any.whl (1.4 MB)
+     |████████████████████████████████| 1.4 MB 46.5 MB/s 
+Collecting tensorboard<2.9,>=2.8
+  Downloading tensorboard-2.8.0-py3-none-any.whl (5.8 MB)
+     |████████████████████████████████| 5.8 MB 91.2 MB/s 
+Requirement already satisfied: wheel<1.0,>=0.23.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from astunparse>=1.6.0->tensorflow) (0.34.2)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (1.21.1)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (0.4.1)
+Requirement already satisfied: requests<3,>=2.21.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (2.24.0)
+Requirement already satisfied: markdown>=2.6.8 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (3.2.2)
+Collecting tensorboard-data-server<0.7.0,>=0.6.0
+  Using cached tensorboard_data_server-0.6.1-py3-none-manylinux2010_x86_64.whl (4.9 MB)
+Requirement already satisfied: werkzeug>=0.11.15 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (1.0.1)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (1.7.0)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (4.1.1)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (0.2.8)
+Requirement already satisfied: rsa<5,>=3.1.4; python_version >= "3.5" in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (4.6)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.9,>=2.8->tensorflow) (1.3.0)
+Requirement already satisfied: certifi>=2017.4.17 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (2020.6.20)
+Requirement already satisfied: idna<3,>=2.5 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (2.10)
+Requirement already satisfied: chardet<4,>=3.0.2 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (3.0.4)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (1.25.10)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (0.4.8)
+Requirement already satisfied: oauthlib>=3.0.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.9,>=2.8->tensorflow) (3.1.0)
+Building wheels for collected packages: termcolor
+  Building wheel for termcolor (setup.py) ... done
+  Created wheel for termcolor: filename=termcolor-1.1.0-py3-none-any.whl size=4830 sha256=dd002b19bd87d18303e8dce608b8390d0f500c527b482427888d6e73e1e1f8e4
+  Stored in directory: /home/dhankar/.cache/pip/wheels/a0/16/9c/5473df82468f958445479c59e784896fa24f4a5fc024b0f501
+Successfully built termcolor
+Installing collected packages: gast, tf-estimator-nightly, libclang, tensorflow-io-gcs-filesystem, wrapt, typing-extensions, numpy, termcolor, h5py, astunparse, flatbuffers, opt-einsum, keras-preprocessing, google-pasta, keras, tensorboard-data-server, tensorboard, tensorflow
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.19.1
+    Uninstalling numpy-1.19.1:
+      Successfully uninstalled numpy-1.19.1
+  Attempting uninstall: tensorboard
+    Found existing installation: tensorboard 2.3.0
+    Uninstalling tensorboard-2.3.0:
+      Successfully uninstalled tensorboard-2.3.0
+Successfully installed astunparse-1.6.3 flatbuffers-2.0 gast-0.5.3 google-pasta-0.2.0 h5py-3.6.0 keras-2.8.0 keras-preprocessing-1.1.2 libclang-13.0.0 numpy-1.22.2 opt-einsum-3.3.0 tensorboard-2.8.0 tensorboard-data-server-0.6.1 tensorflow-2.8.0 tensorflow-io-gcs-filesystem-0.24.0 termcolor-1.1.0 tf-estimator-nightly-2.8.0.dev2021122109 typing-extensions-4.1.1 wrapt-1.13.3
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+
+#### FOOBAR 
+
+2022-02-20 22:23:46.783477: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:936] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-02-20 22:23:47.083149: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory
+2022-02-20 22:23:47.148484: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+2022-02-20 22:23:47.149215: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Downloading data from https://storage.googleapis.com/tensorflow/keras-applications/resnet/resnet50_weights_tf_dim_ordering_tf_kernels_notop.h5
+94773248/94765736 [==============================] - 3s 0us/step
+94781440/94765736 [==============================] - 3s 0us/step
+----Type(model--- <class 'keras.engine.functional.Functional'>
+
+#### FOOBAR 
+
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ pip install --upgrade gdown
+Collecting gdown
+  Downloading gdown-4.3.1.tar.gz (13 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+    Preparing wheel metadata ... done
+Collecting filelock
+  Downloading filelock-3.6.0-py3-none-any.whl (10.0 kB)
+Requirement already satisfied, skipping upgrade: six in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from gdown) (1.15.0)
+Requirement already satisfied, skipping upgrade: beautifulsoup4 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from gdown) (4.9.1)
+Requirement already satisfied, skipping upgrade: requests[socks] in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from gdown) (2.24.0)
+Requirement already satisfied, skipping upgrade: tqdm in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from gdown) (4.62.3)
+Requirement already satisfied, skipping upgrade: soupsieve>1.2 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from beautifulsoup4->gdown) (2.0.1)
+Requirement already satisfied, skipping upgrade: certifi>=2017.4.17 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests[socks]->gdown) (2020.6.20)
+Requirement already satisfied, skipping upgrade: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests[socks]->gdown) (1.25.10)
+Requirement already satisfied, skipping upgrade: idna<3,>=2.5 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests[socks]->gdown) (2.10)
+Requirement already satisfied, skipping upgrade: chardet<4,>=3.0.2 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests[socks]->gdown) (3.0.4)
+Collecting PySocks!=1.5.7,>=1.5.6; extra == "socks"
+  Using cached PySocks-1.7.1-py3-none-any.whl (16 kB)
+Building wheels for collected packages: gdown
+  Building wheel for gdown (PEP 517) ... done
+  Created wheel for gdown: filename=gdown-4.3.1-py3-none-any.whl size=14493 sha256=8a3bcd95b6a7123d1f5e31f9d96a4d2eea328a2a032194cbc1d8f5c4842b9939
+  Stored in directory: /home/dhankar/.cache/pip/wheels/86/ea/89/fa14b54906260965380984fb1f1aeaa5a844d4ee8b602dd1ec
+Successfully built gdown
+Installing collected packages: filelock, gdown, PySocks
+Successfully installed PySocks-1.7.1 filelock-3.6.0 gdown-4.3.1
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ gdown https://drive.google.com/uc?id=137RyRjvTBkBiIfeYBNZBtViDHQ6_Ewsp --output caltech101.tar.gz
+Downloading...
+From: https://drive.google.com/uc?id=137RyRjvTBkBiIfeYBNZBtViDHQ6_Ewsp
+To: /home/dhankar/Desktop/face_1/face_recog22/caltech101.tar.gz
+100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████| 132M/132M [00:05<00:00, 22.2MB/s]
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ 
+
+#### FOOBAR -- 70MB Pickle Files 
+
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ ls -lahtr
+total 2.8M
+drwxrwxr-x 3 dhankar dhankar 4.0K Feb 20 17:18 known_face_dir
+-rw-rw-r-- 1 dhankar dhankar 5.2K Feb 20 17:23 encoding_log_1.log
+-rw-rw-r-- 1 dhankar dhankar 7.9K Feb 20 17:24 encoding_log_2.log
+-rw-rw-r-- 1 dhankar dhankar 1.5K Feb 20 17:31 face_1.py
+-rw-rw-r-- 1 dhankar dhankar 7.9K Feb 20 17:31 encoding_log_3.log
+-rw-rw-r-- 1 dhankar dhankar  171 Feb 20 20:20 img2vec_1.py
+-rw-rw-r-- 1 dhankar dhankar   14 Feb 20 22:11 README.md
+drwxrwxr-x 2 dhankar dhankar 4.0K Feb 20 23:56 test
+-rw-rw-r-- 1 dhankar dhankar  771 Feb 21 00:12 pract_DL_ftr_extract_1.log
+-rw-rw-r-- 1 dhankar dhankar  16K Feb 21 00:29 ownCodeLogs_.log
+-rw-rw-r-- 1 dhankar dhankar 2.1K Feb 21 00:47 pract_DL_ftr_extract_2.log
+drwxrwxr-x 8 dhankar dhankar 4.0K Feb 21 00:50 ..
+drwxrwxr-x 6 dhankar dhankar 4.0K Feb 21 01:05 .
+drwxrwxr-x 2 dhankar dhankar 4.0K Feb 21 01:16 pickle_files
+-rw-rw-r-- 1 dhankar dhankar 2.7M Feb 21 01:16 pract_DL_ftr_extract_3.log
+-rw-rw-r-- 1 dhankar dhankar 4.7K Feb 21 01:17 pract_dl_1.py
+drwxrwxr-x 8 dhankar dhankar 4.0K Feb 21 01:18 .git
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ cd pickle_files/
+(pytorch_venv) dhankar@dhankar-1:~/.../pickle_files$ ls -lahtr
+total 69M
+-rw-rw-r-- 1 dhankar dhankar  205 Feb 21 00:47 filenames_test
+-rw-rw-r-- 1 dhankar dhankar  41K Feb 21 00:47 features_test.pickle
+drwxrwxr-x 6 dhankar dhankar 4.0K Feb 21 01:05 ..
+-rw-rw-r-- 1 dhankar dhankar  69M Feb 21 01:16 features_caltech101.pickle
+drwxrwxr-x 2 dhankar dhankar 4.0K Feb 21 01:16 .
+-rw-rw-r-- 1 dhankar dhankar 594K Feb 21 01:16 filenames_caltech101
+(pytorch_venv) dhankar@dhankar-1:~/.../pickle_files$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../pickle_files$ 
+
+
+
+
+2022-02-21 01:34:04.359749: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:936] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-02-21 01:34:04.362450: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory
+2022-02-21 01:34:04.362920: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+Num GPUs Available:  0
+
+
+$ nvidia-smi --query-gpu=gpu_name --format=csv|tail -n 1
+GeForce GTX 1650
+
+$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2017 NVIDIA Corporation
+Built on Fri_Nov__3_21:07:56_CDT_2017
+Cuda compilation tools, release 9.1, V9.1.85
+
+(pytorch_venv) dhankar@dhankar-1:~/.../face_recog22$ cd /usr/local/
+(pytorch_venv) dhankar@dhankar-1:.../local$ pwd
+/usr/local
+(pytorch_venv) dhankar@dhankar-1:.../local$ 
+(pytorch_venv) dhankar@dhankar-1:.../local$ ls -lahtr
+total 355M
+drwxr-xr-x  2 root    root    4.0K Aug  6  2019 src
+drwxr-xr-x  2 root    root    4.0K Aug  6  2019 sbin
+drwxr-xr-x  2 root    root    4.0K Aug  6  2019 games
+drwxr-xr-x  4 root    root    4.0K Apr 17  2020 etc
+drwxr-xr-x  3 root    root    4.0K Jul  4  2020 aws-cli
+drwxr-xr-x 15 root    root    4.0K Jul 25  2020 cuda-11.0
+lrwxrwxrwx  1 root    root       9 Jul 25  2020 cuda -> cuda-11.0
+drwxr-xr-x  4 root    root    4.0K Jul 30  2020 man
+drwxr-xr-x  4 root    root    4.0K Jul 30  2020 doc
+drwxr-xr-x 19 root    root    4.0K Jul 30  2020 share
+drwxr-xr-x  3 root    root    4.0K Jul 30  2020 include
+drwxr-xr-x  7 root    root     12K Aug  4  2020 lib
+drwxr-xr-x 10 root    root    4.0K Dec  3  2020 go
+-rw-rw-r--  1 dhankar dhankar 355M Jan 12  2021 go1.15.6.linux-amd64.tar
+drwxr-xr-x 15 root    root    4.0K Jan 12  2021 .
+drwxr-xr-x 13 root    root    4.0K Feb 14  2021 ..
+drwxr-xr-x  2 root    root    4.0K Jul 11  2021 bin
+(pytorch_venv) dhankar@dhankar-1:.../local$ 
+
+
+(pytorch_venv) dhankar@dhankar-1:.../lib$ pwd
+/usr/local/cuda/targets/x86_64-linux/lib
+
+(pytorch_venv) dhankar@dhankar-1:.../lib$ ls -lahtr | grep libcusol
+-rw-r--r-- 1 root root  294M Jun 12  2020 libcusolverMg.so.10.5.0.218
+-rw-r--r-- 1 root root  159M Jun 12  2020 libcusolver_static.a
+-rw-r--r-- 1 root root  498M Jun 12  2020 libcusolver.so.10.5.0.218
+lrwxrwxrwx 1 root root    25 Jun 12  2020 libcusolver.so.10 -> libcusolver.so.10.5.0.218
+lrwxrwxrwx 1 root root    17 Jun 12  2020 libcusolver.so -> libcusolver.so.10
+lrwxrwxrwx 1 root root    27 Jun 12  2020 libcusolverMg.so.10 -> libcusolverMg.so.10.5.0.218
+lrwxrwxrwx 1 root root    19 Jun 12  2020 libcusolverMg.so -> libcusolverMg.so.10
+
+(pytorch_venv) dhankar@dhankar-1:.../lib$ 
+
+
+(pytorch_venv) dhankar@dhankar-1:.../lib$ pwd
+/usr/local/cuda-11.0/targets/x86_64-linux/lib
+(pytorch_venv) dhankar@dhankar-1:.../lib$ 
+(pytorch_venv) dhankar@dhankar-1:.../lib$ ls -lahtr | grep libcusol
+-rw-r--r-- 1 root root  294M Jun 12  2020 libcusolverMg.so.10.5.0.218
+-rw-r--r-- 1 root root  159M Jun 12  2020 libcusolver_static.a
+-rw-r--r-- 1 root root  498M Jun 12  2020 libcusolver.so.10.5.0.218
+lrwxrwxrwx 1 root root    25 Jun 12  2020 libcusolver.so.10 -> libcusolver.so.10.5.0.218
+lrwxrwxrwx 1 root root    17 Jun 12  2020 libcusolver.so -> libcusolver.so.10
+lrwxrwxrwx 1 root root    27 Jun 12  2020 libcusolverMg.so.10 -> libcusolverMg.so.10.5.0.218
+lrwxrwxrwx 1 root root    19 Jun 12  2020 libcusolverMg.so -> libcusolverMg.so.10
+(pytorch_venv) dhankar@dhankar-1:.../lib$ 
+
+$ lspci | grep -i nvidia
+01:00.0 VGA compatible controller: NVIDIA Corporation Device 1f82 (rev a1)
+01:00.1 Audio device: NVIDIA Corporation Device 10fa (rev a1)
+
+
+
+(pytorch_venv) dhankar@dhankar-1:~$ python
+Python 3.8.5 (default, Aug  5 2020, 08:36:46) 
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> import tensorflow as tf
+>>> 
+>>> print(tf.__version__, tf.test.is_built_with_gpu_support())
+2.8.0 True
+>>> 
+>>> print(tf.config.list_physical_devices('GPU'))
+2022-02-21 02:03:35.817895: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:936] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-02-21 02:03:35.820464: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory
+2022-02-21 02:03:35.820939: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+[]
+>>> 
+
+(pytorch_venv) dhankar@dhankar-1:~$ pip install --upgrade tensorflow
+Requirement already satisfied: tensorflow in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (2.8.0)
+Requirement already satisfied: wrapt>=1.11.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.13.3)
+Requirement already satisfied: gast>=0.2.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (0.5.3)
+Requirement already satisfied: flatbuffers>=1.12 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (2.0)
+Requirement already satisfied: astunparse>=1.6.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.6.3)
+Requirement already satisfied: tf-estimator-nightly==2.8.0.dev2021122109 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (2.8.0.dev2021122109)
+Requirement already satisfied: keras-preprocessing>=1.1.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.1.2)
+Requirement already satisfied: tensorflow-io-gcs-filesystem>=0.23.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (0.24.0)
+Requirement already satisfied: grpcio<2.0,>=1.24.3 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.32.0)
+Requirement already satisfied: numpy>=1.20 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.22.2)
+Requirement already satisfied: google-pasta>=0.1.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (0.2.0)
+Requirement already satisfied: typing-extensions>=3.6.6 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (4.1.1)
+Requirement already satisfied: keras<2.9,>=2.8.0rc0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (2.8.0)
+Requirement already satisfied: opt-einsum>=2.3.2 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (3.3.0)
+Requirement already satisfied: setuptools in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (49.2.0.post20200714)
+Requirement already satisfied: h5py>=2.9.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (3.6.0)
+Requirement already satisfied: protobuf>=3.9.2 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (3.13.0)
+Requirement already satisfied: tensorboard<2.9,>=2.8 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (2.8.0)
+Requirement already satisfied: six>=1.12.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.15.0)
+Requirement already satisfied: absl-py>=0.4.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (0.10.0)
+Requirement already satisfied: libclang>=9.0.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (13.0.0)
+Requirement already satisfied: termcolor>=1.1.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorflow) (1.1.0)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from astunparse>=1.6.0->tensorflow) (0.34.2)
+Requirement already satisfied: markdown>=2.6.8 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (3.2.2)
+Requirement already satisfied: requests<3,>=2.21.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (2.24.0)
+Requirement already satisfied: tensorboard-data-server<0.7.0,>=0.6.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (0.6.1)
+Requirement already satisfied: werkzeug>=0.11.15 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (1.0.1)
+Requirement already satisfied: google-auth<3,>=1.6.3 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (1.21.1)
+Requirement already satisfied: google-auth-oauthlib<0.5,>=0.4.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (0.4.1)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from tensorboard<2.9,>=2.8->tensorflow) (1.7.0)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (0.2.8)
+Requirement already satisfied: rsa<5,>=3.1.4 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (4.6)
+Requirement already satisfied: cachetools<5.0,>=2.0.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (4.1.1)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.9,>=2.8->tensorflow) (1.3.0)
+Requirement already satisfied: chardet<4,>=3.0.2 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (2020.6.20)
+Requirement already satisfied: idna<3,>=2.5 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (2.10)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests<3,>=2.21.0->tensorboard<2.9,>=2.8->tensorflow) (1.25.10)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard<2.9,>=2.8->tensorflow) (0.4.8)
+Requirement already satisfied: oauthlib>=3.0.0 in ./anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard<2.9,>=2.8->tensorflow) (3.1.0)
+(pytorch_venv) dhankar@dhankar-1:~$ 
+(pytorch_venv) dhankar@dhankar-1:~$ python
+Python 3.8.5 (default, Aug  5 2020, 08:36:46) 
+[GCC 7.3.0] :: Anaconda, Inc. on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+>>> import tensorflow as tf
+>>> 
+>>> print(tf.__version__, tf.test.is_built_with_gpu_support())
+2.8.0 True
+>>> 
+>>> print(tf.config.list_physical_devices('GPU'))
+2022-02-21 02:03:35.817895: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:936] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-02-21 02:03:35.820464: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libcusolver.so.11'; dlerror: libcusolver.so.11: cannot open shared object file: No such file or directory
+2022-02-21 02:03:35.820939: W tensorflow/core/common_runtime/gpu/gpu_device.cc:1850] Cannot dlopen some GPU libraries. Please make sure the missing libraries mentioned above are installed properly if you would like to use GPU. Follow the guide at https://www.tensorflow.org/install/gpu for how to download and setup the required libraries for your platform.
+Skipping registering GPU devices...
+[]
+>>> 
+[2]+  Stopped                 python
+
+

@@ -1,0 +1,44 @@
+
+https://www.linkedin.com/in/srishti-gureja-a51841171/
+
+https://github.com/abidlabs/contrastive
+
+anirudh.d@darwinbox.in
+
+from contrastive import CPCA
+
+mdl = CPCA()
+projected_data = mdl.fit_transform(foreground_data, background_data)
+
+#returns a set of 2-dimensional projections of the foreground data stored in the list 'projected_data', for several different values of 'alpha' that are automatically chosen (by default, 4 values of alpha are chosen)
+
+
+One instance when PCA might fail a data scientist-
+
+What Principal Components Analysis PCA couldn't accomplish (1st picture), Contrastive Principal Components Analysis cPCA did. (2nd pic)
+
+Information of interest lies in variability - a very basic assumption PCA is based on.
+
+Cool & pretty intuitive. A nice way to think about it is that a feature that doesn't vary much across different classes in a tabular data wouldn't really be of major use in attempting to classify the data.
+
+But, a feature taking different values for different classes shall be useful.
+& that's precisely what PCA is.
+Hence, PCA tends to project the data onto such dimensions along which the variability of the projected data is maximum.
+
+But, what if the data is subjected to multiple sources of variation, and the dominant source of variation (that PCA shall eventually focus on) isn't of interest?
+
+But, what if the data is subjected to multiple sources of variation, and the dominant source of variation (that PCA shall eventually focus on) isn't of interest?
+
+In other words, the dominant source of variation is just noise and not the signal.
+For example- data of gene expressions from cancer patients might vary a lot across patients due to demographical or other such reasons.
+
+But what if the analyst wants to bring out the variation stemming from difference in types of cancer? (They need such dimensions on which when the data is projected, they are able to see clusters corresponding to subtypes of cancer.)
+
+PCA shall not be able to do that nicely if the former source of variation (demographic) is dominant.
+
+What is way to get PCA or any other algorithm to capture a less dominating source of variation in a data?
+
+cPCA - Contrastive Principle Components Analysis. It uses a background data subjected to the same/similar source of uninteresting variation to cancel out this variation in the target data & bring out a lesser dominant source of variation.
+An example of background data here could be gene expressions from healthy patients that have a similar demographic structure.
+
+Treatment control settings are another example where cPCA could potentially perform magnificently.

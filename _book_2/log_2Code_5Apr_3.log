@@ -1,0 +1,2591 @@
+-------train_data---- <class 'torchvision.datasets.folder.ImageFolder'>
+-------val_data---- <class 'torchvision.datasets.folder.ImageFolder'>
+-------train_data_loader---- <class 'torch.utils.data.dataloader.DataLoader'>
+-----type(simplenet-------
+ <class '__main__.SimpleNet'>
+-----type(optimizer-------
+ <class 'torch.optim.adam.Adam'>
+--1-torch.cuda.memory_allocated---> 0.00 GB
+--2-torch.cuda.memory_allocated---> 0.00 GB
+--train--device----
+ cuda
+---targets---- tensor([1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0,
+        0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0,
+        1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.6629, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0,
+        1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(1.5160, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1,
+        0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0,
+        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.6267, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+        0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1,
+        0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.2145, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1,
+        1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0,
+        0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1544, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1,
+        0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+        0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.2215, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0,
+        1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0,
+        1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1148, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
+        1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+        0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1546, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0,
+        0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1,
+        0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1286, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1,
+        1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1,
+        0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1281, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1,
+        0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1,
+        0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1296, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+        0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0,
+        0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1696, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0,
+        1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1,
+        1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1300, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1,
+        0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1,
+        1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.2121, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.3057, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:1,TRAIN_Loss:0.33,VAL_Loss:0.09, Accuracy = 0.97
+---targets---- tensor([0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0,
+        1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0,
+        1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1797, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1,
+        1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0,
+        0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0397, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1,
+        0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0,
+        1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.3070, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0,
+        1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1,
+        1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1111, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1,
+        0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0,
+        1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.2873, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0,
+        1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0,
+        1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0503, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0,
+        0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1,
+        0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0970, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0,
+        1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1,
+        0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1097, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0,
+        0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0,
+        0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0909, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0,
+        0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0,
+        1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1906, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0,
+        0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1,
+        0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0827, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0,
+        1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
+        0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0631, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1,
+        1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1,
+        0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0609, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+        1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0,
+        0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0552, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0,
+        0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0702, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:2,TRAIN_Loss:0.12,VAL_Loss:0.07, Accuracy = 0.97
+---targets---- tensor([0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1,
+        0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0,
+        1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0017, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0,
+        0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0,
+        0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0860, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1,
+        0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1,
+        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1406, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0,
+        1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1,
+        1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0433, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0,
+        1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0,
+        1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0706, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1,
+        0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1,
+        1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0320, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1,
+        1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1,
+        0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0461, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0,
+        0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0,
+        0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0373, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1,
+        1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0,
+        0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1089, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0,
+        1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+        1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0787, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0,
+        1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0191, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1,
+        1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1,
+        0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0032, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0,
+        0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0217, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0,
+        1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0,
+        0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0063, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1066, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:3,TRAIN_Loss:0.05,VAL_Loss:0.10, Accuracy = 0.97
+---targets---- tensor([0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0,
+        1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0,
+        0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0953, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0,
+        0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1,
+        1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0077, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1,
+        0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+        0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.1040, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0,
+        0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1,
+        1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0595, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1,
+        0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0,
+        0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0531, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+        1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.2554, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1,
+        0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0596, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0,
+        0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0,
+        1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0158, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1,
+        0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+        0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0054, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1,
+        1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+        1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0602, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0,
+        1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1,
+        1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0050, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1,
+        0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0,
+        1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.2487, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0,
+        1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0,
+        0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0049, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1,
+        0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1,
+        0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0012, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1,
+        1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0064, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:4,TRAIN_Loss:0.07,VAL_Loss:0.02, Accuracy = 0.99
+---targets---- tensor([0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
+        1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1,
+        0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0191, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0,
+        0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0,
+        0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0127, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0,
+        1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1,
+        0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0158, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1,
+        0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1,
+        1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0100, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1,
+        1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1,
+        0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0014, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0,
+        1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1,
+        1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0130, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1,
+        0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0,
+        1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0258, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1,
+        0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1,
+        1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0025, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1,
+        0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0,
+        0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0012, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0,
+        1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
+        0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0155, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0,
+        1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0,
+        1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0547, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1,
+        0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1,
+        0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0105, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1,
+        1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0,
+        1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0193, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1,
+        1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0,
+        0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0645, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1,
+        0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0050, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:5,TRAIN_Loss:0.02,VAL_Loss:0.02, Accuracy = 0.99
+---targets---- tensor([1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1,
+        0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1,
+        1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0014, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0,
+        0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0,
+        1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0174, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0,
+        1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1,
+        0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0690, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1,
+        0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0113, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1,
+        1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0,
+        1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0178, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0,
+        0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0027, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1,
+        1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0,
+        1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0063, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1,
+        1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1,
+        0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0487, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1,
+        1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1,
+        0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0341, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0,
+        1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1,
+        1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0211, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1,
+        1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0,
+        0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0269, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0,
+        0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0,
+        0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0204, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1,
+        1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0,
+        0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0043, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
+        1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0,
+        0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0234, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1,
+        0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0065, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:6,TRAIN_Loss:0.02,VAL_Loss:0.02, Accuracy = 0.99
+---targets---- tensor([0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0,
+        0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1,
+        1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0043, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1,
+        1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0,
+        1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0115, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1,
+        1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0,
+        0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0025, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1,
+        1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0,
+        1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0034, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0,
+        0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1,
+        0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0161, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0,
+        0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0,
+        1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0106, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1,
+        1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0,
+        1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0035, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0,
+        0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1,
+        0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0038, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0,
+        1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1,
+        0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0230, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
+        1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,
+        0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0055, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0,
+        1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
+        0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0016, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1,
+        1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
+        0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0016, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0,
+        0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1,
+        0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0262, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0,
+        0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1,
+        0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0118, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1,
+        1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0010, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:7,TRAIN_Loss:0.01,VAL_Loss:0.01, Accuracy = 1.00
+---targets---- tensor([1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1,
+        0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1,
+        0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0148, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1,
+        0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1,
+        0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0075, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0,
+        0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0,
+        1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0245, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1,
+        0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0,
+        0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0047, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0,
+        1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0012, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1,
+        1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0063, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+        0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0,
+        1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0018, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0,
+        0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1,
+        0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0006, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1,
+        1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1,
+        0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0243, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0,
+        1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0,
+        1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0013, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0,
+        1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0012, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+        1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0,
+        1, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0010, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1,
+        1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1,
+        0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0115, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1,
+        0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0,
+        0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0009, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0,
+        0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0005, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:8,TRAIN_Loss:0.01,VAL_Loss:0.01, Accuracy = 1.00
+---targets---- tensor([0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0,
+        1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0,
+        1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0114, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0,
+        0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0,
+        1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0032, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0,
+        0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0,
+        0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0034, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0,
+        0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0,
+        0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0078, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0,
+        0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0075, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0,
+        1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0,
+        1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0029, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 0, 1,
+        0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1,
+        1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0012, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1,
+        0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0148, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0,
+        1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1,
+        1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0034, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0,
+        1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0,
+        1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0013, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1,
+        0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0,
+        0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0005, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0,
+        1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1,
+        0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0093, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1,
+        1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1,
+        0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0049, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0,
+        1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 1,
+        0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0020, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0,
+        0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0054, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:9,TRAIN_Loss:0.01,VAL_Loss:0.00, Accuracy = 1.00
+---targets---- tensor([0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1,
+        1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0,
+        0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0024, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0,
+        1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1,
+        1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0012, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1,
+        0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1,
+        1, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0034, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1,
+        0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0,
+        0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0063, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0,
+        1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1,
+        0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0031, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0,
+        1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1,
+        1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 1, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0029, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1,
+        0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1,
+        1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0022, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1,
+        1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0,
+        1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0012, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0,
+        1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1,
+        1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0008, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1,
+        0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0,
+        1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0009, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0,
+        1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+        0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0030, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1,
+        1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0100, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0,
+        0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0,
+        0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0009, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0,
+        0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0,
+        1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0007, device='cuda:0', grad_fn=<NllLossBackward0>)
+---targets---- tensor([1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1,
+        1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0])
+--train>>-model--summary---- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--train>>-model-loss--- tensor(0.0003, device='cuda:0', grad_fn=<NllLossBackward0>)
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([64])
+--------inputs.size(0)------ 64
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 64
+--------targets.shape------ torch.Size([40])
+--------inputs.size(0)------ 40
+--train>>-model--summary-2--- SimpleNet(
+  (fc1): Linear(in_features=12288, out_features=84, bias=True)
+  (fc2): Linear(in_features=84, out_features=50, bias=True)
+  (fc3): Linear(in_features=50, out_features=2, bias=True)
+)
+--------output.size(0)------ 40
+-TRAIN----torch.cuda.memory_allocated---> 0.02 GB
+Epoch:10,TRAIN_Loss:0.00,VAL_Loss:0.00, Accuracy = 1.00
+---labels[prediction]----
+ glass
+---labels[prediction]----
+ not_glass
+---labels[prediction]----
+ glass
+---labels[prediction]----
+ glass
+---labels[prediction]----
+ not_glass
+---labels[prediction]----
+ not_glass
+---labels[prediction]----
+ glass
+---labels[prediction]----
+ glass
+---labels[prediction]----
+ glass
+---labels[prediction]----
+ glass
