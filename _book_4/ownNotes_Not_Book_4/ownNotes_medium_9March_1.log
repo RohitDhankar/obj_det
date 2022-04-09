@@ -1,0 +1,434 @@
+
+
+https://medium.datadriveninvestor.com/how-to-transform-the-data-to-look-like-gaussian-distribution-c50ab3fdada5
+https://gist.github.com/ksv-muralidhar/dcdfa81a7e174d8a4cc1161e4b9f3fb3
+https://opendatascience.com/transforming-skewed-data-for-machine-learning/
+
+
+
+DataDrivenInvestor
+Published in
+DataDrivenInvestor
+
+KSV Muralidhar
+KSV Muralidhar
+Feb 10, 2021
+
+·
+7 min read
+How to transform the data to look like Gaussian Distribution?
+This article discusses the transformations that make your variable’ distribution look more like a Gaussian distribution.
+
+Image by Carlos Muza on Unsplash
+In my previous article (How would I know if my variable’ distribution is Gaussian?), we discussed the methods to determine if a variable’ distribution looks Gaussian.
+From that article, it was found that the distributions of variables 0 and 1 of the Iris dataset were closer to the Gaussian distribution, while the distribution of variables 2 and 3 were quite far from being a Gaussian distribution. Below are the density plots of those variables.
+
+Image by author
+Below are the results of Kolmogorov-Smirnov test of the above variables. Kolmogorov-Smirnov test expects the input variable to have a perfect normal distribution. Hence, none of the variables looked like Gaussian in Kolmogorov-Smirnov test.
+
+Image by author
+We’ll discuss few transformations that may make your variable look more like a Gaussian distribution. A drawback of these methods is, they can only transform a variable that is some what close to a Gaussian distribution, look more like Gaussian.
+Method 1: Log Transform
+Log transform computes the natural logarithm of the variable to make it look more like Gaussian. This transform can only be applied if the values of a variable are greater than 0 (since log is not defined for 0 and negative numbers). However, scaling the values to be positive can be done to use this transform. Below is the implementation of log transform in Python. I prefer using ColumnTransformer to apply transformations to the data.
+We’ll look at the density plot of the above variables before and after log transform.
+
+Density plots of variables before log transform. (Image by author)
+
+Density plots of variables after log transform. (Image by author)
+We can see variables 0 and 1 look almost the same as they were before applying log transform. There is a reduction in the one of the peaks of variables 2 and 3, but they don’t look like Gaussian. We’ll look at the results of Kolmogorov-Smirnov test of the above variables before and after log transform.
+
+Kolmogorov-Smirnov test results before log transform (Image by author)
+
+Kolmogorov-Smirnov test results after log transform (Image by author)
+From the above results, we can see that log transform was not much effective in transforming the variable’ distribution to look more like Gaussian.
+Method 2: Reciprocal Transform
+Reciprocal transform computes the reciprocal of the variable to make it look more like Gaussian. This transform cannot be applied if any of the values of a variable is 0 (since 1/0 is not defined). Below is the implementation of Reciprocal transform in Python.
+We’ll look at the density plot of the above variables before and after reciprocal transform.
+
+Density plots of variables before reciprocal transform. (Image by author)
+
+Density plots of variables after reciprocal transform. (Image by author)
+We can see variables 0 and 1 look almost the same as they were before applying reciprocal transform. There is a reduction in the one of the peaks of variables 2 and 3, but they don’t look like Gaussian. We’ll look at the results of Kolmogorov-Smirnov test of the above variables before and after reciprocal transform.
+
+Kolmogorov-Smirnov test results before reciprocal transform (Image by author)
+
+Kolmogorov-Smirnov test results after reciprocal transform (Image by author)
+From the above results, we can see that reciprocal transform was not much effective in transforming the variable’ distribution to look more like Gaussian.
+Method 3: Exponent Transform
+Exponent transform computes the exponent of the variable to make it look more like Gaussian. The commonly used exponents are square (square transform), cube (cube transform), square root (square root transform) and cube root (cube root transform). Below is the implementation of Exponent transform using square (square transform) in Python.
+We’ll look at the density plot of the above variables before and after square transform.
+
+Density plots of variables before square transform. (Image by author)
+
+Density plots of variables after square transform. (Image by author)
+In the above plots, it can be seen that variable 0 and 1 look Gaussian as before, but variable 3 looks more like Gaussian (but not a perfect Gaussian distribution) after the square transform, compared to the previous transforms. We’ll look at the results of Kolmogorov-Smirnov test of the above variables before and after square transform.
+
+Kolmogorov-Smirnov test results before square transform (Image by author)
+
+Kolmogorov-Smirnov test results after square transform (Image by author)
+From the above results, we can see that square transform was not much effective in transforming the variable’ distribution to look more like Gaussian.
+Method 4: Box-Cox Transform
+Box-Cox transform is an effective method (compared to previously discussed methods) to transform a variable’ distribution to look more like Gaussian. A drawback of this method is, it requires the values of a variable to be greater than 0. However, scaling the values to be positive can be done to use this transform.
+
+Box-Cox Transform (Image from Wikipedia)
+Box-Cox transform searches for λ value between -5 and 5 and uses the best λ that makes the data look more Gaussian. Below is the implementation of Box-Cox transform in Python.
+We’ll look at the density plot of the above variables before and after Box-Cox transform.
+
+Density plots of variables before Box-Cox transform. (Image by author)
+
+Density plots of variables after Box-Cox transform. (Image by author)
+We can see all the variables look almost the same as they were before applying Box-Cox transform. We’ll look at the results of Kolmogorov-Smirnov test of the above variables before and after Box-Cox transform.
+
+Kolmogorov-Smirnov test results before Box-Cox transform (Image by author)
+
+Kolmogorov-Smirnov test results after Box-Cox transform (Image by author)
+We can see that Kolmogorov-Smirnov test results show that variables 0 and 1 are Gaussian. As mentioned earlier, these transforms are only effective when the variable distribution before the transform is some what close to Gaussian distribution. To see the values of λ chosen for the variables, the PowerTransformer must be fit to the data directly without a ColumnTransformer.
+
+λ chosen for each of the 4 variables (Image by author)
+Method 5: Yeo-Johnson Transform
+Yeo-Johnson transform is similar to Box-Cox transform. But Yeo-Johnson can be applied to both positive and negative values of a variable.
+
+Yeo-Johnson Transform (Image from Wikipedia)
+Below is the implementation of Yeo-Johnson transform in Python.
+We’ll look at the density plot of the above variables before and after Yeo-Johnson transform.
+
+Density plots of variables before Yeo-Johnson transform. (Image by author)
+
+Density plots of variables after Yeo-Johnson transform. (Image by author)
+We can see all the variables look almost the same as they were before applying Yeo-Johnson transform. We’ll look at the results of Kolmogorov-Smirnov test of the above variables before and after Yeo-Johnson transform.
+
+Kolmogorov-Smirnov test results before Yeo-Johnson transform (Image by author)
+
+Kolmogorov-Smirnov test results after Yeo-Johnson transform (Image by author)
+We can see that Kolmogorov-Smirnov test results show that variables 0 and 1 are Gaussian. As mentioned earlier, these transforms are only effective when the variable distribution before the transform is some what close to Gaussian distribution. To see the values of λ chosen for the variables, the PowerTransformer must be fit to the data directly without a ColumnTransformer.
+
+λ chosen for each of the 4 variables (Image by author)
+As we saw above, variable transformation methods only work when the distribution of the variable is some what close to Gaussian distribution. Variables with distribution no where close to Gaussian distribution cannot be made to look Gaussian using these transforms. Also, Box-Cox and Yeo-Johnson proved to be effective compared to other methods. However, this purely depends on your data. In some cases, the first three methods discussed are sufficient to transform a variable to look more like Gaussian.
+2
+
+
+
+
+
+
+Get an email whenever KSV Muralidhar publishes.
+
+Subscribe
+More from DataDrivenInvestor
+Follow
+empowerment through data, knowledge, and expertise. subscribe to DDIntel at https://ddintel.datadriveninvestor.com
+
+Steven Gruyters
+Steven Gruyters
+
+·Feb 10, 2021
+
+The myth of the data driven decision maker
+A LinkedIn search reveals 2.64 million profiles that refer to themselves as “data driven”. I believe a true data driven decision is about as common as getting struck by lightning. We are human beings. Our decisions are shaped by our beliefs, biases, and emotions. We use data and logic to justify our decisions. Not convinced? Let’s say you agreed to make a decision based on data; 60% or higher we move forward, otherwise we stop. The data comes back as 59.7%. What is you initial gut response?
+
+Business
+1 min read
+
+The myth of the data driven decision maker
+Share your ideas with millions of readers.
+
+Write on Medium
+Vijay Bhargav Chettipalli
+Vijay Bhargav Chettipalli
+
+·Feb 10, 2021
+
+The Underrated Skill — Financial Literacy
+Academic qualifications are important and so is financial education. They’re both important and schools are forgetting one of them – Robert Kiyosaki Talking about money is a stigma in most cultures. Unlike the olden days, in the current times, money has become as vital as water is to nourish souls…
+
+Life
+10 min read
+
+The Underrated Skill — Financial Literacy
+Sean Farrell
+Sean Farrell
+
+·Feb 10, 2021
+
+Blockchain Voting in Political Elections
+If you’re looking for a quick way to assess the differences in technological prowess between generations, simply ask someone about blockchain technology. Blockchain, or Distributed Ledger Technology (DLT), makes the history of any digital asset transparent through decentralized cryptographic hashing. …
+
+Politics
+3 min read
+
+Blockchain Voting in Political Elections
+Michalis A. Michael
+Michalis A. Michael
+
+·Feb 10, 2021
+
+The Battle of Main Street against Wall Street — Part 1.
+8 findings that lead to a different take on the GME saga. — Everyone loves an underdog story, like the classic David and Goliath, or in this case, GameStop and Melvin Capital. Even if you’re not involved in investing, chances are that you heard about the GameStop story, which started on a Reddit community called Wallstreetbets, went viral and spread like a wildfire. …
+
+Social Intelligence
+7 min read
+
+The Battle of Small Investors against Wall Street.
+AAA
+AAA
+
+·Feb 10, 2021
+
+Now Entering The Boys Club
+How Clubhouse’s virtual community can address safety issues for women by staying aware of these 3 problems. These days, it almost seems that with the advent of every hyped-up new social application comes a slew of bad press regarding the impact that its effects might have on the general user…
+
+Technology
+6 min read
+
+Now Entering The Boys Club
+Read more from DataDrivenInvestor
+More from Medium
+Starting Haskell
+I got interested in functional programming after seeing what streams and lambdas could do. Once I started digging down the rabbit hole of…
+Scale down specific multiple deployments in kubernetes
+
+SWRM Labs Year in Review
+SWRM Labs Year in Review and Update December 2020
+
+DevConf 2019–2 days experience at Mozilla Booth
+
+What I Learned at Work this Week: JQL
+My manager has historically done a lot of work in Jira, evaluating and triaging the many tickets our team receives. As his responsibilities…
+
+Efficient Delivery & Collection Operations: MobiVisor and Mobile Device Management
+
+How to Remove Odoo Completely
+On ubuntu 18.04 in case your system broken and want to re-install
+
+GitOps implementation
+GitOps: Straight from the book “is to maintain a single source of truth i.e. your git repository. If you want to deploy a new application…
+Get started
+Sign In
+
+Search
+KSV Muralidhar
+KSV Muralidhar
+121 Followers
+
+Data Science | ML | Web scraping | Kaggler | Perpetual learner | Out-of-the-box Thinker | Python | SQL | Excel VBA | Tableau | LinkedIn: https://bit.ly/2VexKQu
+
+Follow
+
+Related
+
+A Practical Guide to Linear Regression
+From EDA to Feature Engineering to Model Evaluation
+
+Using Data Science to Estimate Your Chances of Surviving in Squid Game
+
+Simple Linear Regression (R Tutorial for Data Science)
+
+How I Determined The Success Of A Manga Using Data Science
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Knowable
+
+
+
+
+
+
+Transforming Skewed Data for Machine Learning -
+ODSC CONFERENCES 
+MEETUPS
+AI+ TRAINING
+JOB PORTAL
+NEWSLETTER
+SPEAK AT ODSC
+LOGIN
+Search
+	aixtop
+TOOLS 
+MODELING 
+BUSINESS
+CAREER
+WRITE FOR US
+COMMUNITY 
+UPCOMING WEBINARS
+HIRE
+TRAINING
+Transforming Skewed Data for Machine Learning
+Transforming Skewed Data for Machine Learning
+MACHINE LEARNINGMODELINGSKEWED DATAposted by Nathaniel Jermain June 24, 2019
+
+Skewed Data1
+FacebookTwitterEmailPinterestLinkedInMore
+Skewed data is common in data science; skew is the degree of distortion from a normal distribution. For example, below is a plot of the house prices from Kaggle’s House Price Competition that is right skewed, meaning there are a minority of very large values.
+
+
+Why do we care if the data is skewed? If the response variable is skewed like in Kaggle’s House Prices Competition, the model will be trained on a much larger number of moderately priced homes, and will be less likely to successfully predict the price for the most expensive houses. The concept is the same as training a model on imbalanced categorical classes. If the values of a certain independent variable (feature) are skewed, depending on the model, skewness may violate model assumptions (e.g. logistic regression) or may impair the interpretation of feature importance.
+
+https://odsc.com/california/#register
+
+We can objectively determine if the variable is skewed using the Shapiro-Wilks test. The null hypothesis for this test is that the data is a sample from a normal distribution, so a p-value less than 0.05 indicates significant skewness. We’ll apply the test to the response variable Sale Price above labeled “resp” using Scipy.stats in Python.
+
+
+
+
+
+The p-value is not surprisingly less than 0.05, so we can conclude that the variable is skewed. A more convenient way of evaluating skewness is with pandas’ “.skew” method. It calculates the Fisher–Pearson standardized moment coefficient for all columns in a dataframe. We can calculate it for all the features in Kaggle’s Home Value dataset (labeled “df”) simultaneously with the following code.
+
+
+
+ 
+
+A few of the variables like Pool Area are highly right skewed due to lots of zeros, this is okay. Some models like decision trees are fairly robust to skewed features.
+
+
+We can address skewed variables by transforming them (i.e. applying the same function to each value). Common transformations include square root (sqrt(x)), logarithmic (log(x)), and reciprocal (1/x). We’ll apply each in Python to the right-skewed response variable Sale Price.
+
+Square Root Transformation
+
+
+
+
+After transforming, the data is definitely less skewed, but there is still a long right tail.
+
+Reciprocal Transformation
+
+
+
+
+
+Still not great, the above distribution is not quite symmetrical.
+
+Log Transformation
+
+
+
+
+
+The log transformation seems to be the best, as the distribution of transformed sale prices is the most symmetrical.
+
+Box Cox Transformation
+
+An alternative to manually trying a variety of transformations is the Box Cox transformation. For each variable, a Box Cox transformation estimates the value lambda from -5 to 5 that maximizes the normality of the data using the equation below.
+
+ 
+
+
+
+For negative values of lambda, the transformation performs a variant of the reciprocal of the variable. At a lambda of zero, the variable is log transformed, and for positive lambda values, the variable is transformed the power of lambda. We can apply “boxcox” to all the skewed variables in the dataframe “df” using Scipy.stats.
+
+
+
+
+
+Skewness reduced quite a bit! The box cox transformation is not a panacea for skew however; some variables cannot be transformed to be normally distributed.
+
+Transforming skewed data is one critical step during the data cleaning process. See this article to learn about dealing with imbalanced categorical classes.
+
+How to Learn More about Machine Learning
+At our upcoming event this November 16th-18th in San Francisco, ODSC West 2021 will feature a plethora of talks, workshops, and training sessions on machine learning and machine learning research. You can register now for 50% off all ticket types before the discount drops to 40% in a few weeks. Some highlighted sessions on machine learning include:
+
+Towards More Energy-Efficient Neural Networks? Use Your Brain!: Olaf de Leeuw | Data Scientist | Dataworkz
+Practical MLOps: Automation Journey: Evgenii Vinogradov, PhD | Head of DHW Development | YooMoney
+Applications of Modern Survival Modeling with Python: Brian Kent, PhD | Data Scientist | Founder The Crosstab Kite
+Using Change Detection Algorithms for Detecting Anomalous Behavior in Large Systems: Veena Mendiratta, PhD | Adjunct Faculty, Network Reliability and Analytics Researcher | Northwestern University
+Sessions on MLOps:
+
+Tuning Hyperparameters with Reproducible Experiments: Milecia McGregor | Senior Software Engineer | Iterative
+MLOps… From Model to Production: Filipa Peleja, PhD | Lead Data Scientist | Levi Strauss & Co
+Operationalization of Models Developed and Deployed in Heterogeneous Platforms: Sourav Mazumder | Data Scientist, Thought Leader, AI & ML Operationalization Leader | IBM
+Develop and Deploy a Machine Learning Pipeline in 45 Minutes with Ploomber: Eduardo Blancas | Data Scientist | Fidelity Investments
+Sessions on Deep Learning:
+
+GANs: Theory and Practice, Image Synthesis With GANs Using TensorFlow: Ajay Baranwal | Center Director | Center for Deep Learning in Electronic Manufacturing, Inc
+Machine Learning With Graphs: Going Beyond Tabular Data: Dr. Clair J. Sullivan | Data Science Advocate | Neo4j
+Deep Dive into Reinforcement Learning with PPO using TF-Agents & TensorFlow 2.0: Oliver Zeigermann | Software Developer | embarc Software Consulting GmbH
+Get Started with Time-Series Forecasting using the Google Cloud AI Platform: Karl Weinmeister | Developer Relations Engineering Manager | Google
+FacebookTwitterEmailPinterestLinkedInMore
+0
+Twitter
+0
+Pin
+ABOUT AUTHOR
+
+Nathaniel Jermain
+Nathaniel builds and implements predictive models for a fish research lab at the University of Southern Mississippi. His work informs the management of marine resources in applications across the United States. Connect with Nathaniel on LinkedIn: linkedin.com/in/njermain/
+
+1
+aixsquare
+Stay connected! Get curated newsletters every week
+First Name*
+Name
+Last name*
+Email*
+Email Address
+Country/Region
+
+Please Select
+From time to time, we'd like to contact you with other related content and offers. You may unsubscribe at any time. Privacy Policy
+I agree to receive communications from ODSC.
+LATEST POSTSView all
+Higher-level PyTorch APIs: A short introduction to PyTorch Lightning 	
+Higher-level PyTorch APIs: A short introduction to PyTorch Lightning 
+posted by ODSC COMMUNITY
+Mar 7, 2022
+
+In recent years, the PyTorch community developed several different libraries and APIs on top of PyTorch....
+Building Named Entity Recognition and Relationship Extraction Components with HuggingFace Transformers	
+Building Named Entity Recognition and Relationship Extraction Components with HuggingFace Transformers
+posted by ODSC COMMUNITY
+Mar 7, 2022
+
+Editor’s note: Sujit Pal is a speaker for ODSC East 2022. Be sure to check out...
+GPT-3, RNNs and All That: A Deep Dive into Language Modeling	
+GPT-3, RNNs and All That: A Deep Dive into Language Modeling
+posted by ODSC COMMUNITY
+Mar 7, 2022
+
+As I’ve been working on Chai I’ve been exposed to large language models (LLMs), something I didn’t...
+eu top picks square
+POPULAR POSTS
+Skewed DataTransforming Skewed Data for Machine Learning
+How to Pivot and Plot Data With Pandas
+time series datasetsShow Me the Data: 8 Awesome Time Series Sources
+mssquare
+TAGS
+Machine Learning111ODSC East 2015|Speaker Slides64East 202048Deep Learning48Azure46West 202146Accelerate AI43East 202142Conferences41Europe 202039Europe 202138West 201834R34AI33West 201933East 202231NLP31Reinforcement Learning25TensorFlow25West 202025
+RELATED POSTS
+Higher-level PyTorch APIs: A short introduction to PyTorch Lightning Higher-level PyTorch APIs: A short introduction to PyTorch…
+Logistic Regression From Scratch With PythonLogistic Regression From Scratch With Python
+Master Machine Learning: Multiple Linear Regression From Scratch With PythonMaster Machine Learning: Multiple Linear Regression From…
+ABOUT US
+
+Proactively envisioned multimedia based expertise and cross-media growth strategies. Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing. Holistically pontificate installed base portals after maintainable products.
+
+CONTENT MAP
+Modeling1086		Conferences503
+Business + Management423		Featured Post404
+Tools & Languages345		Machine Learning251
+Deep Learning210		Blog201
+Blogs from ODSC Speakers173		NLP/Text Analytics159
+Career Insights145		Statistics126
+R122		Data Visualization112
+Python107		Predictive Analytics99
+Technology77		Tools72
+Guest contributor71		Research68
+TAGS
+Machine Learning111ODSC East 2015|Speaker Slides64East 202048Deep Learning48Azure46West 202146Accelerate AI43East 202142Conferences41Europe 202039Europe 202138West 201834R34AI33West 201933East 202231NLP31Reinforcement Learning25TensorFlow25West 202025
+ODSC PRIVACY POLICY
+View ODSC Privacy Policy
+
+Copyright © 2021 Open Data Science. All rights reserved.
+

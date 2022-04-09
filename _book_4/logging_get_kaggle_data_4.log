@@ -1,0 +1,378 @@
+----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+-label2target---
+ {'Bus': 1, 'Truck': 2}
+-label2target---
+ {'Bus': 1, 'Truck': 2, 'background': 0}
+-target2label---
+ {1: 'Bus', 2: 'Truck', 0: 'background'}
+----len(trn_df)---- 21598
+----len(val_df)---- 2464
+----type(train_ds)---- <class '__main__.OpenDataset'>
+----type(train_loader)---- <class 'torch.utils.data.dataloader.DataLoader'>
+----get_model--- FasterRCNN(
+  (transform): GeneralizedRCNNTransform(
+      Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+      Resize(min_size=(800,), max_size=1333, mode='bilinear')
+  )
+  (backbone): BackboneWithFPN(
+    (body): IntermediateLayerGetter(
+      (conv1): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+      (bn1): FrozenBatchNorm2d(64)
+      (relu): ReLU(inplace=True)
+      (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+      (layer1): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(64)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(64)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(256)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+            (1): FrozenBatchNorm2d(256)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(64)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(64)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(256)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(64)
+          (conv2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(64)
+          (conv3): Conv2d(64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(256)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer2): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(256, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(128)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(128)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(512)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): FrozenBatchNorm2d(512)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(128)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(128)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(512)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(128)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(128)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(512)
+          (relu): ReLU(inplace=True)
+        )
+        (3): Bottleneck(
+          (conv1): Conv2d(512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(128)
+          (conv2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(128)
+          (conv3): Conv2d(128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(512)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer3): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(256)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(256)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(1024)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): FrozenBatchNorm2d(1024)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(256)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(256)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(1024)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(256)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(256)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(1024)
+          (relu): ReLU(inplace=True)
+        )
+        (3): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(256)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(256)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(1024)
+          (relu): ReLU(inplace=True)
+        )
+        (4): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(256)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(256)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(1024)
+          (relu): ReLU(inplace=True)
+        )
+        (5): Bottleneck(
+          (conv1): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(256)
+          (conv2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(256)
+          (conv3): Conv2d(256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(1024)
+          (relu): ReLU(inplace=True)
+        )
+      )
+      (layer4): Sequential(
+        (0): Bottleneck(
+          (conv1): Conv2d(1024, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(512)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(512)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(2048)
+          (relu): ReLU(inplace=True)
+          (downsample): Sequential(
+            (0): Conv2d(1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False)
+            (1): FrozenBatchNorm2d(2048)
+          )
+        )
+        (1): Bottleneck(
+          (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(512)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(512)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(2048)
+          (relu): ReLU(inplace=True)
+        )
+        (2): Bottleneck(
+          (conv1): Conv2d(2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn1): FrozenBatchNorm2d(512)
+          (conv2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+          (bn2): FrozenBatchNorm2d(512)
+          (conv3): Conv2d(512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False)
+          (bn3): FrozenBatchNorm2d(2048)
+          (relu): ReLU(inplace=True)
+        )
+      )
+    )
+    (fpn): FeaturePyramidNetwork(
+      (inner_blocks): ModuleList(
+        (0): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+        (1): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+        (2): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+        (3): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+      )
+      (layer_blocks): ModuleList(
+        (0): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (1): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+        (3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      )
+      (extra_blocks): LastLevelMaxPool()
+    )
+  )
+  (rpn): RegionProposalNetwork(
+    (anchor_generator): AnchorGenerator()
+    (head): RPNHead(
+      (conv): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (cls_logits): Conv2d(256, 3, kernel_size=(1, 1), stride=(1, 1))
+      (bbox_pred): Conv2d(256, 12, kernel_size=(1, 1), stride=(1, 1))
+    )
+  )
+  (roi_heads): RoIHeads(
+    (box_roi_pool): MultiScaleRoIAlign()
+    (box_head): TwoMLPHead(
+      (fc6): Linear(in_features=12544, out_features=1024, bias=True)
+      (fc7): Linear(in_features=1024, out_features=1024, bias=True)
+    )
+    (box_predictor): FastRCNNPredictor(
+      (cls_score): Linear(in_features=1024, out_features=3, bias=True)
+      (bbox_pred): Linear(in_features=1024, out_features=12, bias=True)
+    )
+  )
+)
+----type(optimizer----- <class 'torch.optim.sgd.SGD'>
+--log-- <torch_snippets.torch_loader.Report object at 0x7f571ce69cd0>
+---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 1
+--------target-- {'boxes': tensor([[ 77.,  34., 203., 145.]]), 'labels': tensor([1])}
+---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 2
+--------target-- {'boxes': tensor([[ 61.,  31., 156.,  97.],
+        [157.,  45., 223.,  91.]]), 'labels': tensor([2, 2])}
+---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 1
+--------target-- {'boxes': tensor([[ 35.,  60.,  83., 157.]]), 'labels': tensor([1])}
+---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 1
+--------target-- {'boxes': tensor([[ 64.,  43., 223., 223.]]), 'labels': tensor([1])}
+----train_loader--->>-- type(inputs <class 'tuple'>
+
+EPOCH: 0.000	trn_loss: 1.452	trn_loc_loss: 1.232	trn_regr_loss: 0.193	trn_objectness_loss: 0.023	trn_rpn_box_reg_loss: 0.004	(1.86s - 31823.68s remaining)---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 1
+--------target-- {'boxes': tensor([[ 13.,  28., 216., 218.]]), 'labels': tensor([2])}
+---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 1
+--------target-- {'boxes': tensor([[ 13.,  11., 220., 210.]]), 'labels': tensor([2])}
+---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 3
+--------target-- {'boxes': tensor([[  7.,  42.,  42.,  71.],
+        [ 21.,  32., 201., 209.],
+        [192.,  55., 223.,  87.]]), 'labels': tensor([2, 2, 2])}
+---__getitem__----df_init_labels.head()-----             ImageID  Source LabelName  ...  XClick2Y  XClick3Y  XClick4Y
+0  0000599864fd15b3  xclick       Bus  ...  0.512700  0.650047  0.457197
+1  00006bdb1eb5cd74  xclick     Truck  ...  0.241855  0.352130  0.437343
+2  00006bdb1eb5cd74  xclick     Truck  ...  0.398496  0.409774  0.295739
+3  00010bf498b64bab  xclick       Bus  ...  0.493882  0.705228  0.521691
+4  00013f14dd4e168f  xclick       Bus  ...  0.303940  0.999062  0.523452
+
+[5 rows x 21 columns]
+----foobar----len(boxes 1
+--------target-- {'boxes': tensor([[  0.,  42., 156., 223.]]), 'labels': tensor([2])}
+----train_loader--->>-- type(inputs <class 'tuple'>
+
+
+
+
+###### FOOBAR Own Terminal Print 
+
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ python get_kaggle_data.py > logging_get_kaggle_data_4.log
+/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torchvision/ops/boxes.py:101: UserWarning: This overload of nonzero is deprecated:
+        nonzero()
+Consider using one of the following signatures instead:
+        nonzero(*, bool as_tuple) (Triggered internally at  /opt/conda/conda-bld/pytorch_1595629395347/work/torch/csrc/utils/python_arg_parser.cpp:766.)
+  keep = keep.nonzero().squeeze(1)
+Traceback (most recent call last):
+  File "get_kaggle_data.py", line 223, in <module>
+    loss, losses = train_batch(inputs, model_fasterrcnn_resnet50, optimizer)
+  File "get_kaggle_data.py", line 188, in train_batch
+    loss.backward()
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/tensor.py", line 185, in backward
+    torch.autograd.backward(self, gradient, retain_graph, create_graph)
+  File "/home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/autograd/__init__.py", line 125, in backward
+    Variable._execution_engine.run_backward(
+RuntimeError: CUDA out of memory. Tried to allocate 98.00 MiB (GPU 0; 3.82 GiB total capacity; 2.54 GiB already allocated; 98.69 MiB free; 2.68 GiB reserved in total by PyTorch)
+Exception raised from malloc at /opt/conda/conda-bld/pytorch_1595629395347/work/c10/cuda/CUDACachingAllocator.cpp:272 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::string) + 0x4d (0x7f576d2dc77d in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libc10.so)
+frame #1: <unknown function> + 0x20626 (0x7f576d534626 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x214f4 (0x7f576d5354f4 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x21b81 (0x7f576d535b81 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libc10_cuda.so)
+frame #4: at::native::empty_cuda(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0x249 (0x7f5770436e39 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so)
+frame #5: <unknown function> + 0xd15c49 (0x7f576e457c49 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0xd2fa77 (0x7f576e471a77 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0xe450dd (0x7f57a487c0dd in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #8: <unknown function> + 0xe453f7 (0x7f57a487c3f7 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #9: at::empty(c10::ArrayRef<long>, c10::TensorOptions const&, c10::optional<c10::MemoryFormat>) + 0xfa (0x7f57a4986e7a in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #10: at::native::mm_cuda(at::Tensor const&, at::Tensor const&) + 0x6c (0x7f576f78757c in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so)
+frame #11: <unknown function> + 0xd04d20 (0x7f576e446d20 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cuda.so)
+frame #12: <unknown function> + 0x7b1990 (0x7f57a41e8990 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #13: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f57a49d0c7c in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #14: at::mm(at::Tensor const&, at::Tensor const&) + 0x4b (0x7f57a4921b0b in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0x2c2be8f (0x7f57a6662e8f in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #16: <unknown function> + 0x7b1990 (0x7f57a41e8990 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #17: at::Tensor c10::Dispatcher::call<at::Tensor, at::Tensor const&, at::Tensor const&>(c10::TypedOperatorHandle<at::Tensor (at::Tensor const&, at::Tensor const&)> const&, at::Tensor const&, at::Tensor const&) const + 0xbc (0x7f57a49d0c7c in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #18: at::Tensor::mm(at::Tensor const&) const + 0x4b (0x7f57a4ab710b in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0x2a6d094 (0x7f57a64a4094 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #20: torch::autograd::generated::AddmmBackward::apply(std::vector<at::Tensor, std::allocator<at::Tensor> >&&) + 0x2d5 (0x7f57a64aa055 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #21: <unknown function> + 0x30d1017 (0x7f57a6b08017 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #22: torch::autograd::Engine::evaluate_function(std::shared_ptr<torch::autograd::GraphTask>&, torch::autograd::Node*, torch::autograd::InputBuffer&, std::shared_ptr<torch::autograd::ReadyQueue> const&) + 0x1400 (0x7f57a6b03860 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #23: torch::autograd::Engine::thread_main(std::shared_ptr<torch::autograd::GraphTask> const&) + 0x451 (0x7f57a6b04401 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #24: torch::autograd::Engine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x89 (0x7f57a6afc579 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_cpu.so)
+frame #25: torch::autograd::python::PythonEngine::thread_init(int, std::shared_ptr<torch::autograd::ReadyQueue> const&, bool) + 0x4a (0x7f57aae261ba in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages/torch/lib/libtorch_python.so)
+frame #26: <unknown function> + 0xc819d (0x7f57c93fd19d in /home/dhankar/anaconda3/envs/pytorch_venv/bin/../lib/libstdc++.so.6)
+frame #27: <unknown function> + 0x76db (0x7f57e5b1e6db in /lib/x86_64-linux-gnu/libpthread.so.0)
+frame #28: clone + 0x3f (0x7f57e584761f in /lib/x86_64-linux-gnu/libc.so.6)
+
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ 

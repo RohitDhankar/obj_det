@@ -1,0 +1,216 @@
+
+
+https://rom1504.medium.com/image-embeddings-ed1b194d113e
+
+
+Romain Beaumont
+Romain Beaumont
+Jul 21, 2020
+
+·
+11 min read
+Image embeddings
+Image similarity and building embeddings with modern computer vision
+Embeddings are amazing! Do you want to learn how to build a visual search engine using any image dataset? I built a python library to demo it, and I will explain here how you can build your own embeddings
+Links Github Quickstart Demo Beyond images
+
+Finding flowers that look like the query
+What are image embeddings?
+Image similarity intuition
+There are a lot of things that are intuitive and obvious to us about the world. For example, two instances of the same category look like the same thing, we can recognize which flower looks like another, without even knowing its name. And we can do the same thing with many kinds of objects.
+This skill allows us to recognize objects, to know which object we like and which we don’t like, to find more items like this.
+What if we could give this skill to computers so they could help us find what we like, and identify what they see?
+In this post, I will focus on the looks of items, but in future medium posts, I’ll show how this idea not only applies to images but also to many other characteristics.
+What is an image?
+So let’s start with the beginning. What is an image for a computer?
+The way this is represented is simply a grid of colors.
+
+black and white image representation
+Now to find a similar picture among a group of pictures, what we need is a way to compute a distance between 2 pictures. How can this be done?
+A simple image distance
+A simple idea could be to simply compute the difference in pixels between 2 images and do the average. This method works pretty well to retrieve images that are exactly the same. But what happens if you have a variation of light, rotation of the item, a difference of size? You’ll get a score that doesn’t properly represent the difference.
+SIFT, SURF, FAST: classic descriptors
+A second idea that is more advanced is to use image descriptors such as SIFT. These descriptors extract features from the image using computer vision that are invariant to some geometric transformation on the image. I advise reading this medium series for more information on this topic https://medium.com/data-breach/introduction-to-sift-scale-invariant-feature-transform-65d7f3a72d40 . This is going to work pretty well for identifying images that represent the same item.
+
+SIFT
+Convolutional nets
+If we want to identify two instances of the same category that looks more different than these transformations, we need another method. That’s where convolutional neural nets come into play. In recent years, these deep learning models have achieved very high accuracies to classify pictures. These same convolutional neural nets can be used to extract features from pictures that are invariant not only to geometric transformation but to the instance itself. Two images of the same category will have the same representation. If you want to know more about recent computer vision, I advise reading my article on it https://towardsdatascience.com/learning-computer-vision-41398ad9941f
+
+A convolution layer
+KNN
+Coming back to our original idea, what does it mean for us? It means from 2 images of the same class of object, we can get 2 vectors that have a small distance. Using a KNN algorithm that retrieves the k closest point from a set of points, we can efficiently retrieve closeby images.
+
+Amazing isn’t it?
+Let’s see how to get this done in practice.
+Building image embeddings
+I built a simple library to showcase the whole process to build image embeddings, to make it straight forward for you to apply this on new datasets. I encourage you to try using it and then look at its code, which should help understand the details. It’s available on GitHub at https://github.com/rom1504/image_embeddings
+Let’s go over the details on how to build image embeddings.
+For a quick demo go to https://rom1504.github.io/image_embeddings/
+Then go to this notebook that describes with code what this article describes in text https://colab.research.google.com/github/rom1504/image_embeddings/blob/master/notebooks/using_the_lib.ipynb
+Download and resize
+It might seem obvious but the first step to being able to find closeby images is to download them!
+This part might deserve a whole article to itself because it’s not an easy problem. If your dataset is only a few thousand pictures, this will work just fine, whatever the technology you use. However, if you start downloading millions of images, it gets important to do this in parallel. This can be achieved through async programming or by creating many threads. For hundreds of millions of images, surprisingly it can still be achieved in hours, but you’ll need a distributed computing framework such as spark and a lot of bandwidth to do it, and be careful about the traffic you impose on the server where you download the pictures!
+For this article, I will consider a simpler case: let’s just use publicly available TensorFlow datasets of images. https://www.tensorflow.org/datasets/catalog/overview
+
+tf flowers dataset
+They are provided in a standard format, with helpers to download them in python. I built a simple wrapper around it to download them and store a set of pictures in a folder. One thing to be really careful about when downloading pictures is to resize them while you download them, otherwise, the output folder will be much bigger than actually required.
+EfficientNet inference
+Once these pictures are downloaded, we can start actually building the image embeddings.
+For this, we’ll use a recent convolutional net called EfficientNet. EfficientNet is particularly impressive as it provides a class of automatically generated models with a tradeoff between the number of parameters (few parameters means fast inference and training) and accuracy. Read more on EfficientNet at https://ai.googleblog.com/2019/05/efficientnet-improving-accuracy-and.html
+
+EfficientNet trade-off
+EfficientNet B0 is particularly fast while keeping a decent accuracy, so that’s what I included in the library. Any other convnet could be used instead.
+Using weights pre-trained on the general dataset ImageNet work pretty well for a variety of kind of images. It is also possible to fine-tune these weights on your dataset or to retrain the network. I’ll come back to this in the training section.
+EfficientNet has an efficient and simple to use Keras implementation https://github.com/qubvel/efficientnet
+What is built in https://github.com/rom1504/image_embeddings is helpers to do 2 things :
+Building tfrecords out of images: it’s much faster for TensorFlow to read and use tfrecords than many small picture files
+Apply the EfficientNet model and save the embeddings
+For thousands of pictures, this takes about a minute on CPU. It is 5x faster on GPU, in particular with large batches. On a big machine, millions of pictures can be processed in hours. For datasets of a hundred million pictures, it is surprisingly possible to achieve it in an hour with Pyspark and a big Hadoop cluster.
+Knn
+At this point, we managed to build embeddings for a thousand pictures of the tf flowers dataset.
+What can we do with it? One thing we can do is from a query, for example, one picture, we can retrieve all the closest pictures.
+
+KNN using cat and dog dataset
+Many algorithms can compute a KNN.
+A simple algorithm is to use a max heap and to remove the max each time you compute the distance between the query and one point. That’s an O(N*log(K)) algorithm in time, using only an additional space of O(K). (It’s also possible to do this in O(N) time by rearranging the embeddings every time using the heapify method)
+If you have thousands of embeddings, this works fine, and that’s what I used through the faiss (https://github.com/facebookresearch/faiss) library for this example. This faiss library is really good to go beyond this algorithm called brute force. It provides IVF and HNSW algorithms which have much better complexities, at the cost of being approximate. Faiss also provides ways to reduce the size in memory of the index, in a process called quantization. This makes it possible to scale knn search to million and even billion of embeddings.
+You can play with https://colab.research.google.com/github/rom1504/image_embeddings/blob/master/notebooks/using_the_lib.ipynb to check what doing a knn on the tf flowers or cat vs dog datasets gives.
+I also built a simple fully front knn example that stores the embeddings in the browser and perform the knn there, check it out at https://rom1504.github.io/image_embeddings/
+What can be done using this?
+Beyond the scientific achievement that reproduces a part of our skill to recognize things in pictures, this has many applications.
+Retrieval
+
+Identifying flowers with PlantNet
+A simple use case of image embeddings is information retrieval. With a big enough set of image embedding, it unlocks building amazing applications such as :
+searching for a plant using pictures of its flower, its leaves, …
+looking for a similar image in the whole web
+finding similarly looking products
+Any many other, anything that humans can identify based on how it looks could be identified using this kind of technique.
+Recommender systems
+A second use case that is truly impressive is the recommendation systems. Instead of using a single item to do a query, it is possible to use any combination of items. A simple way to do this combination might be an average. That means that using a list of items a user saw, it is possible to recommend relevant items to them. Finding the rare pearl based on niche interest can happen this way.
+In place of a simple average of embeddings, modern recommender systems build models that learn how to optimize these embeddings to achieve various optimization criteria. This is used by large companies successfully, but what if you could train your own recommendation system to find your products that best match your personal objectives?
+Photo managers
+
+KMeans
+Embeddings can be used with a knn, but as dense vectors are a natural mathematical object, many algorithms work out of the box of them. For example, kmeans is a great fit. Using it on image embeddings will form groups of similar objects, allowing a human to say what each cluster could be. In photo managers, clustering is a simple solution to find a group of objects that the user wants to identify (could be people, but also pets or places).
+And so much more
+
+Embeddings are a representation of the world, and the general field that studies them is called representation learning. There are so many applications of representation learning for images, including :
+GAN: generating images from representation https://towardsdatascience.com/generative-adversarial-network-gan-for-dummies-a-step-by-step-tutorial-fdefff170391
+Style gan: generating images with a style from representation or transforming images going through images https://github.com/Puzer/stylegan-encoder
+Cycle gan: image to image translation https://github.com/junyanz/CycleGAN
+Visual question answering: see an amazing example of this at https://vilbert.cloudcv.org/
+Training networks to produce image embeddings
+We didn’t cover yet how to train such a convolutional net and only shown how to use a pre-trained network. This is a vast topic and there are many ways to do this, many tasks on which to improve embeddings, but let’s mention a few ways to fine-tune them or train them from scratch.
+Training for classification
+One of the most common applications of computer vision and the one that had the most success is image classification. Networks trained on ImageNet work pretty well as feature extractor as ImageNet is a very general dataset containing many different kinds of items. To justify retraining this kind of network from scratch, the domain needs to be really different from the kind of images found in ImageNet and the dataset needs to be really large, millions of images.
+Fine-tuning
+Another way to improve the network adaptation for your dataset is to fine-tune it. The idea is to reuse well-trained weights from an existing network and only use a few thousands of images to improve it for a particular domain. https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/#0 is a very nice tutorial to learn how to do this.
+Training for triple loss
+
+An illustration of triple loss
+Instead of training for categorization, another way to build a neural network to produce image embeddings is to use a triple loss. The training data, in this case, is not a pair of images and labels but set of pictures from each item. For example, it could be different pictures of one person. https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognition-with-deep-learning-c3cffc121d78 is a really great article about this process.
+Fine-tuning for a task
+This might be the broadest and yet the most interesting way to train your embeddings. Instead of building general embeddings that makes sense regardless of the context, it is possible to build embeddings that will work particularly well for a given task. An interesting example of this might be to use a deep learning recommendation system to fine-tune embeddings that will match best the business objectives of the recommendations.
+Metrics
+Having to train means that the results were not as perfect as you expected! Indeed embeddings work best when adapted to each task as the similarity of two items can vary widely based on the perspective. Tasks may have their own metrics such as retrieval or recommendation recall, but some metrics are general and work well to evaluate the quality of the embeddings.
+One of them consists in estimating whether the K closest items to a given item are of the same category. This is a pretty interesting metric as it seems expected than the closest pictures of a picture of a cat would be a cat for example! This can be a useful sanity check before going to metrics more adapted for each task.
+What’s next?
+If you liked this post, you’ll like the next ones even more.
+Embeddings can be built using images, but they can also be computed for words, contexts, graphs, and then aggregation on those to build embeddings for products, recipes, sentences, documents, …
+Solving problems at scale with embeddings is natural, and many tasks work well with them, this is a very powerful technique to represent the world and many forms of data.
+That’s why I’ll keep working on a series of posts about embeddings. Follow me and keep posted!
+Make sure to try this out yourself at https://github.com/rom1504/image_embeddings
+615
+
+
+2
+
+
+
+
+
+More from Romain Beaumont
+Follow
+
+Machine learning engineer interested in representation learning, computer vision, natural language processing and programming (distributed systems, algorithms)
+
+Published in Towards Data Science
+
+·Nov 25, 2018
+
+Learning computer vision
+Recently I’ve been reading and experimenting a lot with computer vision, here is an introduction of what is interesting to learn and use in that domain. Computer vision has advanced a lot in recent years. Those are the topics I will mention here : Technologies : Face detection : Haar…
+
+Machine Learning
+8 min read
+
+Learning computer vision
+Love podcasts or audiobooks? Learn on the go with our new app.
+
+Try Knowable
+More from Medium
+
+GloVe
+Glove is a very important tool in NLP. It is an acronym for Global Vectors for Word Representation.It means the global array to…
+
+Why I was forced to learn Deep Learning
+I started to hear about Artifical Intelligence some 4–5 years ago. I used to imagine it as a part of robotics which will eventually grow…
+
+Choosing a Speech-to-Text Service
+How we chose between Google, Speechmatics and Kaldi
+
+K-Nearest Neighbors Algorithm In Python, by example
+
+Linear Regression in Python
+Create a Linear Regression model to predict house prices in King County, USA using Sklearn and Python
+
+AutoML Vision — how to train your model?
+Start from scratch and train your own model.
+
+Introduction to NLP - Part 1: Preprocessing text in Python
+
+Machine learning in the wild
+Learning and applying machine learning can be completely different things. When we learn machine learning, we get to know about the…
+Get started
+Sign In
+
+Search
+Romain Beaumont
+Romain Beaumont
+293 Followers
+
+Machine learning engineer interested in representation learning, computer vision, natural language processing and programming (distributed systems, algorithms)
+
+Follow
+
+Related
+
+Review — Google’s Neural Machine Translation System: Bridging the Gap between Human and Machine…
+
+How Does Normalization Layer Affect Image Styles? What is AdaIN?
+
+Emotion Categorization using TensorFlow
+Text classification is a machine learning technique that assigns a set of predefined categories to open-ended text. Text classifiers can be…
+
+Hand Gesture Recognition
+An ML transfer learning project using VGG-16 CNN model.
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Knowable
+
+

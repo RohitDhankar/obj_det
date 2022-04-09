@@ -1,0 +1,994 @@
+
+
+https://fractaldle.medium.com/guide-to-build-faster-rcnn-in-pytorch-95b10c273439
+
+
+Fractal AI@Scale Research Group
+Fractal AI@Scale Research Group
+Dec 4, 2018
+
+·
+31 min read
+Guide to build Faster RCNN in PyTorch
+Understanding and implementing Faster RCNN from scratch.
+Introduction
+Faster R-CNN is one of the first frameworks which completely works on Deep learning. It is built upon the knowledge of Fast RCNN which indeed built upon the ideas of RCNN and SPP-Net. Though we bring some of the ideas of Fast RCNN when building Faster RCNN framework, we will not discuss about these frameworks in-details. One of the reasons for this is that Faster R-CNN performs very well and it doesn’t use traditional computer vision techniques like selective search etc. At a very high level, The Fast RCNN and Faster RCNN works as shown in the below flow chart.
+
+Fast RCNN and Faster RCNN
+We have already written a detailed blog post on object detection frameworks here. This will act as a guide for those people who would like to understand Faster RCNN by coding themselves.
+The only difference you can observe in the above diagram is that Faster RCNN has replaced the selective search with RPN (Region proposal network) network. The selective search algorithm uses SIFT and HOG descriptors to generate object proposals and it takes 2 sec per image on CPU. This is a costly process and Fast RCNN takes 2.3 seconds in total to generate predictions on one image, where as Faster RCNN works at 5 FPS (frames per second) even when using very deep image classifiers like VGGnet (ResNet and ResNext are also used now) in the back-end.
+So in-order to build Faster RCNN from scratch, We need to understand the following four topics clearly,
+[Flow]
+Region Proposal network (RPN)
+RPN loss functions
+Region of Interest Pooling (ROI)
+ROI loss functions
+The Region Proposal network also introduced a novel concept called Anchor boxes which has become a gold standard there after in building object detection pipelines. Lets deep dive and see how various stages of the pipelines works together in Faster RCNN.
+The usual data flow in Faster R-CNN when training the network is as written below
+Features Extraction from the image.
+Creating anchor targets.
+Locations and objectness score prediction from the RPN network.
+Taking the top N locations and their objectness scores aka proposal layer
+Passing these top N locations through Fast R-CNN network and generating locations and cls predictions for each location is suggested in 4.
+generating proposal targets for each location suggested in 4
+Using 2 and 3 to calculate rpn_cls_loss and rpn_reg_loss.
+using 5 and 6 to calculate roi_cls_loss and roi_reg_loss.
+We will configure VGG16 and use it as the back-end in this experiment. Note, we can use any standard classification network in the similar way to do so.
+Feature Extraction
+We begin with an image and a set of bounding boxes along with its label as defined below.
+import torch
+image = torch.zeros((1, 3, 800, 800)).float()
+
+bbox = torch.FloatTensor([[20, 30, 400, 500], [300, 400, 500, 600]]) # [y1, x1, y2, x2] format
+labels = torch.LongTensor([6, 8]) # 0 represents background
+sub_sample = 16
+
+The VGG16 network is used as a feature extraction module here, This acts as a backbone for both the RPN network and Fast_R-CNN network. We need to make a few changes to the VGG network inorder to make this work. Since the input of the network is 800, the output of the feature extraction module should have a feature map size of (800//16). So we need to check where the VGG16 module is achieving this feature map size and trim the network till der. This can be done in the following way.
+Create a dummy image and set the volatile to be False
+List all the layers of the vgg16
+Pass the image through the layers and subset the list when the output_size of the image (feature map) is below the required level (800//16)
+Convert this list into a Sequential module.
+Lets see go through each step
+Create a dummy image and set the volatile to be False.
+import torchvision
+dummy_img = torch.zeros((1, 3, 800, 800)).float()
+print(dummy_img)
+#Out: torch.Size([1, 3, 800, 800])
+2. List all the layers of the VGG16.
+model = torchvision.models.vgg16(pretrained=True)
+fe = list(model.features)
+print(fe) # length is 15
+# [Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  MaxPool2d(kernel_size=(2, 2), stride=(2, 2), dilation=(1, 1), ceil_mode=False),
+#  Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  MaxPool2d(kernel_size=(2, 2), stride=(2, 2), dilation=(1, 1), ceil_mode=False),
+#  Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  MaxPool2d(kernel_size=(2, 2), stride=(2, 2), dilation=(1, 1), ceil_mode=False),
+#  Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  MaxPool2d(kernel_size=(2, 2), stride=(2, 2), dilation=(1, 1), ceil_mode=False),
+#  Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)),
+#  ReLU(inplace),
+#  MaxPool2d(kernel_size=(2, 2), stride=(2, 2), dilation=(1, 1), ceil_mode=False)]
+3. Pass the image through the layers and check where you are getting this size.
+req_features = []
+k = dummy_img.clone()
+for i in fe:
+    k = i(k)
+    if k.size()[2] < 800//16:
+        break
+    fee.append(i)
+    out_channels = k.size()[1]
+print(len(req_features)) #30
+print(out_channels) # 512
+4. Convert this list into a Sequential module.
+faster_rcnn_fe_extractor = nn.Sequential(*req_features)
+Now this faster_rcnn_fe_extractor can be used as our backend. Lets compute the features
+out_map = faster_rcnn_fe_extractor(image)
+print(out_map.size())
+#Out: torch.Size([1, 512, 50, 50])
+Anchor boxes
+This is our first encounter with anchor boxes. A detailed understanding of anchor boxes will allow us to understand object detection very easily. So lets talk in detail on how this is done.
+Generate Anchor at a feature map location
+Generate Anchor at all the feature map location.
+Assign the labels and location of objects (with respect to the anchor) to each and every anchor.
+Generate Anchor at a feature map location
+We will use anchor_scales of 8, 16, 32, ratio of 0.5, 1, 2 and sub sampling of 16 (Since we have pooled our image from 800 px to 50px). Now every pixel in the output feature map maps to corresponding 16 * 16 pixels in the image. This is shown in the below image
+
+image to feature map mapping
+We need to generate anchor boxes on top of this 16 * 16 pixels first and similarly do along x-axis and y-axis to get all the anchor boxes. This is done in the step-2.
+At each pixel location on the feature map, We need to generate 9 anchor boxes (number of anchor_scales and number of ratios) and each anchor box will have ‘y1’, ‘x1’, ‘y2’, ‘x2’. So at each location anchor will have a shape of (9, 4). Lets begin with a an empty array filled with zero values.
+import numpy as np
+ratio = [0.5, 1, 2]
+anchor_scales = [8, 16, 32]
+
+anchor_base = np.zeros((len(ratios) * len(scales), 4), dtype=np.float32)
+
+print(anchor_base)
+
+#Out:
+# array([[0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.],
+#        [0., 0., 0., 0.]], dtype=float32)
+Lets fill these values with corresponding y1, x1, y2, x2 at each anchor_scale and ratios. Our center for this base anchor will be at
+ctr_y = sub_sample / 2.
+ctr_x = sub_sample / 2.
+
+print(ctr_y, ctr_x)
+# Out: (8, 8)
+for i in range(len(ratios)):
+  for j in range(len(anchor_scales)):
+    h = sub_sample * anchor_scales[j] * np.sqrt(ratios[i])
+    w = sub_sample * anchor_scales[j] * np.sqrt(1./ ratios[i])
+
+    index = i * len(anchor_scales) + j
+
+    anchor_base[index, 0] = ctr_y - h / 2.
+    anchor_base[index, 1] = ctr_x - w / 2.
+    anchor_base[index, 2] = ctr_y + h / 2.
+    anchor_base[index, 3] = ctr_x + w / 2.
+
+#Out:
+# array([[ -37.254833,  -82.50967 ,   53.254833,   98.50967 ],
+#        [ -82.50967 , -173.01933 ,   98.50967 ,  189.01933 ],
+#        [-173.01933 , -354.03867 ,  189.01933 ,  370.03867 ],
+#        [ -56.      ,  -56.      ,   72.      ,   72.      ],
+#        [-120.      , -120.      ,  136.      ,  136.      ],
+#        [-248.      , -248.      ,  264.      ,  264.      ],
+#        [ -82.50967 ,  -37.254833,   98.50967 ,   53.254833],
+#        [-173.01933 ,  -82.50967 ,  189.01933 ,   98.50967 ],
+#        [-354.03867 , -173.01933 ,  370.03867 ,  189.01933 ]],
+#       dtype=float32)
+These are the anchor locations at the first feature map pixel, we have to now generate these anchors at all the locations of feature map. Also note that negitive values mean that the anchor boxes are outside image dimension. In the later section we will label them with -1 and remove them when calculating the loss the functions and generating proposals for anchor boxes. Also Since we got 9 anchors at each location and there 50 * 50 such locations inside an image, We will get 17500 (50 * 50 * 9) anchors in total. Lets generate other anchors now,
+2. Generate Anchor at all the feature map location.
+In-order to do this, we need to first generate the centres for each and every feature map pixel.
+fe_size = (800//16)
+ctr_x = np.arange(16, (fe_size+1) * 16, 16)
+ctr_y = np.arange(16, (fe_size+1) * 16, 16)
+Looping through the ctr_x and ctr_y will give us the centers at each and every location. The sudo code is as a below
+For x in shift_x:
+  For y in shift_y:
+    Generate anchors at (x, y) locations
+The same can be seen visually below
+
+Anchor centres on a image
+Lets generate this centers using python
+index = 0
+for x in range(len(ctr_x)):
+    for y in range(len(ctr_y)):
+        ctr[index, 1] = ctr_x[x] - 8
+        ctr[index, 0] = ctr_y[y] - 8
+        index +=1
+The output will be the (x, y) value at each location as shown in the image above. Together we have 2500 anchor centers. Now at each center we need to generate the anchor boxes. This can be done using the code we have used for generating anchor at one location, adding an extract for loop for supplying centers of each anchor will do. Lets see how this is done
+anchors = np.zeros((fe_size * fe_size * 9), 4)
+index = 0
+for c in ctr:
+  ctr_y, ctr_x = c
+  for i in range(len(ratios)):
+    for j in range(len(anchor_scales)):
+      h = sub_sample * anchor_scales[j] * np.sqrt(ratios[i])
+      w = sub_sample * anchor_scales[j] * np.sqrt(1./ ratios[i])
+      anchors[index, 0] = ctr_y - h / 2.
+      anchors[index, 1] = ctr_x - w / 2.
+      anchors[index, 2] = ctr_y + h / 2.
+      anchors[index, 3] = ctr_x + w / 2.
+      index += 1
+print(anchors.shape)
+#Out: [22500, 4]
+Note: I have made this code look very verbose inorder to simply things. There are better way of generating anchor boxes.
+These will be the final anchors for the image which we will go to use going further. Lets visually see how these anchors are spread on the image
+
+Anchor boxes at (400, 400)
+
+Valid anchor boxes for an image
+Assign the labels and location of objects (with respect to the anchor) to each and every anchor.
+Now since we have generated all the anchor boxes, we need to look at the objects inside the image and assign them to the specific anchor boxes which contain them. Faster_R-CNN has some guidelines to assign labels to the anchor boxes
+We assign a positive label to two kind of anchors a) The anchor/anchors with the highest Intersection-over-Union(IoU) overlap with a ground-truth-box or b) An anchor that has an IoU overlap higher than 0.7 with ground-truth box.
+Note that single ground-truth object may assign positive labels to multiple anchors.
+c) We assign a negative label to a non-positive anchor if its IoU ratio is lower than 0.3 for all ground-truth boxes. d) Anchors that are neither positive nor negitive do not contribute to the training objective.
+Lets see how this is done.
+bbox = np.asarray([[20, 30, 400, 500], [300, 400, 500, 600]], dtype=np.float32) # [y1, x1, y2, x2] format
+labels = np.asarray([6, 8], dtype=np.int8) # 0 represents background
+We will assign the labels and locations for the anchor boxes in the following ways.
+Find the indexes of valid anchor boxes and create an array with these indexes. create an label array with shape index array filled with -1.
+check weather one of the above conditition a, b, c is statisfying or not and fill the label accordingly. Incase of positive anchor box (label is 1), Note which ground truth object has resulted in this.
+calculate the locations (loc) of ground truth associated with the anchor box wrt to the anchor box.
+Reorganize all anchor boxes by filling with -1 for all unvalid anchor boxes and values we have calculated for all valid anchor boxes.
+Outputs should be labels with (N, 1) array and locs with (N, 4) array.
+Find the index of all valid anchor boxes
+index_inside = np.where(
+        (anchors[:, 0] >= 0) &
+        (anchors[:, 1] >= 0) &
+        (anchors[:, 2] <= 800) &
+        (anchors[:, 3] <= 800)
+    )[0]
+print(index_inside.shape)
+#Out: (8940,)
+create an empty label array with inside_index shape and fill with -1. Default is set to (d)
+label = np.empty((len(inside_index), ), dtype=np.int32)
+ label.fill(-1)
+ print(label.shape)
+#Out = (8940, )
+create an array with valid anchor boxes
+valid_anchor_boxes = anchors[inside_index]
+print(valid_anchor_boxes.shape)
+#Out = (8940, 4)
+For each valid anchor box calculate the iou with each ground truth object. Since we have 8940 anchor boxes and 2 ground truth objects, we should get an array with (8490, 2) as the output. The sudo code for calculating iou between two boxes will be
+- Find the max of x1 and y1 in both the boxes (xn1, yn1)
+- Find the min of x2 and y2 in both the boxes (xn2, yn2)
+- Now both the boxes are intersecting only
+ if (xn1 < xn2) and (yn2 < yn1)
+      - iou_area will be (xn2 - xn1) * (yn2 - yn1)
+ else
+      - iuo_area will be 0
+- similarly calculate area for anchor box and ground truth object
+- iou = iou_area/(anchor_box_area + ground_truth_area - iou_area)
+The python code for calculating the ious is as follows
+ious = np.empty((len(valid_anchors), 2), dtype=np.float32)
+ious.fill(0)
+print(bbox)
+for num1, i in enumerate(valid_anchors):
+    ya1, xa1, ya2, xa2 = i  
+    anchor_area = (ya2 - ya1) * (xa2 - xa1)
+    for num2, j in enumerate(bbox):
+        yb1, xb1, yb2, xb2 = j
+        box_area = (yb2- yb1) * (xb2 - xb1)
+        inter_x1 = max([xb1, xa1])
+        inter_y1 = max([yb1, ya1])
+        inter_x2 = min([xb2, xa2])
+        inter_y2 = min([yb2, ya2])
+        if (inter_x1 < inter_x2) and (inter_y1 < inter_y2):
+            iter_area = (inter_y2 - inter_y1) * \
+(inter_x2 - inter_x1)
+            iou = iter_area / \
+(anchor_area+ box_area - iter_area)            
+        else:
+            iou = 0.
+        ious[num1, num2] = iou
+print(ious.shape)
+#Out: [22500, 2]
+Note: Using numpy arrays, these calculations can be done much more efficiently and with less verbose. However I try to keep here in this way so that people without strong Algebra can also understand.
+Considering the scenarios of a and b, we need to find two things here
+the highest iou for each gt_box and its corresponding anchor box
+the highest iou for each anchor box and its corresponding ground truth box
+case-1
+gt_argmax_ious = ious.argmax(axis=0)
+print(gt_argmax_ious)
+gt_max_ious = ious[gt_argmax_ious, np.arange(ious.shape[1])]
+print(gt_max_ious)
+# Out:
+# [2262 5620]
+# [0.68130493 0.61035156]
+case-2
+argmax_ious = ious.argmax(axis=1)
+print(argmax_ious.shape)
+print(argmax_ious)
+max_ious = ious[np.arange(len(inside_index)), argmax_ious]
+print(max_ious)
+# Out:
+# (22500,)
+# [0, 1, 0, ..., 1, 0, 0]
+# [0.06811669 0.07083762 0.07083762 ... 0.         0.         0.        ]
+Find the anchor_boxes which have this max_ious (gt_max_ious)
+gt_argmax_ious = np.where(ious == gt_max_ious)[0]
+print(gt_argmax_ious)
+# Out:
+# [2262, 2508, 5620, 5628, 5636, 5644, 5866, 5874, 5882, 5890, 6112,
+#        6120, 6128, 6136, 6358, 6366, 6374, 6382]
+Now we have three arrays
+argmax_ious — Tells which ground truth object has max iou with each anchor.
+max_ious — Tells the max_iou with ground truth object with each anchor.
+gt_argmax_ious — Tells the anchors with the highest Intersection-over-Union (IoU) overlap with a ground-truth box.
+Using argmax_ious and max_ious we can assign labels and locations to anchor boxes which satisify [b] and [c]. Using gt_argmax_ious we can assign labels and locations to anchor boxes which satisify [a].
+Lets put thresholds to some variables
+pos_iou_threshold  = 0.7
+neg_iou_threshold = 0.3
+Assign negitive label (0) to all the anchor boxes which have max_iou less than negitive threshold [c]
+label[max_ious < neg_iou_threshold] = 0
+Assign positive label (1) to all the anchor boxes which have highest IoU overlap with a ground-truth box [a]
+label[gt_argmax_ious] = 1
+Assign positive label (1) to all the anchor boxes which have max_iou greater than positive threshold [b]
+label[max_ious >= pos_iou_threshold] = 1
+Training RPN The Faster_R-CNN paper phrases as follows Each mini-batch arises from a single image that contains many positive and negitive example anchors, but this will bias towards negitive samples as they are dominate. Instead, we randomly sample 256 anchors in an image to compute the loss function of a mini-batch, where the sampled positive and negative anchors have a ratio of up to 1:1. If there are fewer than 128 positive samples in an image, we pad the mini-batch with negitive ones.. From this we can derive two variable as follows
+pos_ratio = 0.5
+n_sample = 256
+Total positive samples
+n_pos = pos_ratio * n_sample
+Now we need to randomly sample n_pos samples from the positive labels and ignore (-1) the remaining ones. In some cases we get less than n_pos samples, in that we will randomly sample (n_sample — n_pos) negitive samples (0) and assign ignore label to the remaining anchor boxes. This is done using the following code.
+positive samples
+pos_index = np.where(label == 1)[0]
+if len(pos_index) > n_pos:
+    disable_index = np.random.choice(pos_index, size=(len(pos_index) - n_pos), replace=False)
+    label[disable_index] = -1
+negitive samples
+n_neg = n_sample * np.sum(label == 1)
+neg_index = np.where(label == 0)[0]
+if len(neg_index) > n_neg:
+    disable_index = np.random.choice(neg_index, size=(len(neg_index) - n_neg), replace = False)
+    label[disable_index] = -1
+Assigning locations to anchor boxes
+Now lets assign the locations to each anchor box with the ground truth object which has maximum iou. Note, we will assign anchor locs to all the valid anchor boxes irrespective of its label, later when we are calculating the losses, we can remove them with simple filters.
+We already know which ground truth object has high iou with each anchor box, Now we need to find the locations of ground truth with respect to the anchor box location. Faster_R-CNN uses the following parametrizion for this
+t_{x} = (x - x_{a})/w_{a}
+t_{y} = (y - y_{a})/h_{a}
+t_{w} = log(w/ w_a)
+t_{h} = log(h/ h_a)
+x, y , w, h are the groud truth box center co-ordinates, width and height. x_a, y_a, h_a and w_a and anchor boxes center cooridinates, width and height.
+For each anchor box, find the groundtruth object which has max_iou
+max_iou_bbox = bbox[argmax_ious]
+print(max_iou_bbox)
+#Out
+# [[ 20.,  30., 400., 500.],
+#  [ 20.,  30., 400., 500.],
+#  [ 20.,  30., 400., 500.],
+#  ...,
+#  [ 20.,  30., 400., 500.],
+#  [ 20.,  30., 400., 500.],
+#  [ 20.,  30., 400., 500.]]
+Inorder to find t_{x}, t_{y}, t_{w}, t_{h}, we need to convert the y1, x1, y2, x2 format of valid anchor boxes and associated ground truth boxes with max iou to ctr_y, ctr_x , h, w format.
+height = valid_anchors[:, 2] - valid_anchors[:, 0]
+width = valid_anchors[:, 3] - valid_anchors[:, 1]
+ctr_y = valid_anchors[:, 0] + 0.5 * height
+ctr_x = valid_anchors[:, 1] + 0.5 * width
+base_height = max_iou_bbox[:, 2] - max_iou_bbox[:, 0]
+base_width = max_iou_bbox[:, 3] - max_iou_bbox[:, 1]
+base_ctr_y = max_iou_bbox[:, 0] + 0.5 * base_height
+base_ctr_x = max_iou_bbox[:, 1] + 0.5 * base_width
+Use the above formulas to find the loc
+eps = np.finfo(height.dtype).eps
+height = np.maximum(height, eps)
+width = np.maximum(width, eps)
+dy = (base_ctr_y - ctr_y) / height
+dx = (base_ctr_x - ctr_x) / width
+dh = np.log(base_height / height)
+dw = np.log(base_width / width)
+anchor_locs = np.vstack((dy, dx, dh, dw)).transpose()
+print(anchor_locs)
+#Out:
+# [[ 0.5855727   2.3091455   0.7415673   1.647276  ]
+#  [ 0.49718437  2.3091455   0.7415673   1.647276  ]
+#  [ 0.40879607  2.3091455   0.7415673   1.647276  ]
+#  ...
+#  [-2.50802    -5.292254    0.7415677   1.6472763 ]
+#  [-2.5964084  -5.292254    0.7415677   1.6472763 ]
+#  [-2.6847968  -5.292254    0.7415677   1.6472763 ]]
+Now we got anchor_locs and label associated with each and every valid anchor boxes
+Lets map them to the original anchors using the inside_index variable. Fill the unvalid anchor boxes labels with -1 (ignore) and locations with 0.
+Final labels:
+anchor_labels = np.empty((len(anchors),), dtype=label.dtype)
+anchor_labels.fill(-1)
+anchor_labels[inside_index] = label
+Final locations
+anchor_locations = np.empty((len(anchors),) + anchors.shape[1:], dtype=anchor_locs.dtype)
+anchor_locations.fill(0)
+anchor_locations[inside_index, :] = anchor_locs
+The final two matrices are
+anchor_locations [N, 4] — [22500, 4]
+anchor_labels [N,] — [22500]
+These are used as targets to the RPN network. We will see how this RPN network is designed in the next section.
+Region Proposal Network.
+As we have discussed earlier, Prior to this work, region proposals for a network were generated using selective search, CPMC, MCG, Edgeboxes etc. Faster_R-CNN is the first work to demonstrate generating region proposals using deep learning.
+
+RPN Network
+The network contains a convolution module, on top of which there will be one regression layer, which predicts the location of the box inside the anchor
+To generate region proposals, we slide a small network over the convolutional feature map output that we obtained in the feature extraction module. This small network takes as input an n x n spatial window of the input convolutional feature map. Each sliding window is mapped to a lower-dimensional feature [512 features]. This feature is fed into two sibling fully connected layers
+A box regrression layer
+A box classification layer
+we use n=3, as noted in Faster_R-CNN paper. We can implement this Architecture using n x n convolutional layer followed by two sibiling 1 x 1 convolutional layers
+import torch.nn as nn
+mid_channels = 512
+in_channels = 512 # depends on the output feature map. in vgg 16 it is equal to 512
+n_anchor = 9 # Number of anchors at each location
+conv1 = nn.Conv2d(in_channels, mid_channels, 3, 1, 1)
+reg_layer = nn.Conv2d(mid_channels, n_anchor *4, 1, 1, 0)
+cls_layer = nn.Conv2d(mid_channels, n_anchor *2, 1, 1, 0) ## I will be going to use softmax here. you can equally use sigmoid if u replace 2 with 1.
+The paper tells that they initialized these layers with zero mean and 0.01 standard deviation for weights and zeros for base. Lets do that
+# conv sliding layer
+conv1.weight.data.normal_(0, 0.01)
+conv1.bias.data.zero_()
+# Regression layer
+reg_layer.weight.data.normal_(0, 0.01)
+reg_layer.bias.data.zero_()
+# classification layer
+cls_layer.weight.data.normal_(0, 0.01)
+cls_layer.bias.data.zero_()
+Now the outputs we got in the feature extraction state should be sent to this network to predict locations of objects with repect to the anchor and the objectness score assoiciated with it.
+x = conv1(out_map) # out_map is obtained in section 1
+pred_anchor_locs = reg_layer(x)
+pred_cls_scores = cls_layer(x)
+print(pred_cls_scores.shape, pred_anchor_locs.shape)
+#Out:
+#torch.Size([1, 18, 50, 50]) torch.Size([1, 36, 50, 50])
+Lets reformat these a bit and make it align with our anchor targets we designed previously. We will also find the objectness scores for each anchor box, as this is used to for proposal layer which we will discuss in the next section
+pred_anchor_locs = pred_anchor_locs.permute(0, 2, 3, 1).contiguous().view(1, -1, 4)
+print(pred_anchor_locs.shape)
+#Out: torch.Size([1, 22500, 4])
+pred_cls_scores = pred_cls_scores.permute(0, 2, 3, 1).contiguous()
+print(pred_cls_scores)
+#Out torch.Size([1, 50, 50, 18])
+objectness_score = pred_cls_scores.view(1, 50, 50, 9, 2)[:, :, :, :, 1].contiguous().view(1, -1)
+print(objectness_score.shape)
+#Out torch.Size([1, 22500])
+pred_cls_scores  = pred_cls_scores.view(1, -1, 2)
+print(pred_cls_scores.shape)
+# Out torch.size([1, 22500, 2])
+we are done with section
+pred_cls_scores and pred_anchor_locs are the output the RPN network and the losses to updates the weights
+pred_cls_scores and objectness_scores are used as inputs to the proposal layer, which generate a set of proposal which are further used by RoI network. We will see this in the next section.
+Generating proposals to feed Fast R-CNN network
+The proposal function will take the following parameters
+Weather training_mode or testing mode
+nms_thresh
+n_train_pre_nms — number of bboxes before nms during training
+n_train_post_nms — number of bboxes after nms during training
+n_test_pre_nms — number of bboxes before nms during testing
+n_test_post_nms — number of bboxes after nms during testing
+min_size — minimum height of the object required to create a proposal.
+The Faster R_CNN says, RPN proposals highly overlap with each other. To reduced redundancy, we adopt non-maximum supression (NMS) on the proposal regions based on their cls scores. We fix the IoU threshold for NMS at 0.7, which leaves us about 2000 proposal regions per image. After an ablation study, the authors show that NMS does not harm the ultimate detection accuracy, but substantially reduces the number of proposals. After NMS, we use the top-N ranked proposal regions for detection. In the following we training Fast R-CNN using 2000 RPN proposals. During testing they evaluate only 300 proposals, they have tested this with various numbers and obtained this.
+nms_thresh = 0.7
+n_train_pre_nms = 12000
+n_train_post_nms = 2000
+n_test_pre_nms = 6000
+n_test_post_nms = 300
+min_size = 16
+We need to do the following things to generate region of interest proposals to the network.
+convert the loc predictions from the rpn network to bbox [y1, x1, y2, x2] format.
+clip the predicted boxes to the image
+Remove predicted boxes with either height or width < threshold (min_size).
+Sort all (proposal, score) pairs by score from highest to lowest.
+Take top pre_nms_topN (e.g. 12000 while training and 300 while testing).
+Apply nms threshold > 0.7
+Take top pos_nms_topN (e.g. 2000 while training and 300 while testing)
+We will look at each of the stages in the remainder of this section
+convert the loc predictions from the rpn network to bbox [y1, x1, y2, x2] format.
+This is the reverse operations of what we have done while assigning ground truth to anchor boxes .This operation decodes predictions by un-parameterizing them and offseting to image. the formulas are as follows
+x = (w_{a} * ctr_x_{p}) + ctr_x_{a}
+y = (h_{a} * ctr_x_{p}) + ctr_x_{a}
+h = np.exp(h_{p}) * h_{a}
+w = np.exp(w_{p}) * w_{a}
+and later convert to y1, x1, y2, x2 format
+Convert anchors format from y1, x1, y2, x2 to ctr_x, ctr_y, h, w
+anc_height = anchors[:, 2] - anchors[:, 0]
+anc_width = anchors[:, 3] - anchors[:, 1]
+anc_ctr_y = anchors[:, 0] + 0.5 * anc_height
+anc_ctr_x = anchors[:, 1] + 0.5 * anc_width
+Convert predictions locs using above formulas. before that convert the pred_anchor_locs and objectness_score to numpy array
+pred_anchor_locs_numpy = pred_anchor_locs[0].data.numpy()
+objectness_score_numpy = objectness_score[0].data.numpy()
+dy = pred_anchor_locs_numpy[:, 0::4]
+dx = pred_anchor_locs_numpy[:, 1::4]
+dh = pred_anchor_locs_numpy[: 2::4]
+dw = pred_anchor_locs_numpy[: 3::4]
+ctr_y = dy * anc_height[:, np.newaxis] + anc_ctr_y[:, np.newaxis]
+ctr_x = dx * anc_width[:, np.newaxis] + anc_ctr_x[:, np.newaxis]
+h = np.exp(dh) * anc_height[:, np.newaxis]
+w = np.exp(dw) * anc_width[:, np.newaxis]
+convert [ctr_x, ctr_y, h, w] to [y1, x1, y2, x2] format
+roi = np.zeros(pred_anchor_locs_numpy.shape, dtype=loc.dtype)
+roi[:, 0::4] = ctr_y - 0.5 * h
+roi[:, 1::4] = ctr_x - 0.5 * w
+roi[:, 2::4] = ctr_y + 0.5 * h
+roi[:, 3::4] = ctr_x + 0.5 * w
+#Out:
+# [[ -36.897102,  -80.29519 ,   54.09939 ,  100.40507 ],
+#  [ -83.12463 , -165.74298 ,   98.67854 ,  188.6116  ],
+#  [-170.7821  , -378.22214 ,  196.20844 ,  349.81198 ],
+#  ...,
+#  [ 696.17816 ,  747.13306 ,  883.4582  ,  836.77747 ],
+#  [ 621.42114 ,  703.0614  ,  973.04626 ,  885.31226 ],
+#  [ 432.86267 ,  622.48926 , 1146.7059  ,  982.9209  ]]
+clip the predicted boxes to the image
+img_size = (800, 800) #Image size
+roi[:, slice(0, 4, 2)] = np.clip(
+            roi[:, slice(0, 4, 2)], 0, img_size[0])
+roi[:, slice(1, 4, 2)] = np.clip(
+    roi[:, slice(1, 4, 2)], 0, img_size[1])
+print(roi)
+#Out:
+# [[  0.     ,   0.     ,  54.09939, 100.40507],
+#  [  0.     ,   0.     ,  98.67854, 188.6116 ],
+#  [  0.     ,   0.     , 196.20844, 349.81198],
+#  ...,
+#  [696.17816, 747.13306, 800.     , 800.     ],
+#  [621.42114, 703.0614 , 800.     , 800.     ],
+#  [432.86267, 622.48926, 800.     , 800.     ]]
+Remove predicted boxes with either height or width < threshold.
+hs = roi[:, 2] - roi[:, 0]
+ws = roi[:, 3] - roi[:, 1]
+keep = np.where((hs >= min_size) & (ws >= min_size))[0]
+roi = roi[keep, :]
+score = objectness_score_numpy[keep]
+print(score.shape)
+#Out:
+##(22500, ) all the boxes have minimum size of 16
+Sort all (proposal, score) pairs by score from highest to lowest.
+order = score.ravel().argsort()[::-1]
+print(order)
+#Out:
+#[ 889,  929, 1316, ...,  462,  454,    4]
+Take top pre_nms_topN (e.g. 12000 while training and 300 while testing)
+order = order[:n_train_pre_nms]
+roi = roi[order, :]
+print(roi.shape)
+print(roi)
+#Out
+# (12000, 4)
+# [[607.93866,   0.     , 800.     , 113.38187],
+#  [  0.     ,   0.     , 235.29704, 369.64795],
+#  [572.177  ,   0.     , 800.     , 373.0086 ],
+#  ...,
+#  [250.07968, 186.61633, 434.6356 , 276.70615],
+#  [490.07974, 154.6163 , 674.6356 , 244.70615],
+#  [266.07968, 602.61633, 450.6356 , 692.7062 ]]
+Apply non-maximum supression threshold > 0.7 First question, What is Non-maximum supression ? It is the process in which we remove/merge extremely highly overlapping bounding boxes. If we look at the below diagram, there are lot of overlapping bounding boxes and we want a few bounding boxes which are unique and doesn’t overlap much. We keep the threshold at 0.7. threshold defines the minimum overlapping area required to merge/remove overlapping bounding boxes
+
+The sudo code for NMS works in the following way
+- Take all the roi boxes [roi_array]
+- Find the areas of all the boxes [roi_area]
+- Take the indexes of order the probability score in descending order [order_array]
+keep = []
+while order_array.size > 0:
+  - take the first element in order_array and append that to keep  
+  - Find the area with all other boxes
+  - Find the index of all the boxes which have high overlap with this box
+  - Remove them from order array
+  - Iterate this till we get the order_size to zero (while loop)
+- Ouput the keep variable which tells what indexes to consider.
+Take top pos_nms_topN (e.g. 2000 while training and 300 while testing)
+y1 = roi[:, 0]
+x1 = roi[:, 1]
+y2 = roi[:, 2]
+x2 = roi[:, 3]
+area = (x2 - x1 + 1) * (y2 - y1 + 1)
+order = scores.argsort()[::-1]
+keep = []
+while order.size > 0
+    i = order[0]
+    xx1 = np.maximum(x1[i], x1[order[1:]])
+    yy1 = np.maximum(y1[i], y1[order[1:]])
+    xx2 = np.minimum(x2[i], x2[order[1:]])
+    yy2 = np.minimum(y2[i], y2[order[1:]])
+    w = np.maximum(0.0, xx2 - xx1 + 1)
+    h = np.maximum(0.0, yy2 - yy1 + 1)
+    inter = w * h
+    ovr = inter / (areas[i] + areas[order[1:]] - inter)
+    inds = np.where(ovr <= thresh)[0]
+    order = order[inds + 1]
+keep = keep[:n_train_post_nms] # while training/testing , use accordingly
+roi = roi[keep] # the final region proposals
+The final region proposals were obtained, This is used as the input to the Fast_R-CNN object which finally tries to predict the object locations (with respect to the proposed box) and class of the object (classifcation of each proposal). First we look into how to create targets for these proposals for training this network. After that we will look into how this fast r-cnn network is implemented and pass these proposals to the network to obtain the predicted outputs. Then, we will determine the losses, We will calculate both the rpn loss and fast r-cnn loss.
+Proposal targets
+The Fast R-CNN network takes the region proposals (obtained from proposal layer in previous section), ground truth boxes and their respective labels as inputs. It will take the following parameters
+n_sample: Number of samples to sample from roi, The default value is 128.
+pos_ratio: the number of positive examples out of the n_samples. The default values is 0.25.
+pos_iou_thesh: The minimum overlap of region proposal with any groundtruth object to consider it as positive label.
+[neg_iou_threshold_lo, neg_iou_threshold_hi] : [0.0, 0.5], The overlap value bounding required to consider a region proposal as negitive [background object].
+n_sample = 128
+pos_ratio = 0.25
+pos_iou_thresh = 0.5
+neg_iou_thresh_hi = 0.5
+neg_iou_thresh_lo = 0.0
+Using these params, lets see how the proposal targets are created, First lets write the sudo code.
+- For each roi, find the IoU with all other ground truth object [N, n]
+    - where N is the number of region proposal boxes
+    - n is the number of ground truth boxes
+- Find which ground truth object has highest iou with the roi [N], these are the labels for each and every region proposal
+- If the highest IoU is greater than pos_iou_thesh[0.5], then we assign the label.
+- pos_samples:
+      - We randomly samply [n_sample x pos_ratio] region proposals and consider these only as positive labels
+- If the IoU is between [0.1, 0.5], we assign a negitive label[0] to the region proposal
+- neg_samples:
+      - We randomly sample [128- number of pos region proposals on this image] and assign 0 to these region proposals
+- We collect the pos_samples and neg_samples  and remove all other region proposals
+- convert the locations of groundtruth objects for each region proposal to the required format (Described in Fast R-CNN)
+- Ouput labels and locations for the sampled_rois
+We will now have a look at how this is done using Python.
+Find the iou of each ground truth object with the region proposals, We will use the same code we have used in Anchor boxes to calculate the ious
+ious = np.empty((len(roi), 2), dtype=np.float32)
+ious.fill(0)
+for num1, i in enumerate(roi):
+    ya1, xa1, ya2, xa2 = i  
+    anchor_area = (ya2 - ya1) * (xa2 - xa1)
+    for num2, j in enumerate(bbox):
+        yb1, xb1, yb2, xb2 = j
+        box_area = (yb2- yb1) * (xb2 - xb1)
+        inter_x1 = max([xb1, xa1])
+        inter_y1 = max([yb1, ya1])
+        inter_x2 = min([xb2, xa2])
+        inter_y2 = min([yb2, ya2])
+        if (inter_x1 < inter_x2) and (inter_y1 < inter_y2):
+            iter_area = (inter_y2 - inter_y1) * \
+(inter_x2 - inter_x1)
+            iou = iter_area / (anchor_area+ \
+box_area - iter_area)            
+        else:
+            iou = 0.
+        ious[num1, num2] = iou
+print(ious.shape)
+#Out:
+#[1535, 2]
+Find out which ground truth has high IoU for each region proposal, Also find the maximum IoU
+gt_assignment = iou.argmax(axis=1)
+max_iou = iou.max(axis=1)
+print(gt_assignment)
+print(max_iou)
+#Out:
+# [0, 0, 0 ... 1, 1, 0]
+# [0.016, 0., 0. ... 0.08034518, 0.10739268, 0.]
+Assign the labels to each proposal
+gt_roi_label = labels[gt_assignment]
+print(gt_roi_label)
+#Out:
+#[6, 6, 6, ..., 8, 8, 6]
+Note: Incase if u have not taken the background object as 0, add +1 to all the labels.
+Select the foreground rois as per the pos_iou_thesh. We also want only n_sample x pos_ratio (128 x 0.25 = 32) foreground samples. So incase if we get less than 32 positive samples we will leave it as it is, Incase if we get more than 32 foreground samples, we will sample 32 samples from the positive samples. This is done using the following code.
+pos_index = np.where(max_iou >= pos_iou_thresh)[0]
+pos_roi_per_this_image = int(min(pos_roi_per_image, pos_index.size))
+if pos_index.size > 0:
+    pos_index = np.random.choice(
+        pos_index, size=pos_roi_per_this_image, replace=False)
+print(pos_roi_per_this_image)
+print(pos_index)
+#Out
+# 18
+# [ 257  296  317 1075 1077 1169 1213 1258 1322 1325 1351 1378 1380 1425
+#  1472 1482 1489 1495]
+Similarly we do for negitive (background) region proposals also, If we have region proposals with IoU between neg_iou_thresh_lo and neg_iou_thresh_hi for the ground truth object assigned to it earlier, we assign 0 label to the region proposal. We will sample n(n_sample-pos_samples, 128–32=96) region proposals from these negitive samples.
+neg_index = np.where((max_iou < neg_iou_thresh_hi) &
+                             (max_iou >= neg_iou_thresh_lo))[0]
+neg_roi_per_this_image = n_sample - pos_roi_per_this_image
+neg_roi_per_this_image = int(min(neg_roi_per_this_image,
+                                 neg_index.size))
+if  neg_index.size > 0 :
+    neg_index = np.random.choice(
+        neg_index, size=neg_roi_per_this_image, replace=False)
+print(neg_roi_per_this_image)
+print(neg_index)
+#Out:
+#110
+# [  79  688  160  ...  376  712 1235  148 1001]
+Now we gather positve samples index and negitive samples index, their respective labels and region proposals
+keep_index = np.append(pos_index, neg_index)
+gt_roi_labels = gt_roi_label[keep_index]
+gt_roi_labels[pos_roi_per_this_image:] = 0  # negative labels --> 0
+sample_roi = roi[keep_index]
+print(sample_roi.shape)
+#Out:
+#(128, 4)
+Pick the ground truth objects for these sample_roi and later parameterize as we have done while assigning locations to anchor boxes in section 2.
+bbox_for_sampled_roi = bbox[gt_assignment[keep_index]]
+print(bbox_for_sampled_roi.shape)
+#Out
+#(128, 4)
+height = sample_roi[:, 2] - sample_roi[:, 0]
+width = sample_roi[:, 3] - sample_roi[:, 1]
+ctr_y = sample_roi[:, 0] + 0.5 * height
+ctr_x = sample_roi[:, 1] + 0.5 * width
+base_height = bbox_for_sampled_roi[:, 2] - bbox_for_sampled_roi[:, 0]
+base_width = bbox_for_sampled_roi[:, 3] - bbox_for_sampled_roi[:, 1]
+base_ctr_y = bbox_for_sampled_roi[:, 0] + 0.5 * base_height
+base_ctr_x = bbox_for_sampled_roi[:, 1] + 0.5 * base_width
+We will use the following formulation
+t_{x} = (x - x_{a})/w_{a}
+t_{y} = (y - y_{a})/h_{a}
+t_{w} = log(w/ w_a)
+t_{h} = log(h/ h_a)
+eps = np.finfo(height.dtype).eps
+height = np.maximum(height, eps)
+width = np.maximum(width, eps)
+dy = (base_ctr_y - ctr_y) / height
+dx = (base_ctr_x - ctr_x) / width
+dh = np.log(base_height / height)
+dw = np.log(base_width / width)
+gt_roi_locs = np.vstack((dy, dx, dh, dw)).transpose()
+print(gt_roi_locs)
+#Out:
+# [[-0.08075945, -0.14638858, -0.23822695, -0.23150307],
+#  [ 0.04865225,  0.15570255,  0.08902431, -0.5969549 ],
+#  [ 0.17411101,  0.2244332 ,  0.19870323,  0.25063717],
+#  .....
+#  [-0.13976236,  0.121031  ,  0.03863466,  0.09662855],
+#  [-0.59361845, -2.5121436 ,  0.04558792,  0.9731178 ],
+#  [ 0.1041566 , -0.7840459 ,  1.4283055 ,  0.95092565]]
+So now we have gt_roi_locs and gt_roi_labels for the sampled rois. We now need design the Fast rcnn network and predict the locs and labels, Which we will do in the next section.
+Fast R-CNN
+Fast R-CNN used ROI pooling to extract features for each and every proposal suggested by selective search (Fast RCNN) or Region Proposal network (RPN in Faster R- CNN). We will see how this ROI pooling works and later pass the rpn proposals which we have computed in section 4 to this layer. Further we will see how this layer is connected to a classification and regression layer to compute the class probabilities and bounding boxes coordinates respectively.
+Region of interest pooling (also known as RoI pooling) purpose is to perform max pooling on inputs of non-uniform sizes to obtain fixed-size feature maps (e.g. 7×7). This layer takes two inputs
+A fixed-size feature map obtained from a deep convolutional network with several convolutions and max-pooling layers
+An Nx5 matrix of representing a list of regions of interest, where N is the number of RoIs. The first column represents the image index and the remaining four are the co-ordinates of the top left and bottom right corners of the region.
+What does the RoI pooling actually do? For every region of interest from the input list, it takes a section of the input feature map that corresponds to it and scales it to some pre-defined size (e.g., 7×7). The scaling is done by:
+Dividing the region proposal into equal-sized sections (the number of which is the same as the dimension of the output)
+Finding the largest value in each section
+Copying these max values to the output buffer
+The result is that from a list of rectangles with different sizes we can quickly get a list of corresponding feature maps with a fixed size. Note that the dimension of the RoI pooling output doesn’t actually depend on the size of the input feature map nor on the size of the region proposals. It’s determined solely by the number of sections we divide the proposal into. What’s the benefit of RoI pooling? One of them is processing speed. If there are multiple object proposals on the frame (and usually there’ll be a lot of them), we can still use the same input feature map for all of them. Since computing the convolutions at early stages of processing is very expensive, this approach can save us a lot of time. The diagram below shows the working of ROI pooling.
+
+ROI Pooling 2x2
+From the previous sections we got, gt_roi_locs, gt_roi_labels and sample_rois. We will use the sample_rois as the input to the roi_pooling layer. Note that sample_rois has [N, 4] dimension and each row format is yxhw [y, x, h, w]. We need to two changes to this array,
+Adding the index of the image [Here we only have one image]
+changing the format to xywh.
+Since sample_rois is a numpy array, we will convert into Pytorch Tensor. create an roi_indices tensor.
+rois = torch.from_numpy(sample_rois).float()
+roi_indices = 0 * np.ones((len(rois),), dtype=np.int32)
+roi_indices = torch.from_numpy(roi_indices).float()
+print(rois.shape, roi_indices.shape)
+#Out:
+#torch.Size([128, 4]) torch.Size([128])
+concat rois and roi_indices, so that we get the tensor with shape [N, 5] (index, x, y, h, w)
+indices_and_rois = torch.cat([roi_indices[:, None], rois], dim=1)
+xy_indices_and_rois = indices_and_rois[:, [0, 2, 1, 4, 3]]
+indices_and_rois = xy_indices_and_rois.contiguous()
+print(xy_indices_and_rois.shape)
+#Out:
+#torch.Size([128, 5])
+Now we need to pass this array to the roi_pooling layer. We will briefly discuss the workings of it here. The sudo code is as follows
+- Multiply the dimensions of rois with the sub_sampling ratio (16 in this case)
+- Empty output Tensor
+- Take each roi
+    - subset the feature map based on the roi dimension
+    - Apply AdaptiveMaxPool2d to this subset Tensor.
+    - Add the outputs to the output Tensor
+- Empty output Tensor goes to the network
+We will define the size to be 7 x 7 and define adaptive_max_pool
+size = (7, 7)
+adaptive_max_pool = AdaptiveMaxPool2d(size[0], size[1])
+output = []
+rois = indices_and_rois.data.float()
+rois[:, 1:].mul_(1/16.0) # Subsampling ratio
+rois = rois.long()
+num_rois = rois.size(0)
+for i in range(num_rois):
+    roi = rois[i]
+    im_idx = roi[0]
+    im = out_map.narrow(0, im_idx, 1)[..., roi[2]:(roi[4]+1), roi[1]:(roi[3]+1)]
+    output.append(adaptive_max_pool(im))
+output = torch.cat(output, 0)
+print(output.size())
+#Out:
+# torch.Size([128, 512, 7, 7])
+# Reshape the tensor so that we can pass it through the feed forward layer.
+k = output.view(output.size(0), -1)
+print(k.shape)
+#Out:
+# torch.Size([128, 25088])
+Now this will be the input to a classifier layer, which will further brach out to a classification head and regression head as shown in the diagram below. lets define the network
+roi_head_classifier = nn.Sequential(*[nn.Linear(25088, 4096),
+                                      nn.Linear(4096, 4096)])
+cls_loc = nn.Linear(4096, 21 * 4) # (VOC 20 classes + 1 background. Each will have 4 co-ordinates)
+cls_loc.weight.data.normal_(0, 0.01)
+cls_loc.bias.data.zero_()
+score = nn.Linear(4096, 21) # (VOC 20 classes + 1 background)
+passing the output of roi-pooling to the network defined above we get
+k = roi_head_classifier(k)
+roi_cls_loc = cls_loc(k)
+roi_cls_score = score(k)
+print(roi_cls_loc.shape, roi_cls_score.shape)
+#Out:
+# torch.Size([128, 84]), torch.Size([128, 21])
+roi_cls_loc and roi_cls_score are two ouput tensors from which we can get actual bounding boxes, We will see this section 8. In section 7, We will compute the losses for both the RPN and Fast RCNN networks. This will complete the Faster R-CNN implementation.
+Loss functions
+We have two networks, RPN and Fast-RCNN, which further have two outputs each (Regression head, and classification head). The Loss function for both the network is defined as
+
+Faster RCNN loss
+RPN Loss
+
+RPN Loss
+where p_{i} is the predicted class label and p_{i}^* is the actual class score. t_{i} and t_{i}^* are the predicted co-oridinates and actual co-ordinates. The ground-truth label p_{i}^* is 1 if the the anchor is positive and 0 if the anchor is negative. We will see how this is done in Pytorch.
+In section 2, we have computed Anchor boxes targets and in section 3 we have computed the RPN network outputs. The difference between them will give us the RPN loss. We will see how this calculated now.
+print(pred_anchor_locs.shape)
+print(pred_cls_scores.shape)
+print(anchor_locations.shape)
+print(anchor_labels.shape)
+#Out:
+# torch.Size([1, 12321, 4])
+# torch.Size([1, 12321, 2])
+# (12321, 4)
+# (12321,)
+We will re-arrange a bit so that the inputs and outputs align
+rpn_loc = pred_anchor_locs[0]
+rpn_score = pred_cls_scores[0]
+gt_rpn_loc = torch.from_numpy(anchor_locations)
+gt_rpn_score = torch.from_numpy(anchor_labels)
+print(rpn_loc.shape, rpn_score.shape, gt_rpn_loc.shape, gt_rpn_score.shape)
+#Out
+# torch.Size([12321, 4]) torch.Size([12321, 2]) torch.Size([12321, 4]) torch.Size([12321])
+pred_cls_scores and anchor_labels are the predited objectness score and actual objectness score of the RPN network. We will use the following loss functions for Regression and classification respectively.
+For classification we use cross-entropy loss
+
+Cross Entropy Loss
+using Pytorch we can calculate the loss using,
+import torch.nn.functional as F
+rpn_cls_loss = F.cross_entropy(rpn_score, gt_rpn_score.long(), ignore_index = -1)
+print(rpn_cls_loss)
+#Out:
+# Variable containing:
+#  0.6940
+# [torch.FloatTensor of size 1]
+For Regression we use smooth L1 loss as defined in the Fast RCNN paper,
+
+Smooth L1 Loss
+They used L1 loss instead of L2 loss because the values of predicted regression head of RPN are not bounded. Regression loss is also applied to the bounding boxes which have positive label
+pos = gt_rpn_score > 0
+mask = pos.unsqueeze(1).expand_as(rpn_loc)
+print(mask.shape)
+#Out:
+# torch.Size(12321, 4)
+Now take those bounding boxes which have positve labels
+mask_loc_preds = rpn_loc[mask].view(-1, 4)
+mask_loc_targets = gt_rpn_loc[mask].view(-1, 4)
+print(mask_loc_preds.shape, mask_loc_preds.shape)
+#Out:
+# torch.Size([6, 4]) torch.Size([6, 4])
+The regression loss is applied as following
+x = torch.abs(mask_loc_targets - mask_loc_preds)
+rpn_loc_loss = ((x < 1).float() * 0.5 * x**2) + ((x >= 1).float() * (x-0.5))
+print(rpn_loc_loss.sum())
+#Out:
+# Variable containing:
+#  0.3826
+# [torch.FloatTensor of size 1]
+Combining both the rpn_cls_loss and rpn_reg_loss, Since the class loss is applied on all the bounding boxes and regression loss is applied only positive bounding box, the authors have introduced {$$} \lambda {$$} as the hyperparameter. They have also normalized the rpn location loss with the number of bounding box N_{reg}. The cross-entropy function in Pytorch already normalizes the loss, so we need not apply N_{cls} again.
+rpn_lambda = 10.
+N_reg = (gt_rpn_score >0).float().sum()
+rpn_loc_loss = rpn_loc_loss.sum() / N_reg
+rpn_loss = rpn_cls_loss + (rpn_lambda * rpn_loc_loss)
+print(rpn_loss)
+#Out:0.00248
+Fast R-CNN loss
+The Fast R-CNN loss functions are also implemented in the same way with few tweaks.
+We have the following variables
+predicted
+print(roi_cls_loc.shape)
+print(roi_cls_score.shape)
+#Out:
+# torch.Size([128, 84])
+# torch.Size([128, 21])
+Actual
+print(gt_roi_locs.shape)
+print(gt_roi_labels.shape)
+#Out:
+#(128, 4)
+#(128, )
+Converting ground truth to torch variable
+gt_roi_loc = torch.from_numpy(gt_roi_locs)
+gt_roi_label = torch.from_numpy(np.float32(gt_roi_labels)).long()
+print(gt_roi_loc.shape, gt_roi_label.shape)
+#Out:
+#torch.Size([128, 4]) torch.Size([128])
+Classification loss
+roi_clss_loss = F.cross_entropy(roi_cls_score, rt_roi_label, ignore_index=-1)
+print(roi_cls_loss.shape)
+#Out:
+#Variable containing:
+#  3.0458
+# [torch.FloatTensor of size 1]
+Regression loss For regression loss each roi location has 21 (num_classes + background) predicted bounding boxes. To calculate loss, we will only use the bounding box which have positive label (p_{i}^*).
+n_sample = roi_cls_loc.shape[0]
+roi_loc = roi_cls_loc.view(n_sample, -1, 4)
+print(roi_loc.shape)
+#Out:
+#torch.Size([128, 21, 4])
+roi_loc = roi_loc[torch.arange(0, n_sample).long(), gt_roi_label]
+print(roi_loc.shape)
+#Out:
+#torch.Size([128, 4])
+calculating regression loss in the same way as we calculated regression loss for RPN network we get
+roi_loc_loss = REGLoss(roi_loc, gt_roi_loc)
+print(roi_loc_loss)
+#Out:
+#Variable containing:
+#  0.1895
+# [torch.FloatTensor of size 1]
+Note that we haven’t written any RegLoss function here. Reader can wrap all the methods discussed in RPN reg loss and implement this function.
+total roi loss
+roi_lambda = 10.
+roi_loss = roi_cls_loss + (roi_lambda * roi_loc_loss)
+print(roi_loss)
+#Out:
+#Variable containing:
+#  4.2353
+# [torch.FloatTensor of size 1]
+Total loss
+Now we need to combine the RPN loss and Fast-RCNN loss to compute the total loss for 1 iteration. this is a simple addition
+total_loss = rpn_loss + roi_loss
+This is it, We have to repeat this for several iterations by taking one image after the other during training.
+This is it. The Faster RCNN paper discusses different ways of training this neural network. Please refer to the paper in the references section.
+Points to Note:
+Faster RCNN is upgraded with Feature pyramid networks and the number of anchor boxes is roughly equal to ~100000 and is more accurate in detecting small objects.
+Faster RCNN is now trained using more popular backends like Resnet and ResNext.
+Faster RCNN is the backbone for mask-rcnn which is the state-of-the art single model for instance segmentation.
+References
+https://arxiv.org/abs/1506.01497
+https://github.com/chenyuntc/simple-faster-rcnn-pytorch
+Written by Prakashjay. Contributions from Suraj Amonkar, Sachin Chandra, Rajneesh Kumar and Vikash Challa.
+Thank you and Happy Learning.
+2.3K
+
+
+27
+
+
+
+
+
+More from Fractal AI@Scale Research Group
+Follow
+
+Learn more about the exciting solutions developed by the Fractal AI@Scale Team.
+
+Nov 10, 2018
+
+An overview of deep-learning based object-detection algorithms.
+Understanding object-detection frameworks and their recent evolution. — The Machine-Vision team @Fractal Analytics is working on solving several object-detection problems. We have used a variety of frameworks available in the open-source community, and have modified them according to our use cases to build applications for various problem statements. We have built algorithms to work on a variety of…
+
+Machine Learning
+30 min read
+
+Brief Overview on object detection Algorithms.
+Love podcasts or audiobooks? Learn on the go with our new app.
+
+Try Knowable
+Get started
+Sign In
+
+Search
+Fractal AI@Scale Research Group
+Fractal AI@Scale Research Group
+905 Followers
+
+Learn more about the exciting solutions developed by the Fractal AI@Scale Team.
+
+Follow
+
+Related
+
+Review — DeepFace: Closing the Gap to Human-Level Performance in Face Verification
+
+You Only Look One-level Feature(YOLOF): Dissecting FPNs
+
+AnimeGAN: a GAN for style transfer
+Welcome to this second post(See the first), where I share the main motivations and ideas underlying some of the papers I am currently…
+
+How to Annotate Keypoints Using Roboflow
+A step-by-step guide on how to use an online annotation tool
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Knowable

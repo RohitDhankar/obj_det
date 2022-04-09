@@ -1,0 +1,67 @@
+
+
+https://docs.microsoft.com/en-us/windows/ai/windows-ml/tutorials/pytorch-train-model
+
+##Our network will be structured with the following 14 layers:
+Conv -> BatchNorm -> ReLU -> Conv -> BatchNorm -> ReLU -> MaxPool -> Conv -> BatchNorm -> ReLU -> Conv -> BatchNorm -> ReLU -> Linear.
+
+Each of the layers has number of channels to detect specific features 
+ in images, 
+ and a number of kernels to define the size of the detected feature. 
+
+NUM_CHANNELS == NUM_FEATURES
+NUM_KERNELS == SIZE_INDL_FEATURE
+
+ Therefore, a convolution layer with 64 channels and kernel size of 3 x 3 
+ would detect 64 distinct features, each of size 3 x 3. 
+ 
+ When you define a convolution layer, 
+ -- you provide the number of in-channels, 
+ -- the number of out-channels, ### The number of out-channels in the layer serves as the number of in-channels to the next layer.
+ -- and the kernel size. 
+ 
+ For example: A Convolution layer with 
+ 
+ -- in-channels=3, 
+ -- out-channels=10, and 
+ -- kernel-size=6 
+ 
+ --- will get the RGB image (3 channels) as an input, 
+ --- and it will apply 10 feature detectors to the images ### NUM_CHANNELS == NUM_FEATURES
+ --- with the kernel size of 6x6. ## Each Features SIZE -- NUM_KERNELS == SIZE_INDL_FEATURE == 6X6 
+ 
+ Smaller kernel sizes will reduce computational time and weight sharing.
+
+
+
+Other layers -- The following other layers are involved in our network:
+
+    The ReLU layer is an activation function to define all incoming features to be 0 or greater. 
+    When you apply this layer, 
+    --- any number less than 0 is changed to zero, 
+    --- while others are kept the same.
+    
+
+    the BatchNorm2d layer 
+    -- applies normalization on the inputs 
+    -- to have zero mean and unit variance
+    --- and increase the network accuracy. 
+    ##  network accuracy -- Not Reduce the LOSS ?? 
+
+
+    The MaxPool layer 
+    --- will help us to ensure that the location of an object in an image 
+    --- will not affect the ability of the neural network to detect its specific features.
+
+
+    The Linear layer is final layers in our network, which computes the scores of each of the classes. 
+    In the CIFAR10 dataset, there are ten classes of labels. The label with the highest score will be the one model predicts. In the linear layer, you have to specify the number of input features and the number of output features which should correspond to the number of classes.
+
+
+
+
+## Learning rate (lr) -- 
+sets the control of how much you are adjusting the weights of our 
+network with respect the loss gradient. 
+You will set it as 0.001. 
+The lower it is, the slower the training will be.

@@ -1,0 +1,200 @@
+-label2target---
+ {'Bus': 1, 'Truck': 2}
+-label2target---
+ {'Bus': 1, 'Truck': 2, 'background': 0}
+-target2label---
+ {1: 'Bus', 2: 'Truck', 0: 'background'}
+--Exception--err_1-----
+ CUDA out of memory. Tried to allocate 20.00 MiB (GPU 0; 3.82 GiB total capacity; 657.71 MiB already allocated; 23.00 MiB free; 674.00 MiB reserved in total by PyTorch)
+
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Sun Mar  6 21:50:53 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+|  0%   50C    P0    16W /  75W |   2494MiB /  3910MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2543      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      3007      G   /usr/bin/gnome-shell               48MiB |
+|    0   N/A  N/A      5023      G   /usr/lib/xorg/Xorg                102MiB |
+|    0   N/A  N/A      5406      G   /usr/bin/gnome-shell               90MiB |
+|    0   N/A  N/A      9979      G   ...AAAAAAAAA= --shared-files      100MiB |
+|    0   N/A  N/A     12337      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     13092      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     16608      C   python                           2125MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo kill -9 16608
+[sudo] password for dhankar: 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo kill -9 16608
+kill: (16608): No such process
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Sun Mar  6 21:54:05 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+|  0%   54C    P8     5W /  75W |    362MiB /  3910MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2543      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      3007      G   /usr/bin/gnome-shell               48MiB |
+|    0   N/A  N/A      5023      G   /usr/lib/xorg/Xorg                102MiB |
+|    0   N/A  N/A      5406      G   /usr/bin/gnome-shell               90MiB |
+|    0   N/A  N/A      9979      G   ...AAAAAAAAA= --shared-files       96MiB |
+|    0   N/A  N/A     12337      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     13092      G   /usr/lib/firefox/firefox            2MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Sun Mar  6 21:54:18 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+|  0%   52C    P8     4W /  75W |    362MiB /  3910MiB |      0%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2543      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      3007      G   /usr/bin/gnome-shell               48MiB |
+|    0   N/A  N/A      5023      G   /usr/lib/xorg/Xorg                102MiB |
+|    0   N/A  N/A      5406      G   /usr/bin/gnome-shell               90MiB |
+|    0   N/A  N/A      9979      G   ...AAAAAAAAA= --shared-files       96MiB |
+|    0   N/A  N/A     12337      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     13092      G   /usr/lib/firefox/firefox            2MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+(base) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Sun Mar  6 21:59:12 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+| 63%   48C    P0    18W /  75W |   2493MiB /  3910MiB |      2%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2543      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      3007      G   /usr/bin/gnome-shell               48MiB |
+|    0   N/A  N/A      5023      G   /usr/lib/xorg/Xorg                102MiB |
+|    0   N/A  N/A      5406      G   /usr/bin/gnome-shell               90MiB |
+|    0   N/A  N/A      9979      G   ...AAAAAAAAA= --shared-files       99MiB |
+|    0   N/A  N/A     12337      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     13092      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     17054      C   python                           2125MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ sudo kill -9 17054
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Sun Mar  6 21:59:31 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+| 59%   45C    P8     7W /  75W |    365MiB /  3910MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2543      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      3007      G   /usr/bin/gnome-shell               48MiB |
+|    0   N/A  N/A      5023      G   /usr/lib/xorg/Xorg                102MiB |
+|    0   N/A  N/A      5406      G   /usr/bin/gnome-shell               90MiB |
+|    0   N/A  N/A      9979      G   ...AAAAAAAAA= --shared-files       99MiB |
+|    0   N/A  N/A     12337      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     13092      G   /usr/lib/firefox/firefox            2MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+
+
+#### FOOBAR -- 7th MARCH 
+
+se) dhankar@dhankar-1:~/.../face_recog22$ nvidia-smi
+Mon Mar  7 14:13:59 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+|  0%   50C    P8     7W /  75W |    273MiB /  3910MiB |     25%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2537      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      2946      G   /usr/bin/gnome-shell               49MiB |
+|    0   N/A  N/A      4860      G   /usr/lib/xorg/Xorg                 88MiB |
+|    0   N/A  N/A      5146      G   /usr/bin/gnome-shell               75MiB |
+|    0   N/A  N/A     11060      G   ...AAAAAAAAA= --shared-files       39MiB |
++-----------------------------------------------------------------------------+
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+(base) dhankar@dhankar-1:~/.../face_recog22$ 
+
+

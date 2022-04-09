@@ -1,0 +1,356 @@
+
+
+https://towardsdatascience.com/massive-tutorial-on-image-processing-and-preparation-for-deep-learning-in-python-2-14816263b4a5
+
+Towards Data Science
+Published in
+Towards Data Science
+
+You have 1 free member-only story left this month. Sign up for Medium and get an extra one
+
+Bex T.
+Bex T.
+Feb 17
+
+·
+9 min read
+Massive Tutorial on Image Processing And Preparation For Deep Learning in Python, #2
+Manipulate and transform images at will
+
+Photo by Ihsan Adityawarman on Pexels
+This is the second part of my first post on Image Processing. Please read the first one for context and setup.
+We will kick off the second part with contrast enhancement.
+6. Contrast enhancement
+Certain types of images like medical analysis results have low contrast, making it hard to spot details, like below:
+
+png
+Image by Pixabay
+We can use contrast enhancement to make the details more distinct in such scenarios. There are two types of contrast enhancement algorithms:
+Contrast stretching
+Histogram equalization
+We will discuss histogram equalization in this post, which, in turn, has three types:
+Standard histogram equalization
+Adaptive histogram equalization
+Contrast Limited Adaptive Histogram Equalization (CLAHE)
+Histogram equalization spreads out the areas with the highest contrast of an image to less bright regions, equalizing it.
+Oh, by the way, you can calculate the contrast of an image by subtracting the lowest pixel value from the highest.
+>>> xray.max() - xray.min()
+255
+Now, let’s try the standard histogram equalization from the exposure module:
+png
+Image by Pixabay
+We can already see the details a lot more clearly.
+Next, we will use the CLAHE (this is a fun word to pronounce!), which computes many histograms for different pixel neighborhoods in an image, which results in more detail even in the darkest of the regions:
+png
+Image by Pixabay
+This one looks a lot better since it could show details in the background and a couple more missing ribs in the bottom left. You can tweak clip_limit for more or less detail.
+7. Transformations
+Images in your dataset might have several clashing characteristics, like different scales, unaligned rotations, etc. ML and DL algorithms expect your pictures to have the same shape and dimensions. Therefore, you need to learn how to fix them.
+Rotations
+To rotate images, use the rotate function from the transform module. I've chosen actual clocks so you might remember the angle signs better:
+png
+Photo by RP Singh from Pexels
+png
+Photo by RP Singh from Pexels
+Rescaling
+Another standard operation is scaling images, and it is primarily helpful in cases where images are proportionally different.
+We use a similar rescale function for this operation:
+png
+Photo by Pixabay from Pexels
+When image resolution is high, downscaling it too much might result in quality loss or pixels rubbing together unceremoniously to create unexpected edges or corners. To account for this effect, you can set anti_aliasing to True, which uses Gaussian smoothing under the hood:
+https://gist.github.com/f7ae272b6eb1bce408189d8de2b71656
+png
+Photo by Pixabay from Pexels
+As before, the smoothing isn’t noticeable, but it will be evident at a more granular level.
+Resizing
+If you want the image to have specific width and height, rather than scaling it by a factor, you can use the resize function by providing an output_shape:
+png
+Photo by Chevanon Photography from Pexels
+Image restoration and enhancement
+Some images might be distorted, damaged, or lost during file transforms, in faulty downloads, or many other situations. Rather than giving up on the idea, you can use skimage to account for the damage and make the image good as new.
+In this section, we will discuss a few techniques for image restoration, starting with inpainting.
+1. Inpainting
+An inpainting algorithm can intelligently fill in the blanks in an image. I couldn’t find a damaged picture, so we will use this whale image and put a few blanks on it manually:
+whale_image = imread("images/00206a224e68de.jpg")
+>>> show(whale_image)
+png
+>>> whale_image.shape
+(428, 1916, 3)
+The below function creates four pitch-black regions to simulate lost information on an image:
+png
+We will use the inpaint_biharmonic function from the inpaint module to fill in the blanks, passing in the mask we created:
+png
+As you can see, it will be hard to tell where the defect regions are before seeing the faulty image.
+Now, let’s make some noise📣!
+2. Noise📣
+As discussed earlier, noise plays an essential role in image enhancement and restoration. Sometimes, you might intentionally add it to an image like below:
+png
+Photo by Tuan Nguyen from Pexels
+We use the random_noise function to sprinkle an image with random specks of color. For this reason, the method is called the "salt and pepper" technique.
+3. Reducing noise — denoising
+But, most of the time, you want to remove noise from an image rather than add it. There are a few types of denoising algorithms:
+Total variation (TV) filter
+Bilateral denoising
+Wavelet denoising
+Non-local mean denoising
+We will only look at the first two in this article. Let’s try TV filter first, which is available as denoise_tv_chambolle:
+png
+Photo by Tuan Nguyen from Pexels
+The higher the image’s resolution, the longer it takes to denoise it. You can control the effect of denoising with the weight parameter. Now, let's try denoise_bilateral:
+png
+Photo by Tuan Nguyen from Pexels
+It wasn’t as effective as a TV filter, as can be seen below:
+png
+Photo by Tuan Nguyen from Pexels
+4. Superpixels and Segmentation
+Image segmentation is one of the most fundamental and everyday topics in image processing, and it is extensively used in motion and object detection, image classification, and many more areas.
+We’ve already seen an instance of segmentation — thresholding an image to extract the background from the foreground. This section will learn to do more than that, such as segmenting images into similar areas.
+To get started with segmentation, we need to understand the concept of superpixels.
+A pixel, on its own, just represents a small area of color, and once separated from the image, a single pixel will be useless. For this reason, segmentation algorithms use multiple groups of pixels that are similar in contrast, color, or brightness, and they are called superpixels.
+One algorithm that tries to find superpixels is the Simple Linear Iterative Cluster (SLIC), which uses k-Means clustering under the hood. Let’s see how to use it on the coffee image available in the skimage library:
+from skimage import data
+coffee = data.coffee()
+>>> show(coffee)
+png
+We will use the slic function from the segmentation module:
+from skimage.segmentation import slic
+segments = slic(coffee)
+>>> show(segments)
+png
+slic finds 100 segments or labels by default. To put them back onto the image, we use the label2rgb function:
+from skimage.color import label2rgb
+final_image = label2rgb(segments, coffee, kind="avg")
+>>> show(final_image)
+png
+Let’s wrap this operation inside a function and try to use more segments:
+png
+Segmentation will make it easier for computer vision algorithms to extract useful features from images.
+5. Contours
+Much of the information of an object resides in its shape. If we can detect an object’s shape in lines or contours, we can extract valuable data like its size, markings, etc.
+Let’s see finding contours in practice using the image of dominoes.
+dominoes = imread("images/dominoes.jpg")
+>>> show(dominoes)
+png
+Photo by Pixabay from Pexels
+We will see if we can isolate the tiles and circles using the find_contours function in skimage. This function requires a binary (black and white) image, so we must threshold the image first.
+The resulting array is a list of (n, 2) arrays representing the coordinates of the contour lines:
+We will wrap the operation inside a function called mark_contours:
+To plot the contour lines on the image, we will create another function called plot_image_contours that uses the above one:
+png
+Photo by Pixabay from Pexels
+As we can see, we successfully detected the majority of the contours, but we can still see some random fluctuations in the center. Let’s apply denoising before we pass the image of dominoes to our contour finding function:
+png
+Photo by Pixabay from Pexels
+That’s it! We eliminated most of the noise, causing the incorrect contour lines!
+Advanced operations
+1. Edge detection
+Before, we used the Sobel algorithm to detect the edges of objects. Here, we will use the Canny algorithm, which is more widely used because it is faster and more accurate. As always, the function canny requires a grayscale image.
+This time we will use an image with more coins, hence more edges to detect:
+png
+Photo by Dmitry Demidov from Pexels
+To find edges, we just pass the image to the canny function:
+png
+Photo by Dmitry Demidov from Pexels
+The algorithm found almost all coins’ edges, but it is very noisy because the engravings on the coins are also detected. We can reduce the sensitivity of canny by tweaking the sigma parameter:
+png
+Photo by Dmitry Demidov from Pexels
+As you can see, canny now only finds the general outline of the coins.
+2. Corner detection
+Another important image processing technique is corner detection. Corners can be key features of objects in image classification.
+To find corners, we will use the Harris corner detection algorithm. Let’s load a sample image and convert it to grayscale:
+png
+Photo by Pixabay from Pexels
+We will use the corner_harris function to produce a measured image that masks the areas where corners are.
+from skimage.feature import corner_harris
+measured_image = corner_harris(windows_gray)
+>>> show(measured_image)
+png
+Now, we will pass this masked measure image to corner_peaks function, which returns corner coordinates this time:
+The function found 79 corners using a minimum distance of 50 pixels between each corner. Let’s wrap the operation up to this point in a function:
+Now, we will create another function that plots each corner using the coordinates produced from the above function:
+png
+Photo by Pixabay from Pexels
+Unfortunately, the algorithm isn’t working as expected. Rather than finding the window corners, the marks are placed at the intersection of the bricks. These intersections are noise, making them useless. Let’s denoise the image and pass it to the function once again:
+png
+Now, this is much better! It ignored the brick edges and found the majority of window corners.
+Conclusion
+Phew! What a post! Both you and I deserve a pat on the back!
+I had quite a fun writing these two articles. In a real computer vision problem, you won’t be using all of these at once, of course. As you may have noticed, things we learned today aren’t complicated, and they take a few lines of code, at most. The tricky part is applying them to a real problem and actually improving your model’s performance.
+That bit comes with hard work and practice, not nicely packaged inside a single article. Thank you for reading!
+Read the first part here.
+You can become a premium Medium member using the link below and get access to all of my stories and thousands of others:
+Join Medium with my referral link — Bex T.
+As a Medium member, a portion of your membership fee goes to writers you read, and you get full access to every story…
+ibexorigin.medium.com
+
+Or subscribe to my email list:
+Get an email whenever Bex T. publishes.
+Get an email whenever Bex T. publishes. By signing up, you will create a Medium account if you don’t already have one…
+ibexorigin.medium.com
+
+You can reach out to me on LinkedIn or Twitter for a friendly chat about all things data. Or you can just read another story from me. How about these:
+Good-bye Pandas! Meet Terality — Its Evil Twin With Identical Syntax
+Edit description
+towardsdatascience.com
+
+GitHub Copilot Crushes Data Science And ML Tasks: Ultimate Review
+Edit description
+towardsdatascience.com
+
+10-Minute Guide to Julia For Die-Hard Python Lovers
+Edit description
+towardsdatascience.com
+
+6 Pandas Mistakes That Silently Tell You Are a Rookie
+Edit description
+towardsdatascience.com
+
+8 Booming Data Science Libraries You Must Watch Out in 2022
+Edit description
+towardsdatascience.com
+
+97
+
+
+6
+
+
+
+
+
+Sign up for The Variable
+By Towards Data Science
+Every Thursday, the Variable delivers the very best of Towards Data Science: from hands-on tutorials and cutting-edge research to original features you don't want to miss. Take a look.
+
+
+Get this newsletter
+More from Towards Data Science
+Follow
+Your home for data science. A Medium publication sharing concepts, ideas and codes.
+
+Bex T.
+Bex T.
+
+·Feb 17
+
+Massive Tutorial on Image Processing And Preparation For Deep Learning in Python, #1
+Manipulate and transform images at will — Introduction We are here on a sad business. Very sad, indeed. We are here to learn how to take beautiful, breathtaking images and turn them into a bunch of ugly little numbers so that they are more presentable to all those soulless, mindless machines. We…
+
+Deep Learning
+10 min read
+
+Massive Tutorial on Image Processing And Preparation For Deep Learning in Python, #1
+Share your ideas with millions of readers.
+
+Write on Medium
+Adam Brownell
+Adam Brownell
+
+·Feb 17
+
+Our Impending (& Self-Inflicted) AI-Horror Boom
+The world is growing more distrustful of AI, and it’s AI developers fault — This is part 2 of our series on ML Fairness (link). Previously, we discussed how ML teams rarely attempt to address societal bias in models due to a myriad of (weak) reasons. In this article, we will explore the consequences of this neglect. Thesis: Due to high-profile ML failures and…
+
+Artificial Intelligence
+10 min read
+
+Our Impending (& Self-Inflicted) AI-Horror Boom
+Eryk Lewinson
+Eryk Lewinson
+
+·Feb 17
+
+pur — the easiest way to keep your requirements file up to date
+Update all the libraries in your requirements.txt with a single line of code — I don’t think I need to convince you about the benefits of keeping your Python libraries (or other software as a matter of fact) up to date: bugs are fixed over time, potential security vulnerabilities are patched, compatibility issues may arise, etc. And the list goes on and on. In…
+
+Python
+3 min read
+
+pur — the easiest way to keep your requirements file up to date
+Khuyen Tran
+Khuyen Tran
+
+·Feb 17
+
+BentoML: Create an ML Powered Prediction Service in Minutes
+Containerize and Deploy Your ML Model in Python — Motivation You have just built a machine learning model to predict which group a customer belongs to. The model seems to do a good job in segmenting your customers. You decide to give this model to your team members so that they can develop a web application on top of your…
+
+Machine Learning
+7 min read
+
+BentoML: Create an ML Powered Prediction Service in Minutes
+Joyita Bhattacharya
+Joyita Bhattacharya
+
+·Feb 17
+
+Materials Data Mining via Image Processing of Micrographs
+Basic processing steps for micrograph-based feature extraction — Background In my post “Uncovering the Potential of Materials Data using Matminer and Pymatgen”, I discussed the concept of materials tetrahedron — the basic framework for developing materials for various technological usage. The vital parameters occupying the vertices of the tetrahedron are process, structure, property, and performance.
+
+Image Processing
+8 min read
+
+Materials Data Mining via Image Processing of Micrographs
+Read more from Towards Data Science
+More from Medium
+
+How to Begin Your NLP Journey
+Processing text with Python
+Deploy Keras model on GCP and making custom predictions via the AI Platform Training & Prediction…
+
+A Gentle Introduction To Calculating The TF-IDF Values
+
+Day4: Basic Machine Learning Concepts
+What is ML? How machines learn? how we can train any machine?
+Hello World for Open AIGPT-2 Model using Azure Machine learning Service
+
+How Reproducibility Crisis is Eating Away the Credibility of Machine Learning Technology?
+
+The Long Tail of NLP
+How can we make technology more inclusive for the next billion?
+
+What is Machine Unlearning? Pt.1
+With new regulation empowering users to request their data be deleted, how do we unlearn what was already learned through machine learning?
+Get started
+Sign In
+
+Search
+Bex T.
+Bex T.
+5.5K Followers
+
+AI Content Writer @ NVIDIA |🥇Top 10 Writer in AI and ML | Kaggle Master | https://www.linkedin.com/in/bextuychiev/ | https://ibexorigin.medium.com/membership
+
+Follow
+
+Related
+png
+Massive Tutorial on Image Processing And Preparation For Deep Learning in Python, #1
+
+What Is a Data Warehouse
+Understanding the concept of data warehouses and how they differ from data lakes and databases
+
+Unsupervised Learning algorithms cheat sheet
+A complete cheat sheet for all unsupervised machine learning algorithms you should know
+
+Graph Neural Networks in Python
+An introduction and step-by-step implementation
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Knowable
+
+

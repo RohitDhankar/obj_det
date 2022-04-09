@@ -1,0 +1,819 @@
+-label2target---
+ {'Bus': 1, 'Truck': 2}
+-label2target---
+ {'Bus': 1, 'Truck': 2, 'background': 0}
+-target2label---
+ {1: 'Bus', 2: 'Truck', 0: 'background'}
+-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.000	trn_loss: 1.106	trn_loc_loss: 0.915	trn_regr_loss: 0.126	trn_objectness_loss: 0.058	trn_rpn_box_reg_loss: 0.006	(0.63s - 8617.35s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.000	trn_loss: 0.987	trn_loc_loss: 0.536	trn_regr_loss: 0.419	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.003	(1.02s - 7020.56s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.000	trn_loss: 0.313	trn_loc_loss: 0.174	trn_regr_loss: 0.132	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.002	(1.42s - 6493.50s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.000	trn_loss: 0.342	trn_loc_loss: 0.159	trn_regr_loss: 0.162	trn_objectness_loss: 0.018	trn_rpn_box_reg_loss: 0.003	(1.82s - 6223.43s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.000	trn_loss: 0.281	trn_loc_loss: 0.142	trn_regr_loss: 0.111	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.013	(2.21s - 6060.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.000	trn_loss: 0.271	trn_loc_loss: 0.145	trn_regr_loss: 0.105	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.016	(2.61s - 5952.98s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 1.132	trn_loc_loss: 0.673	trn_regr_loss: 0.432	trn_objectness_loss: 0.018	trn_rpn_box_reg_loss: 0.008	(3.00s - 5877.52s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.346	trn_loc_loss: 0.184	trn_regr_loss: 0.149	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.001	(3.40s - 5823.60s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.221	trn_loc_loss: 0.097	trn_regr_loss: 0.121	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.003	(3.80s - 5785.03s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.201	trn_loc_loss: 0.070	trn_regr_loss: 0.129	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.001	(4.20s - 5754.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.090	trn_loc_loss: 0.023	trn_regr_loss: 0.008	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.053	(4.60s - 5730.88s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.762	trn_loc_loss: 0.378	trn_regr_loss: 0.381	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.003	(5.00s - 5707.46s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.226	trn_loc_loss: 0.084	trn_regr_loss: 0.131	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.010	(5.40s - 5688.72s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.299	trn_loc_loss: 0.084	trn_regr_loss: 0.203	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.006	(5.80s - 5671.53s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 1.396	trn_loc_loss: 0.654	trn_regr_loss: 0.676	trn_objectness_loss: 0.037	trn_rpn_box_reg_loss: 0.030	(6.20s - 5657.34s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.244	trn_loc_loss: 0.106	trn_regr_loss: 0.116	trn_objectness_loss: 0.015	trn_rpn_box_reg_loss: 0.008	(6.60s - 5645.31s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.642	trn_loc_loss: 0.209	trn_regr_loss: 0.412	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.017	(7.00s - 5633.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.313	trn_loc_loss: 0.161	trn_regr_loss: 0.131	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.002	(7.40s - 5622.31s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.199	trn_loc_loss: 0.062	trn_regr_loss: 0.097	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.025	(7.79s - 5612.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.001	trn_loss: 0.421	trn_loc_loss: 0.150	trn_regr_loss: 0.240	trn_objectness_loss: 0.027	trn_rpn_box_reg_loss: 0.005	(8.19s - 5604.10s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.614	trn_loc_loss: 0.202	trn_regr_loss: 0.343	trn_objectness_loss: 0.041	trn_rpn_box_reg_loss: 0.027	(8.59s - 5595.76s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.433	trn_loc_loss: 0.175	trn_regr_loss: 0.248	trn_objectness_loss: 0.008	trn_rpn_box_reg_loss: 0.001	(8.99s - 5588.62s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.496	trn_loc_loss: 0.166	trn_regr_loss: 0.317	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.004	(9.39s - 5581.99s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.231	trn_loc_loss: 0.073	trn_regr_loss: 0.141	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.003	(9.78s - 5575.76s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.230	trn_loc_loss: 0.088	trn_regr_loss: 0.136	trn_objectness_loss: 0.002	trn_rpn_box_reg_loss: 0.004	(10.18s - 5569.96s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 1.428	trn_loc_loss: 0.719	trn_regr_loss: 0.554	trn_objectness_loss: 0.134	trn_rpn_box_reg_loss: 0.021	(10.58s - 5566.24s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.114	trn_loc_loss: 0.035	trn_regr_loss: 0.059	trn_objectness_loss: 0.004	trn_rpn_box_reg_loss: 0.016	(10.98s - 5560.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.340	trn_loc_loss: 0.206	trn_regr_loss: 0.084	trn_objectness_loss: 0.044	trn_rpn_box_reg_loss: 0.006	(11.38s - 5556.22s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.253	trn_loc_loss: 0.108	trn_regr_loss: 0.061	trn_objectness_loss: 0.051	trn_rpn_box_reg_loss: 0.034	(11.77s - 5551.23s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.276	trn_loc_loss: 0.078	trn_regr_loss: 0.140	trn_objectness_loss: 0.040	trn_rpn_box_reg_loss: 0.017	(12.17s - 5545.68s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.462	trn_loc_loss: 0.200	trn_regr_loss: 0.238	trn_objectness_loss: 0.020	trn_rpn_box_reg_loss: 0.005	(12.57s - 5541.33s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.199	trn_loc_loss: 0.090	trn_regr_loss: 0.106	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.003	(12.96s - 5537.35s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.616	trn_loc_loss: 0.290	trn_regr_loss: 0.294	trn_objectness_loss: 0.026	trn_rpn_box_reg_loss: 0.006	(13.36s - 5534.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.002	trn_loss: 0.266	trn_loc_loss: 0.112	trn_regr_loss: 0.116	trn_objectness_loss: 0.025	trn_rpn_box_reg_loss: 0.014	(13.76s - 5530.66s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.181	trn_loc_loss: 0.065	trn_regr_loss: 0.114	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.002	(14.16s - 5527.46s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.296	trn_loc_loss: 0.094	trn_regr_loss: 0.196	trn_objectness_loss: 0.003	trn_rpn_box_reg_loss: 0.003	(14.55s - 5523.68s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.405	trn_loc_loss: 0.140	trn_regr_loss: 0.256	trn_objectness_loss: 0.002	trn_rpn_box_reg_loss: 0.007	(14.95s - 5520.85s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.291	trn_loc_loss: 0.183	trn_regr_loss: 0.098	trn_objectness_loss: 0.007	trn_rpn_box_reg_loss: 0.003	(15.34s - 5516.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.156	trn_loc_loss: 0.046	trn_regr_loss: 0.073	trn_objectness_loss: 0.017	trn_rpn_box_reg_loss: 0.020	(15.74s - 5513.99s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.204	trn_loc_loss: 0.079	trn_regr_loss: 0.111	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.003	(16.14s - 5512.32s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.242	trn_loc_loss: 0.101	trn_regr_loss: 0.111	trn_objectness_loss: 0.023	trn_rpn_box_reg_loss: 0.007	(16.54s - 5509.79s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.188	trn_loc_loss: 0.090	trn_regr_loss: 0.082	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.005	(16.95s - 5513.41s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.347	trn_loc_loss: 0.184	trn_regr_loss: 0.111	trn_objectness_loss: 0.041	trn_rpn_box_reg_loss: 0.012	(17.39s - 5522.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.203	trn_loc_loss: 0.075	trn_regr_loss: 0.121	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.006	(17.80s - 5526.03s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.311	trn_loc_loss: 0.137	trn_regr_loss: 0.152	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.013	(18.20s - 5524.29s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.196	trn_loc_loss: 0.061	trn_regr_loss: 0.126	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.003	(18.60s - 5521.93s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.003	trn_loss: 0.146	trn_loc_loss: 0.050	trn_regr_loss: 0.081	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.003	(19.00s - 5520.03s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.382	trn_loc_loss: 0.125	trn_regr_loss: 0.202	trn_objectness_loss: 0.030	trn_rpn_box_reg_loss: 0.024	(19.39s - 5517.05s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.343	trn_loc_loss: 0.142	trn_regr_loss: 0.186	trn_objectness_loss: 0.004	trn_rpn_box_reg_loss: 0.011	(19.79s - 5514.61s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.561	trn_loc_loss: 0.331	trn_regr_loss: 0.125	trn_objectness_loss: 0.095	trn_rpn_box_reg_loss: 0.010	(20.19s - 5513.68s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.145	trn_loc_loss: 0.053	trn_regr_loss: 0.087	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.005	(20.59s - 5512.03s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.248	trn_loc_loss: 0.081	trn_regr_loss: 0.153	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.014	(20.99s - 5510.19s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.323	trn_loc_loss: 0.094	trn_regr_loss: 0.220	trn_objectness_loss: 0.004	trn_rpn_box_reg_loss: 0.005	(21.39s - 5508.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.172	trn_loc_loss: 0.061	trn_regr_loss: 0.100	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.001	(21.79s - 5506.78s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.136	trn_loc_loss: 0.032	trn_regr_loss: 0.077	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.026	(22.19s - 5505.77s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.113	trn_loc_loss: 0.034	trn_regr_loss: 0.050	trn_objectness_loss: 0.000	trn_rpn_box_reg_loss: 0.029	(22.61s - 5510.16s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.464	trn_loc_loss: 0.161	trn_regr_loss: 0.202	trn_objectness_loss: 0.078	trn_rpn_box_reg_loss: 0.022	(23.01s - 5508.10s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.316	trn_loc_loss: 0.147	trn_regr_loss: 0.141	trn_objectness_loss: 0.022	trn_rpn_box_reg_loss: 0.006	(23.41s - 5506.15s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.426	trn_loc_loss: 0.158	trn_regr_loss: 0.208	trn_objectness_loss: 0.045	trn_rpn_box_reg_loss: 0.015	(23.80s - 5504.11s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.151	trn_loc_loss: 0.063	trn_regr_loss: 0.077	trn_objectness_loss: 0.008	trn_rpn_box_reg_loss: 0.004	(24.20s - 5502.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.004	trn_loss: 0.626	trn_loc_loss: 0.266	trn_regr_loss: 0.151	trn_objectness_loss: 0.162	trn_rpn_box_reg_loss: 0.046	(24.60s - 5500.31s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.433	trn_loc_loss: 0.149	trn_regr_loss: 0.213	trn_objectness_loss: 0.064	trn_rpn_box_reg_loss: 0.008	(24.99s - 5498.53s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.208	trn_loc_loss: 0.084	trn_regr_loss: 0.111	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.003	(25.39s - 5496.55s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.255	trn_loc_loss: 0.103	trn_regr_loss: 0.132	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.007	(25.79s - 5495.29s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.587	trn_loc_loss: 0.184	trn_regr_loss: 0.277	trn_objectness_loss: 0.098	trn_rpn_box_reg_loss: 0.028	(26.19s - 5494.18s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.454	trn_loc_loss: 0.191	trn_regr_loss: 0.226	trn_objectness_loss: 0.022	trn_rpn_box_reg_loss: 0.015	(26.59s - 5493.22s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.191	trn_loc_loss: 0.049	trn_regr_loss: 0.100	trn_objectness_loss: 0.025	trn_rpn_box_reg_loss: 0.018	(26.99s - 5491.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 1.003	trn_loc_loss: 0.431	trn_regr_loss: 0.387	trn_objectness_loss: 0.161	trn_rpn_box_reg_loss: 0.024	(27.38s - 5490.56s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.141	trn_loc_loss: 0.056	trn_regr_loss: 0.075	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.005	(27.78s - 5489.21s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.186	trn_loc_loss: 0.063	trn_regr_loss: 0.092	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.002	(28.19s - 5490.13s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.152	trn_loc_loss: 0.050	trn_regr_loss: 0.053	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.020	(28.59s - 5489.03s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.140	trn_loc_loss: 0.048	trn_regr_loss: 0.050	trn_objectness_loss: 0.040	trn_rpn_box_reg_loss: 0.002	(28.99s - 5488.10s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.103	trn_loc_loss: 0.037	trn_regr_loss: 0.049	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.005	(29.39s - 5486.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 0.292	trn_loc_loss: 0.113	trn_regr_loss: 0.157	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.008	(29.79s - 5486.12s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.005	trn_loss: 1.490	trn_loc_loss: 0.174	trn_regr_loss: 0.133	trn_objectness_loss: 0.868	trn_rpn_box_reg_loss: 0.315	(30.19s - 5485.05s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.245	trn_loc_loss: 0.084	trn_regr_loss: 0.130	trn_objectness_loss: 0.027	trn_rpn_box_reg_loss: 0.004	(30.59s - 5483.96s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.301	trn_loc_loss: 0.126	trn_regr_loss: 0.139	trn_objectness_loss: 0.026	trn_rpn_box_reg_loss: 0.009	(30.99s - 5483.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.241	trn_loc_loss: 0.108	trn_regr_loss: 0.121	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.002	(31.42s - 5488.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 1.274	trn_loc_loss: 0.095	trn_regr_loss: 0.095	trn_objectness_loss: 0.782	trn_rpn_box_reg_loss: 0.301	(31.84s - 5489.74s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.423	trn_loc_loss: 0.092	trn_regr_loss: 0.090	trn_objectness_loss: 0.238	trn_rpn_box_reg_loss: 0.003	(32.24s - 5490.09s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.453	trn_loc_loss: 0.065	trn_regr_loss: 0.060	trn_objectness_loss: 0.325	trn_rpn_box_reg_loss: 0.002	(32.65s - 5490.50s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.914	trn_loc_loss: 0.363	trn_regr_loss: 0.352	trn_objectness_loss: 0.160	trn_rpn_box_reg_loss: 0.039	(33.05s - 5489.94s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.222	trn_loc_loss: 0.069	trn_regr_loss: 0.097	trn_objectness_loss: 0.054	trn_rpn_box_reg_loss: 0.002	(33.45s - 5489.21s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.334	trn_loc_loss: 0.106	trn_regr_loss: 0.053	trn_objectness_loss: 0.167	trn_rpn_box_reg_loss: 0.008	(33.85s - 5487.68s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.161	trn_loc_loss: 0.053	trn_regr_loss: 0.080	trn_objectness_loss: 0.025	trn_rpn_box_reg_loss: 0.004	(34.25s - 5486.19s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.198	trn_loc_loss: 0.048	trn_regr_loss: 0.122	trn_objectness_loss: 0.026	trn_rpn_box_reg_loss: 0.002	(34.64s - 5484.90s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.156	trn_loc_loss: 0.053	trn_regr_loss: 0.083	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.004	(35.04s - 5483.46s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.968	trn_loc_loss: 0.475	trn_regr_loss: 0.399	trn_objectness_loss: 0.063	trn_rpn_box_reg_loss: 0.030	(35.44s - 5482.53s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.006	trn_loss: 0.115	trn_loc_loss: 0.059	trn_regr_loss: 0.053	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.002	(35.84s - 5481.28s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.096	trn_loc_loss: 0.036	trn_regr_loss: 0.055	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.004	(36.23s - 5480.09s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 1.589	trn_loc_loss: 0.102	trn_regr_loss: 0.093	trn_objectness_loss: 1.172	trn_rpn_box_reg_loss: 0.223	(36.63s - 5479.16s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.112	trn_loc_loss: 0.048	trn_regr_loss: 0.054	trn_objectness_loss: 0.007	trn_rpn_box_reg_loss: 0.002	(37.03s - 5478.44s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.218	trn_loc_loss: 0.086	trn_regr_loss: 0.107	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.010	(37.43s - 5477.32s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.323	trn_loc_loss: 0.135	trn_regr_loss: 0.120	trn_objectness_loss: 0.063	trn_rpn_box_reg_loss: 0.004	(37.83s - 5476.12s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.158	trn_loc_loss: 0.038	trn_regr_loss: 0.040	trn_objectness_loss: 0.056	trn_rpn_box_reg_loss: 0.024	(38.23s - 5476.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.239	trn_loc_loss: 0.068	trn_regr_loss: 0.103	trn_objectness_loss: 0.061	trn_rpn_box_reg_loss: 0.008	(38.63s - 5475.37s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.383	trn_loc_loss: 0.141	trn_regr_loss: 0.138	trn_objectness_loss: 0.095	trn_rpn_box_reg_loss: 0.009	(39.03s - 5474.30s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.203	trn_loc_loss: 0.058	trn_regr_loss: 0.088	trn_objectness_loss: 0.053	trn_rpn_box_reg_loss: 0.004	(39.43s - 5473.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.165	trn_loc_loss: 0.069	trn_regr_loss: 0.056	trn_objectness_loss: 0.034	trn_rpn_box_reg_loss: 0.005	(39.83s - 5472.40s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.253	trn_loc_loss: 0.108	trn_regr_loss: 0.099	trn_objectness_loss: 0.036	trn_rpn_box_reg_loss: 0.010	(40.22s - 5471.37s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.124	trn_loc_loss: 0.059	trn_regr_loss: 0.041	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.002	(40.62s - 5470.30s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.007	trn_loss: 0.123	trn_loc_loss: 0.042	trn_regr_loss: 0.035	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.024	(41.02s - 5469.30s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.161	trn_loc_loss: 0.062	trn_regr_loss: 0.083	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.002	(41.42s - 5468.57s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.160	trn_loc_loss: 0.055	trn_regr_loss: 0.089	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.003	(41.82s - 5467.58s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.148	trn_loc_loss: 0.059	trn_regr_loss: 0.081	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.007	(42.22s - 5466.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.765	trn_loc_loss: 0.164	trn_regr_loss: 0.141	trn_objectness_loss: 0.432	trn_rpn_box_reg_loss: 0.028	(42.62s - 5465.98s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.149	trn_loc_loss: 0.055	trn_regr_loss: 0.060	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.016	(43.01s - 5464.98s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.238	trn_loc_loss: 0.121	trn_regr_loss: 0.052	trn_objectness_loss: 0.049	trn_rpn_box_reg_loss: 0.016	(43.41s - 5464.06s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.420	trn_loc_loss: 0.172	trn_regr_loss: 0.199	trn_objectness_loss: 0.038	trn_rpn_box_reg_loss: 0.012	(43.81s - 5463.08s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.131	trn_loc_loss: 0.042	trn_regr_loss: 0.074	trn_objectness_loss: 0.012	trn_rpn_box_reg_loss: 0.004	(44.20s - 5462.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.290	trn_loc_loss: 0.134	trn_regr_loss: 0.136	trn_objectness_loss: 0.007	trn_rpn_box_reg_loss: 0.013	(44.60s - 5461.29s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.176	trn_loc_loss: 0.085	trn_regr_loss: 0.068	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.003	(45.00s - 5460.36s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.382	trn_loc_loss: 0.078	trn_regr_loss: 0.099	trn_objectness_loss: 0.081	trn_rpn_box_reg_loss: 0.124	(45.40s - 5459.66s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.167	trn_loc_loss: 0.074	trn_regr_loss: 0.074	trn_objectness_loss: 0.017	trn_rpn_box_reg_loss: 0.001	(45.80s - 5458.64s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.319	trn_loc_loss: 0.145	trn_regr_loss: 0.116	trn_objectness_loss: 0.037	trn_rpn_box_reg_loss: 0.021	(46.19s - 5457.63s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.008	trn_loss: 0.367	trn_loc_loss: 0.152	trn_regr_loss: 0.127	trn_objectness_loss: 0.080	trn_rpn_box_reg_loss: 0.009	(46.59s - 5456.69s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.254	trn_loc_loss: 0.054	trn_regr_loss: 0.021	trn_objectness_loss: 0.170	trn_rpn_box_reg_loss: 0.010	(46.99s - 5455.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.234	trn_loc_loss: 0.083	trn_regr_loss: 0.096	trn_objectness_loss: 0.048	trn_rpn_box_reg_loss: 0.007	(47.39s - 5455.03s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.528	trn_loc_loss: 0.150	trn_regr_loss: 0.117	trn_objectness_loss: 0.194	trn_rpn_box_reg_loss: 0.068	(47.78s - 5454.16s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.609	trn_loc_loss: 0.211	trn_regr_loss: 0.221	trn_objectness_loss: 0.157	trn_rpn_box_reg_loss: 0.020	(48.18s - 5453.22s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.134	trn_loc_loss: 0.050	trn_regr_loss: 0.046	trn_objectness_loss: 0.038	trn_rpn_box_reg_loss: 0.001	(48.58s - 5452.32s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.238	trn_loc_loss: 0.097	trn_regr_loss: 0.104	trn_objectness_loss: 0.032	trn_rpn_box_reg_loss: 0.005	(49.00s - 5454.36s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.236	trn_loc_loss: 0.085	trn_regr_loss: 0.098	trn_objectness_loss: 0.035	trn_rpn_box_reg_loss: 0.018	(49.45s - 5459.05s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.230	trn_loc_loss: 0.087	trn_regr_loss: 0.083	trn_objectness_loss: 0.053	trn_rpn_box_reg_loss: 0.007	(49.88s - 5462.01s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.170	trn_loc_loss: 0.058	trn_regr_loss: 0.084	trn_objectness_loss: 0.022	trn_rpn_box_reg_loss: 0.006	(50.31s - 5464.16s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.186	trn_loc_loss: 0.081	trn_regr_loss: 0.060	trn_objectness_loss: 0.043	trn_rpn_box_reg_loss: 0.002	(50.73s - 5465.99s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.187	trn_loc_loss: 0.052	trn_regr_loss: 0.041	trn_objectness_loss: 0.083	trn_rpn_box_reg_loss: 0.011	(51.13s - 5465.09s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.217	trn_loc_loss: 0.092	trn_regr_loss: 0.092	trn_objectness_loss: 0.020	trn_rpn_box_reg_loss: 0.013	(51.53s - 5464.07s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 1.028	trn_loc_loss: 0.440	trn_regr_loss: 0.271	trn_objectness_loss: 0.271	trn_rpn_box_reg_loss: 0.046	(51.92s - 5463.30s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.009	trn_loss: 0.449	trn_loc_loss: 0.156	trn_regr_loss: 0.253	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.021	(52.32s - 5462.46s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.133	trn_loc_loss: 0.051	trn_regr_loss: 0.063	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.004	(52.74s - 5464.07s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.137	trn_loc_loss: 0.047	trn_regr_loss: 0.061	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.006	(53.18s - 5467.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.562	trn_loc_loss: 0.301	trn_regr_loss: 0.193	trn_objectness_loss: 0.063	trn_rpn_box_reg_loss: 0.005	(53.59s - 5467.34s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.180	trn_loc_loss: 0.063	trn_regr_loss: 0.084	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.004	(53.99s - 5466.92s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.480	trn_loc_loss: 0.167	trn_regr_loss: 0.202	trn_objectness_loss: 0.088	trn_rpn_box_reg_loss: 0.023	(54.42s - 5468.88s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.162	trn_loc_loss: 0.050	trn_regr_loss: 0.094	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.005	(54.86s - 5471.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.177	trn_loc_loss: 0.062	trn_regr_loss: 0.068	trn_objectness_loss: 0.039	trn_rpn_box_reg_loss: 0.008	(55.30s - 5475.29s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.225	trn_loc_loss: 0.095	trn_regr_loss: 0.094	trn_objectness_loss: 0.033	trn_rpn_box_reg_loss: 0.003	(55.73s - 5477.40s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.237	trn_loc_loss: 0.093	trn_regr_loss: 0.110	trn_objectness_loss: 0.031	trn_rpn_box_reg_loss: 0.002	(56.13s - 5476.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.095	trn_loc_loss: 0.035	trn_regr_loss: 0.024	trn_objectness_loss: 0.007	trn_rpn_box_reg_loss: 0.030	(56.53s - 5476.18s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.403	trn_loc_loss: 0.152	trn_regr_loss: 0.217	trn_objectness_loss: 0.031	trn_rpn_box_reg_loss: 0.003	(56.93s - 5475.76s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.158	trn_loc_loss: 0.071	trn_regr_loss: 0.059	trn_objectness_loss: 0.017	trn_rpn_box_reg_loss: 0.010	(57.37s - 5478.08s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.010	trn_loss: 0.070	trn_loc_loss: 0.019	trn_regr_loss: 0.039	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.001	(57.82s - 5482.06s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.198	trn_loc_loss: 0.081	trn_regr_loss: 0.095	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.001	(58.27s - 5485.97s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.367	trn_loc_loss: 0.179	trn_regr_loss: 0.121	trn_objectness_loss: 0.056	trn_rpn_box_reg_loss: 0.012	(58.70s - 5487.83s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.430	trn_loc_loss: 0.207	trn_regr_loss: 0.176	trn_objectness_loss: 0.042	trn_rpn_box_reg_loss: 0.005	(59.10s - 5487.17s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.157	trn_loc_loss: 0.056	trn_regr_loss: 0.059	trn_objectness_loss: 0.012	trn_rpn_box_reg_loss: 0.031	(59.50s - 5486.61s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.116	trn_loc_loss: 0.043	trn_regr_loss: 0.067	trn_objectness_loss: 0.004	trn_rpn_box_reg_loss: 0.003	(59.90s - 5485.88s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.356	trn_loc_loss: 0.103	trn_regr_loss: 0.121	trn_objectness_loss: 0.100	trn_rpn_box_reg_loss: 0.033	(60.30s - 5485.09s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.093	trn_loc_loss: 0.027	trn_regr_loss: 0.054	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.003	(60.70s - 5484.24s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.260	trn_loc_loss: 0.132	trn_regr_loss: 0.114	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.003	(61.10s - 5483.28s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.084	trn_loc_loss: 0.024	trn_regr_loss: 0.048	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.001	(61.50s - 5482.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 1.185	trn_loc_loss: 0.514	trn_regr_loss: 0.452	trn_objectness_loss: 0.173	trn_rpn_box_reg_loss: 0.045	(61.94s - 5484.92s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.402	trn_loc_loss: 0.227	trn_regr_loss: 0.145	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.009	(62.36s - 5486.38s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.108	trn_loc_loss: 0.042	trn_regr_loss: 0.053	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.007	(62.79s - 5488.28s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.234	trn_loc_loss: 0.115	trn_regr_loss: 0.105	trn_objectness_loss: 0.012	trn_rpn_box_reg_loss: 0.003	(63.23s - 5490.54s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.011	trn_loss: 0.162	trn_loc_loss: 0.100	trn_regr_loss: 0.052	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.002	(63.67s - 5492.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.181	trn_loc_loss: 0.069	trn_regr_loss: 0.053	trn_objectness_loss: 0.054	trn_rpn_box_reg_loss: 0.004	(64.10s - 5494.88s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.237	trn_loc_loss: 0.080	trn_regr_loss: 0.099	trn_objectness_loss: 0.039	trn_rpn_box_reg_loss: 0.019	(64.52s - 5495.24s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.148	trn_loc_loss: 0.080	trn_regr_loss: 0.058	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.004	(64.95s - 5497.34s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.571	trn_loc_loss: 0.214	trn_regr_loss: 0.172	trn_objectness_loss: 0.102	trn_rpn_box_reg_loss: 0.083	(65.38s - 5498.64s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.335	trn_loc_loss: 0.102	trn_regr_loss: 0.110	trn_objectness_loss: 0.115	trn_rpn_box_reg_loss: 0.009	(65.80s - 5499.50s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.211	trn_loc_loss: 0.114	trn_regr_loss: 0.076	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.013	(66.22s - 5499.97s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.285	trn_loc_loss: 0.093	trn_regr_loss: 0.139	trn_objectness_loss: 0.048	trn_rpn_box_reg_loss: 0.005	(66.65s - 5501.73s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.096	trn_loc_loss: 0.028	trn_regr_loss: 0.052	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.002	(67.07s - 5502.94s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 1.121	trn_loc_loss: 0.462	trn_regr_loss: 0.380	trn_objectness_loss: 0.201	trn_rpn_box_reg_loss: 0.079	(67.48s - 5502.19s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.374	trn_loc_loss: 0.197	trn_regr_loss: 0.157	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.010	(67.88s - 5501.43s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.565	trn_loc_loss: 0.184	trn_regr_loss: 0.282	trn_objectness_loss: 0.060	trn_rpn_box_reg_loss: 0.038	(68.28s - 5500.61s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.195	trn_loc_loss: 0.081	trn_regr_loss: 0.087	trn_objectness_loss: 0.023	trn_rpn_box_reg_loss: 0.004	(68.68s - 5499.62s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.149	trn_loc_loss: 0.066	trn_regr_loss: 0.070	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.003	(69.08s - 5498.74s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.012	trn_loss: 0.259	trn_loc_loss: 0.093	trn_regr_loss: 0.130	trn_objectness_loss: 0.034	trn_rpn_box_reg_loss: 0.002	(69.48s - 5497.85s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.536	trn_loc_loss: 0.238	trn_regr_loss: 0.198	trn_objectness_loss: 0.078	trn_rpn_box_reg_loss: 0.021	(69.88s - 5497.07s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.170	trn_loc_loss: 0.070	trn_regr_loss: 0.074	trn_objectness_loss: 0.022	trn_rpn_box_reg_loss: 0.005	(70.28s - 5496.20s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.254	trn_loc_loss: 0.130	trn_regr_loss: 0.104	trn_objectness_loss: 0.017	trn_rpn_box_reg_loss: 0.002	(70.68s - 5495.21s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.125	trn_loc_loss: 0.050	trn_regr_loss: 0.058	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.002	(71.08s - 5494.36s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.376	trn_loc_loss: 0.156	trn_regr_loss: 0.213	trn_objectness_loss: 0.004	trn_rpn_box_reg_loss: 0.003	(71.48s - 5493.62s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.144	trn_loc_loss: 0.049	trn_regr_loss: 0.073	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.017	(71.92s - 5495.40s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.129	trn_loc_loss: 0.062	trn_regr_loss: 0.052	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.002	(72.35s - 5496.88s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.358	trn_loc_loss: 0.161	trn_regr_loss: 0.175	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.012	(72.77s - 5497.49s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.304	trn_loc_loss: 0.126	trn_regr_loss: 0.163	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.005	(73.19s - 5498.56s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.158	trn_loc_loss: 0.058	trn_regr_loss: 0.080	trn_objectness_loss: 0.018	trn_rpn_box_reg_loss: 0.002	(73.63s - 5500.01s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.132	trn_loc_loss: 0.067	trn_regr_loss: 0.056	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.004	(74.04s - 5500.16s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.609	trn_loc_loss: 0.277	trn_regr_loss: 0.263	trn_objectness_loss: 0.053	trn_rpn_box_reg_loss: 0.015	(74.47s - 5501.74s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.013	trn_loss: 0.902	trn_loc_loss: 0.271	trn_regr_loss: 0.410	trn_objectness_loss: 0.165	trn_rpn_box_reg_loss: 0.057	(74.89s - 5502.18s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.158	trn_loc_loss: 0.076	trn_regr_loss: 0.069	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.004	(75.33s - 5503.84s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.163	trn_loc_loss: 0.088	trn_regr_loss: 0.059	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.001	(75.77s - 5505.65s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.203	trn_loc_loss: 0.098	trn_regr_loss: 0.067	trn_objectness_loss: 0.035	trn_rpn_box_reg_loss: 0.003	(76.18s - 5505.47s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.305	trn_loc_loss: 0.108	trn_regr_loss: 0.130	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.038	(76.61s - 5507.08s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.155	trn_loc_loss: 0.072	trn_regr_loss: 0.052	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.017	(77.03s - 5507.77s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.182	trn_loc_loss: 0.060	trn_regr_loss: 0.057	trn_objectness_loss: 0.027	trn_rpn_box_reg_loss: 0.038	(77.47s - 5509.04s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.255	trn_loc_loss: 0.078	trn_regr_loss: 0.119	trn_objectness_loss: 0.018	trn_rpn_box_reg_loss: 0.039	(77.90s - 5510.56s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.309	trn_loc_loss: 0.103	trn_regr_loss: 0.184	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.006	(78.31s - 5509.98s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.129	trn_loc_loss: 0.050	trn_regr_loss: 0.058	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.004	(78.71s - 5509.15s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.104	trn_loc_loss: 0.032	trn_regr_loss: 0.046	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.015	(79.11s - 5508.50s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.304	trn_loc_loss: 0.163	trn_regr_loss: 0.121	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.006	(79.52s - 5507.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.135	trn_loc_loss: 0.045	trn_regr_loss: 0.066	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.005	(79.92s - 5507.01s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.132	trn_loc_loss: 0.044	trn_regr_loss: 0.050	trn_objectness_loss: 0.033	trn_rpn_box_reg_loss: 0.005	(80.32s - 5506.23s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.014	trn_loss: 0.116	trn_loc_loss: 0.030	trn_regr_loss: 0.056	trn_objectness_loss: 0.025	trn_rpn_box_reg_loss: 0.005	(80.72s - 5505.21s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.111	trn_loc_loss: 0.026	trn_regr_loss: 0.060	trn_objectness_loss: 0.025	trn_rpn_box_reg_loss: 0.001	(81.12s - 5504.38s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.510	trn_loc_loss: 0.266	trn_regr_loss: 0.203	trn_objectness_loss: 0.036	trn_rpn_box_reg_loss: 0.005	(81.52s - 5503.47s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.118	trn_loc_loss: 0.042	trn_regr_loss: 0.057	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.005	(81.92s - 5502.74s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.135	trn_loc_loss: 0.057	trn_regr_loss: 0.054	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.012	(82.37s - 5504.64s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.221	trn_loc_loss: 0.075	trn_regr_loss: 0.135	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.010	(82.80s - 5506.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.111	trn_loc_loss: 0.038	trn_regr_loss: 0.056	trn_objectness_loss: 0.015	trn_rpn_box_reg_loss: 0.002	(83.20s - 5505.15s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 1.604	trn_loc_loss: 0.942	trn_regr_loss: 0.581	trn_objectness_loss: 0.056	trn_rpn_box_reg_loss: 0.025	(83.60s - 5504.33s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.767	trn_loc_loss: 0.358	trn_regr_loss: 0.324	trn_objectness_loss: 0.061	trn_rpn_box_reg_loss: 0.025	(84.01s - 5504.06s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.245	trn_loc_loss: 0.074	trn_regr_loss: 0.157	trn_objectness_loss: 0.002	trn_rpn_box_reg_loss: 0.012	(84.42s - 5503.58s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.558	trn_loc_loss: 0.265	trn_regr_loss: 0.245	trn_objectness_loss: 0.023	trn_rpn_box_reg_loss: 0.025	(84.82s - 5502.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.398	trn_loc_loss: 0.231	trn_regr_loss: 0.138	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.005	(85.22s - 5501.97s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.208	trn_loc_loss: 0.134	trn_regr_loss: 0.048	trn_objectness_loss: 0.020	trn_rpn_box_reg_loss: 0.006	(85.62s - 5501.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.569	trn_loc_loss: 0.229	trn_regr_loss: 0.295	trn_objectness_loss: 0.031	trn_rpn_box_reg_loss: 0.014	(86.03s - 5500.63s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.015	trn_loss: 0.298	trn_loc_loss: 0.196	trn_regr_loss: 0.091	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.000	(86.44s - 5500.55s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.228	trn_loc_loss: 0.108	trn_regr_loss: 0.106	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.003	(86.85s - 5500.01s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.138	trn_loc_loss: 0.078	trn_regr_loss: 0.028	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.003	(87.25s - 5499.09s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.169	trn_loc_loss: 0.105	trn_regr_loss: 0.055	trn_objectness_loss: 0.004	trn_rpn_box_reg_loss: 0.006	(87.65s - 5498.20s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.453	trn_loc_loss: 0.166	trn_regr_loss: 0.180	trn_objectness_loss: 0.036	trn_rpn_box_reg_loss: 0.071	(88.05s - 5497.29s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 1.065	trn_loc_loss: 0.454	trn_regr_loss: 0.502	trn_objectness_loss: 0.078	trn_rpn_box_reg_loss: 0.031	(88.45s - 5496.35s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.163	trn_loc_loss: 0.076	trn_regr_loss: 0.060	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.004	(88.85s - 5495.48s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.643	trn_loc_loss: 0.328	trn_regr_loss: 0.271	trn_objectness_loss: 0.033	trn_rpn_box_reg_loss: 0.012	(89.25s - 5494.65s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.245	trn_loc_loss: 0.154	trn_regr_loss: 0.061	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.005	(89.65s - 5493.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.195	trn_loc_loss: 0.051	trn_regr_loss: 0.086	trn_objectness_loss: 0.026	trn_rpn_box_reg_loss: 0.031	(90.07s - 5494.08s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.274	trn_loc_loss: 0.114	trn_regr_loss: 0.147	trn_objectness_loss: 0.003	trn_rpn_box_reg_loss: 0.010	(90.49s - 5494.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.410	trn_loc_loss: 0.193	trn_regr_loss: 0.185	trn_objectness_loss: 0.027	trn_rpn_box_reg_loss: 0.005	(90.90s - 5494.64s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.113	trn_loc_loss: 0.041	trn_regr_loss: 0.047	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.012	(91.31s - 5494.09s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 1.677	trn_loc_loss: 0.341	trn_regr_loss: 0.223	trn_objectness_loss: 0.974	trn_rpn_box_reg_loss: 0.139	(91.74s - 5494.76s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.016	trn_loss: 0.164	trn_loc_loss: 0.074	trn_regr_loss: 0.055	trn_objectness_loss: 0.027	trn_rpn_box_reg_loss: 0.008	(92.15s - 5495.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.396	trn_loc_loss: 0.169	trn_regr_loss: 0.157	trn_objectness_loss: 0.060	trn_rpn_box_reg_loss: 0.008	(92.56s - 5494.20s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.168	trn_loc_loss: 0.041	trn_regr_loss: 0.056	trn_objectness_loss: 0.054	trn_rpn_box_reg_loss: 0.017	(92.95s - 5493.21s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.184	trn_loc_loss: 0.073	trn_regr_loss: 0.052	trn_objectness_loss: 0.046	trn_rpn_box_reg_loss: 0.013	(93.35s - 5492.33s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.125	trn_loc_loss: 0.053	trn_regr_loss: 0.038	trn_objectness_loss: 0.023	trn_rpn_box_reg_loss: 0.011	(93.75s - 5491.41s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.254	trn_loc_loss: 0.099	trn_regr_loss: 0.097	trn_objectness_loss: 0.055	trn_rpn_box_reg_loss: 0.003	(94.15s - 5490.49s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.424	trn_loc_loss: 0.186	trn_regr_loss: 0.152	trn_objectness_loss: 0.070	trn_rpn_box_reg_loss: 0.016	(94.58s - 5491.07s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.105	trn_loc_loss: 0.036	trn_regr_loss: 0.037	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.008	(95.02s - 5492.60s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.187	trn_loc_loss: 0.075	trn_regr_loss: 0.071	trn_objectness_loss: 0.036	trn_rpn_box_reg_loss: 0.005	(95.43s - 5492.69s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.166	trn_loc_loss: 0.067	trn_regr_loss: 0.058	trn_objectness_loss: 0.036	trn_rpn_box_reg_loss: 0.005	(95.83s - 5491.95s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.166	trn_loc_loss: 0.049	trn_regr_loss: 0.045	trn_objectness_loss: 0.064	trn_rpn_box_reg_loss: 0.007	(96.24s - 5491.17s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.563	trn_loc_loss: 0.267	trn_regr_loss: 0.235	trn_objectness_loss: 0.047	trn_rpn_box_reg_loss: 0.014	(96.64s - 5490.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.463	trn_loc_loss: 0.227	trn_regr_loss: 0.204	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.004	(97.05s - 5490.21s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.017	trn_loss: 0.157	trn_loc_loss: 0.043	trn_regr_loss: 0.061	trn_objectness_loss: 0.050	trn_rpn_box_reg_loss: 0.003	(97.46s - 5489.85s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.120	trn_loc_loss: 0.049	trn_regr_loss: 0.037	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.004	(97.85s - 5488.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.079	trn_loc_loss: 0.037	trn_regr_loss: 0.029	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.006	(98.25s - 5488.01s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.531	trn_loc_loss: 0.270	trn_regr_loss: 0.225	trn_objectness_loss: 0.030	trn_rpn_box_reg_loss: 0.006	(98.68s - 5488.58s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.124	trn_loc_loss: 0.059	trn_regr_loss: 0.050	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.003	(99.10s - 5488.77s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.283	trn_loc_loss: 0.131	trn_regr_loss: 0.132	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.011	(99.52s - 5489.04s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.220	trn_loc_loss: 0.109	trn_regr_loss: 0.089	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.008	(99.96s - 5490.32s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.132	trn_loc_loss: 0.054	trn_regr_loss: 0.070	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.004	(100.38s - 5490.72s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.632	trn_loc_loss: 0.291	trn_regr_loss: 0.284	trn_objectness_loss: 0.050	trn_rpn_box_reg_loss: 0.008	(100.80s - 5490.78s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.127	trn_loc_loss: 0.051	trn_regr_loss: 0.042	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.020	(101.23s - 5491.95s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.115	trn_loc_loss: 0.040	trn_regr_loss: 0.048	trn_objectness_loss: 0.012	trn_rpn_box_reg_loss: 0.016	(101.68s - 5493.37s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.603	trn_loc_loss: 0.335	trn_regr_loss: 0.229	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.010	(102.10s - 5493.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.167	trn_loc_loss: 0.117	trn_regr_loss: 0.028	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.003	(102.53s - 5494.47s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.287	trn_loc_loss: 0.116	trn_regr_loss: 0.158	trn_objectness_loss: 0.008	trn_rpn_box_reg_loss: 0.006	(102.96s - 5495.30s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.018	trn_loss: 0.099	trn_loc_loss: 0.043	trn_regr_loss: 0.035	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.012	(103.38s - 5495.62s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.136	trn_loc_loss: 0.063	trn_regr_loss: 0.051	trn_objectness_loss: 0.017	trn_rpn_box_reg_loss: 0.006	(103.78s - 5494.62s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.097	trn_loc_loss: 0.044	trn_regr_loss: 0.046	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.002	(104.18s - 5493.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.355	trn_loc_loss: 0.121	trn_regr_loss: 0.184	trn_objectness_loss: 0.036	trn_rpn_box_reg_loss: 0.015	(104.58s - 5492.85s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.155	trn_loc_loss: 0.071	trn_regr_loss: 0.068	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.007	(104.98s - 5491.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.098	trn_loc_loss: 0.030	trn_regr_loss: 0.057	trn_objectness_loss: 0.004	trn_rpn_box_reg_loss: 0.006	(105.38s - 5491.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.165	trn_loc_loss: 0.081	trn_regr_loss: 0.078	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.000	(105.80s - 5491.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.168	trn_loc_loss: 0.110	trn_regr_loss: 0.053	trn_objectness_loss: 0.003	trn_rpn_box_reg_loss: 0.002	(106.20s - 5490.38s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.277	trn_loc_loss: 0.141	trn_regr_loss: 0.090	trn_objectness_loss: 0.032	trn_rpn_box_reg_loss: 0.013	(106.61s - 5489.97s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.129	trn_loc_loss: 0.056	trn_regr_loss: 0.048	trn_objectness_loss: 0.022	trn_rpn_box_reg_loss: 0.003	(107.00s - 5488.99s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.361	trn_loc_loss: 0.121	trn_regr_loss: 0.217	trn_objectness_loss: 0.008	trn_rpn_box_reg_loss: 0.015	(107.43s - 5489.30s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.221	trn_loc_loss: 0.106	trn_regr_loss: 0.097	trn_objectness_loss: 0.015	trn_rpn_box_reg_loss: 0.004	(107.82s - 5488.34s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.183	trn_loc_loss: 0.078	trn_regr_loss: 0.095	trn_objectness_loss: 0.008	trn_rpn_box_reg_loss: 0.002	(108.23s - 5488.04s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.220	trn_loc_loss: 0.102	trn_regr_loss: 0.084	trn_objectness_loss: 0.032	trn_rpn_box_reg_loss: 0.003	(108.64s - 5487.78s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.019	trn_loss: 0.127	trn_loc_loss: 0.048	trn_regr_loss: 0.067	trn_objectness_loss: 0.007	trn_rpn_box_reg_loss: 0.005	(109.04s - 5486.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.307	trn_loc_loss: 0.126	trn_regr_loss: 0.168	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.009	(109.45s - 5486.44s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.100	trn_loc_loss: 0.050	trn_regr_loss: 0.043	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.002	(109.85s - 5485.75s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.139	trn_loc_loss: 0.068	trn_regr_loss: 0.055	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.005	(110.26s - 5485.22s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.094	trn_loc_loss: 0.030	trn_regr_loss: 0.045	trn_objectness_loss: 0.003	trn_rpn_box_reg_loss: 0.016	(110.66s - 5484.35s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.127	trn_loc_loss: 0.065	trn_regr_loss: 0.056	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.004	(111.06s - 5483.74s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.239	trn_loc_loss: 0.131	trn_regr_loss: 0.092	trn_objectness_loss: 0.009	trn_rpn_box_reg_loss: 0.008	(111.49s - 5484.46s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.135	trn_loc_loss: 0.071	trn_regr_loss: 0.059	trn_objectness_loss: 0.003	trn_rpn_box_reg_loss: 0.002	(111.94s - 5485.70s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.110	trn_loc_loss: 0.062	trn_regr_loss: 0.043	trn_objectness_loss: 0.002	trn_rpn_box_reg_loss: 0.003	(112.35s - 5485.34s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.144	trn_loc_loss: 0.085	trn_regr_loss: 0.058	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.001	(112.77s - 5485.74s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.282	trn_loc_loss: 0.142	trn_regr_loss: 0.125	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.010	(113.21s - 5486.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.142	trn_loc_loss: 0.040	trn_regr_loss: 0.092	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.004	(113.61s - 5485.92s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.399	trn_loc_loss: 0.238	trn_regr_loss: 0.137	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.014	(114.01s - 5485.13s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.020	trn_loss: 0.080	trn_loc_loss: 0.027	trn_regr_loss: 0.039	trn_objectness_loss: 0.006	trn_rpn_box_reg_loss: 0.008	(114.42s - 5484.80s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.134	trn_loc_loss: 0.069	trn_regr_loss: 0.062	trn_objectness_loss: 0.002	trn_rpn_box_reg_loss: 0.001	(114.82s - 5483.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.077	trn_loc_loss: 0.046	trn_regr_loss: 0.027	trn_objectness_loss: 0.001	trn_rpn_box_reg_loss: 0.003	(115.22s - 5483.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.343	trn_loc_loss: 0.128	trn_regr_loss: 0.179	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.017	(115.62s - 5482.15s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.399	trn_loc_loss: 0.126	trn_regr_loss: 0.184	trn_objectness_loss: 0.071	trn_rpn_box_reg_loss: 0.018	(116.01s - 5481.23s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.181	trn_loc_loss: 0.086	trn_regr_loss: 0.063	trn_objectness_loss: 0.030	trn_rpn_box_reg_loss: 0.003	(116.41s - 5480.33s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.232	trn_loc_loss: 0.076	trn_regr_loss: 0.081	trn_objectness_loss: 0.060	trn_rpn_box_reg_loss: 0.014	(116.81s - 5479.47s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 3.686	trn_loc_loss: 0.120	trn_regr_loss: 0.066	trn_objectness_loss: 2.343	trn_rpn_box_reg_loss: 1.156	(117.24s - 5480.28s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.141	trn_loc_loss: 0.053	trn_regr_loss: 0.048	trn_objectness_loss: 0.038	trn_rpn_box_reg_loss: 0.003	(117.68s - 5481.04s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.275	trn_loc_loss: 0.105	trn_regr_loss: 0.058	trn_objectness_loss: 0.108	trn_rpn_box_reg_loss: 0.004	(118.10s - 5481.06s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 1.494	trn_loc_loss: 0.301	trn_regr_loss: 0.133	trn_objectness_loss: 0.660	trn_rpn_box_reg_loss: 0.399	(118.51s - 5480.80s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.437	trn_loc_loss: 0.042	trn_regr_loss: 0.028	trn_objectness_loss: 0.353	trn_rpn_box_reg_loss: 0.013	(118.95s - 5481.86s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.559	trn_loc_loss: 0.009	trn_regr_loss: 0.004	trn_objectness_loss: 0.465	trn_rpn_box_reg_loss: 0.081	(119.40s - 5483.23s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.311	trn_loc_loss: 0.062	trn_regr_loss: 0.068	trn_objectness_loss: 0.179	trn_rpn_box_reg_loss: 0.001	(119.83s - 5483.97s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.021	trn_loss: 0.283	trn_loc_loss: 0.121	trn_regr_loss: 0.085	trn_objectness_loss: 0.075	trn_rpn_box_reg_loss: 0.002	(120.24s - 5483.77s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.401	trn_loc_loss: 0.092	trn_regr_loss: 0.137	trn_objectness_loss: 0.168	trn_rpn_box_reg_loss: 0.005	(120.65s - 5483.31s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.293	trn_loc_loss: 0.081	trn_regr_loss: 0.131	trn_objectness_loss: 0.081	trn_rpn_box_reg_loss: 0.000	(121.07s - 5483.32s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.147	trn_loc_loss: 0.042	trn_regr_loss: 0.051	trn_objectness_loss: 0.051	trn_rpn_box_reg_loss: 0.003	(121.49s - 5483.46s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.204	trn_loc_loss: 0.044	trn_regr_loss: 0.086	trn_objectness_loss: 0.045	trn_rpn_box_reg_loss: 0.028	(121.91s - 5483.48s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.193	trn_loc_loss: 0.047	trn_regr_loss: 0.094	trn_objectness_loss: 0.041	trn_rpn_box_reg_loss: 0.010	(122.35s - 5484.57s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.242	trn_loc_loss: 0.109	trn_regr_loss: 0.099	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.006	(122.75s - 5483.84s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.365	trn_loc_loss: 0.206	trn_regr_loss: 0.129	trn_objectness_loss: 0.018	trn_rpn_box_reg_loss: 0.011	(123.17s - 5483.70s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.571	trn_loc_loss: 0.281	trn_regr_loss: 0.250	trn_objectness_loss: 0.022	trn_rpn_box_reg_loss: 0.018	(123.57s - 5482.88s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.136	trn_loc_loss: 0.053	trn_regr_loss: 0.047	trn_objectness_loss: 0.035	trn_rpn_box_reg_loss: 0.002	(123.98s - 5482.61s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 1.548	trn_loc_loss: 0.158	trn_regr_loss: 0.056	trn_objectness_loss: 0.952	trn_rpn_box_reg_loss: 0.382	(124.38s - 5481.90s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.229	trn_loc_loss: 0.097	trn_regr_loss: 0.104	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.004	(124.78s - 5480.98s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.233	trn_loc_loss: 0.076	trn_regr_loss: 0.117	trn_objectness_loss: 0.033	trn_rpn_box_reg_loss: 0.007	(125.18s - 5480.15s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.512	trn_loc_loss: 0.067	trn_regr_loss: 0.056	trn_objectness_loss: 0.325	trn_rpn_box_reg_loss: 0.065	(125.58s - 5479.19s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.022	trn_loss: 0.288	trn_loc_loss: 0.076	trn_regr_loss: 0.095	trn_objectness_loss: 0.107	trn_rpn_box_reg_loss: 0.010	(125.98s - 5478.33s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.328	trn_loc_loss: 0.084	trn_regr_loss: 0.116	trn_objectness_loss: 0.124	trn_rpn_box_reg_loss: 0.004	(126.38s - 5477.57s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.179	trn_loc_loss: 0.050	trn_regr_loss: 0.068	trn_objectness_loss: 0.055	trn_rpn_box_reg_loss: 0.005	(126.77s - 5476.66s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.184	trn_loc_loss: 0.077	trn_regr_loss: 0.093	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.002	(127.17s - 5475.62s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 2.634	trn_loc_loss: 0.483	trn_regr_loss: 0.155	trn_objectness_loss: 1.876	trn_rpn_box_reg_loss: 0.120	(127.57s - 5474.73s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 1.013	trn_loc_loss: 0.220	trn_regr_loss: 0.135	trn_objectness_loss: 0.355	trn_rpn_box_reg_loss: 0.303	(127.97s - 5473.93s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.394	trn_loc_loss: 0.050	trn_regr_loss: 0.061	trn_objectness_loss: 0.279	trn_rpn_box_reg_loss: 0.003	(128.37s - 5473.17s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.406	trn_loc_loss: 0.078	trn_regr_loss: 0.076	trn_objectness_loss: 0.249	trn_rpn_box_reg_loss: 0.003	(128.77s - 5472.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.268	trn_loc_loss: 0.036	trn_regr_loss: 0.056	trn_objectness_loss: 0.163	trn_rpn_box_reg_loss: 0.013	(129.17s - 5471.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.176	trn_loc_loss: 0.035	trn_regr_loss: 0.033	trn_objectness_loss: 0.101	trn_rpn_box_reg_loss: 0.008	(129.57s - 5470.93s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.234	trn_loc_loss: 0.049	trn_regr_loss: 0.081	trn_objectness_loss: 0.100	trn_rpn_box_reg_loss: 0.004	(129.97s - 5470.12s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.381	trn_loc_loss: 0.090	trn_regr_loss: 0.104	trn_objectness_loss: 0.071	trn_rpn_box_reg_loss: 0.116	(130.38s - 5469.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.226	trn_loc_loss: 0.094	trn_regr_loss: 0.074	trn_objectness_loss: 0.055	trn_rpn_box_reg_loss: 0.003	(130.81s - 5470.49s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.023	trn_loss: 0.140	trn_loc_loss: 0.055	trn_regr_loss: 0.039	trn_objectness_loss: 0.040	trn_rpn_box_reg_loss: 0.005	(131.25s - 5471.41s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.127	trn_loc_loss: 0.049	trn_regr_loss: 0.046	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.003	(131.67s - 5471.32s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.156	trn_loc_loss: 0.043	trn_regr_loss: 0.081	trn_objectness_loss: 0.030	trn_rpn_box_reg_loss: 0.003	(132.09s - 5471.38s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.427	trn_loc_loss: 0.186	trn_regr_loss: 0.157	trn_objectness_loss: 0.044	trn_rpn_box_reg_loss: 0.040	(132.54s - 5472.44s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.141	trn_loc_loss: 0.031	trn_regr_loss: 0.061	trn_objectness_loss: 0.032	trn_rpn_box_reg_loss: 0.018	(132.95s - 5472.37s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.938	trn_loc_loss: 0.117	trn_regr_loss: 0.078	trn_objectness_loss: 0.303	trn_rpn_box_reg_loss: 0.439	(133.36s - 5471.65s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.261	trn_loc_loss: 0.120	trn_regr_loss: 0.094	trn_objectness_loss: 0.034	trn_rpn_box_reg_loss: 0.012	(133.75s - 5470.80s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.209	trn_loc_loss: 0.080	trn_regr_loss: 0.104	trn_objectness_loss: 0.020	trn_rpn_box_reg_loss: 0.004	(134.15s - 5470.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.171	trn_loc_loss: 0.058	trn_regr_loss: 0.076	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.010	(134.58s - 5470.50s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.221	trn_loc_loss: 0.081	trn_regr_loss: 0.118	trn_objectness_loss: 0.020	trn_rpn_box_reg_loss: 0.002	(135.00s - 5470.42s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.192	trn_loc_loss: 0.073	trn_regr_loss: 0.085	trn_objectness_loss: 0.026	trn_rpn_box_reg_loss: 0.007	(135.43s - 5470.66s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.419	trn_loc_loss: 0.119	trn_regr_loss: 0.160	trn_objectness_loss: 0.116	trn_rpn_box_reg_loss: 0.023	(135.86s - 5471.10s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.300	trn_loc_loss: 0.127	trn_regr_loss: 0.144	trn_objectness_loss: 0.011	trn_rpn_box_reg_loss: 0.017	(136.27s - 5470.81s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.132	trn_loc_loss: 0.039	trn_regr_loss: 0.061	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.012	(136.67s - 5470.14s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.024	trn_loss: 0.589	trn_loc_loss: 0.250	trn_regr_loss: 0.261	trn_objectness_loss: 0.059	trn_rpn_box_reg_loss: 0.019	(137.10s - 5470.51s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.447	trn_loc_loss: 0.133	trn_regr_loss: 0.107	trn_objectness_loss: 0.185	trn_rpn_box_reg_loss: 0.021	(137.53s - 5470.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.233	trn_loc_loss: 0.109	trn_regr_loss: 0.093	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.003	(137.94s - 5470.49s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.227	trn_loc_loss: 0.091	trn_regr_loss: 0.087	trn_objectness_loss: 0.046	trn_rpn_box_reg_loss: 0.003	(138.34s - 5469.70s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.166	trn_loc_loss: 0.057	trn_regr_loss: 0.072	trn_objectness_loss: 0.033	trn_rpn_box_reg_loss: 0.004	(138.76s - 5469.61s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.181	trn_loc_loss: 0.071	trn_regr_loss: 0.084	trn_objectness_loss: 0.015	trn_rpn_box_reg_loss: 0.010	(139.19s - 5470.17s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.179	trn_loc_loss: 0.071	trn_regr_loss: 0.086	trn_objectness_loss: 0.020	trn_rpn_box_reg_loss: 0.002	(139.62s - 5470.43s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.169	trn_loc_loss: 0.066	trn_regr_loss: 0.083	trn_objectness_loss: 0.012	trn_rpn_box_reg_loss: 0.008	(140.02s - 5469.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.638	trn_loc_loss: 0.217	trn_regr_loss: 0.212	trn_objectness_loss: 0.172	trn_rpn_box_reg_loss: 0.037	(140.42s - 5469.18s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.370	trn_loc_loss: 0.183	trn_regr_loss: 0.155	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.011	(140.83s - 5468.60s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.159	trn_loc_loss: 0.054	trn_regr_loss: 0.084	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.001	(141.24s - 5468.17s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.098	trn_loc_loss: 0.047	trn_regr_loss: 0.031	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.002	(141.64s - 5467.31s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.109	trn_loc_loss: 0.055	trn_regr_loss: 0.031	trn_objectness_loss: 0.023	trn_rpn_box_reg_loss: 0.001	(142.05s - 5466.94s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.086	trn_loc_loss: 0.035	trn_regr_loss: 0.030	trn_objectness_loss: 0.020	trn_rpn_box_reg_loss: 0.002	(142.44s - 5466.11s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.025	trn_loss: 0.200	trn_loc_loss: 0.070	trn_regr_loss: 0.090	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.024	(142.86s - 5465.81s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.108	trn_loc_loss: 0.032	trn_regr_loss: 0.032	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.022	(143.25s - 5464.96s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.856	trn_loc_loss: 0.059	trn_regr_loss: 0.046	trn_objectness_loss: 0.591	trn_rpn_box_reg_loss: 0.160	(143.68s - 5465.03s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.122	trn_loc_loss: 0.044	trn_regr_loss: 0.062	trn_objectness_loss: 0.013	trn_rpn_box_reg_loss: 0.003	(144.09s - 5464.59s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.139	trn_loc_loss: 0.055	trn_regr_loss: 0.066	trn_objectness_loss: 0.012	trn_rpn_box_reg_loss: 0.005	(144.49s - 5464.08s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.161	trn_loc_loss: 0.067	trn_regr_loss: 0.066	trn_objectness_loss: 0.023	trn_rpn_box_reg_loss: 0.005	(144.90s - 5463.71s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.138	trn_loc_loss: 0.052	trn_regr_loss: 0.073	trn_objectness_loss: 0.010	trn_rpn_box_reg_loss: 0.003	(145.31s - 5463.11s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.104	trn_loc_loss: 0.037	trn_regr_loss: 0.054	trn_objectness_loss: 0.012	trn_rpn_box_reg_loss: 0.001	(145.71s - 5462.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 2.841	trn_loc_loss: 0.125	trn_regr_loss: 0.131	trn_objectness_loss: 1.738	trn_rpn_box_reg_loss: 0.847	(146.12s - 5462.02s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.125	trn_loc_loss: 0.031	trn_regr_loss: 0.056	trn_objectness_loss: 0.019	trn_rpn_box_reg_loss: 0.018	(146.52s - 5461.32s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.167	trn_loc_loss: 0.057	trn_regr_loss: 0.072	trn_objectness_loss: 0.031	trn_rpn_box_reg_loss: 0.008	(146.92s - 5460.53s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.154	trn_loc_loss: 0.054	trn_regr_loss: 0.067	trn_objectness_loss: 0.033	trn_rpn_box_reg_loss: 0.001	(147.32s - 5459.69s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.303	trn_loc_loss: 0.109	trn_regr_loss: 0.153	trn_objectness_loss: 0.031	trn_rpn_box_reg_loss: 0.010	(147.71s - 5458.90s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.643	trn_loc_loss: 0.327	trn_regr_loss: 0.186	trn_objectness_loss: 0.049	trn_rpn_box_reg_loss: 0.081	(148.11s - 5458.11s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.026	trn_loss: 0.136	trn_loc_loss: 0.044	trn_regr_loss: 0.067	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.010	(148.51s - 5457.24s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.201	trn_loc_loss: 0.052	trn_regr_loss: 0.101	trn_objectness_loss: 0.041	trn_rpn_box_reg_loss: 0.007	(148.91s - 5456.44s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.469	trn_loc_loss: 0.169	trn_regr_loss: 0.083	trn_objectness_loss: 0.183	trn_rpn_box_reg_loss: 0.034	(149.31s - 5455.67s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.137	trn_loc_loss: 0.046	trn_regr_loss: 0.069	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.005	(149.70s - 5454.81s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.156	trn_loc_loss: 0.051	trn_regr_loss: 0.083	trn_objectness_loss: 0.016	trn_rpn_box_reg_loss: 0.005	(150.10s - 5454.00s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.530	trn_loc_loss: 0.162	trn_regr_loss: 0.104	trn_objectness_loss: 0.218	trn_rpn_box_reg_loss: 0.047	(150.50s - 5453.16s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.106	trn_loc_loss: 0.033	trn_regr_loss: 0.029	trn_objectness_loss: 0.041	trn_rpn_box_reg_loss: 0.002	(150.90s - 5452.39s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.244	trn_loc_loss: 0.093	trn_regr_loss: 0.090	trn_objectness_loss: 0.042	trn_rpn_box_reg_loss: 0.018	(151.30s - 5451.76s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.134	trn_loc_loss: 0.053	trn_regr_loss: 0.057	trn_objectness_loss: 0.017	trn_rpn_box_reg_loss: 0.007	(151.70s - 5451.04s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.338	trn_loc_loss: 0.125	trn_regr_loss: 0.158	trn_objectness_loss: 0.044	trn_rpn_box_reg_loss: 0.011	(152.10s - 5450.27s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.226	trn_loc_loss: 0.111	trn_regr_loss: 0.098	trn_objectness_loss: 0.014	trn_rpn_box_reg_loss: 0.003	(152.52s - 5450.06s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.213	trn_loc_loss: 0.095	trn_regr_loss: 0.081	trn_objectness_loss: 0.031	trn_rpn_box_reg_loss: 0.006	(152.91s - 5449.30s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.346	trn_loc_loss: 0.170	trn_regr_loss: 0.144	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.010	(153.32s - 5448.91s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.027	trn_loss: 0.132	trn_loc_loss: 0.038	trn_regr_loss: 0.001	trn_objectness_loss: 0.034	trn_rpn_box_reg_loss: 0.059	(153.74s - 5448.64s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.163	trn_loc_loss: 0.050	trn_regr_loss: 0.063	trn_objectness_loss: 0.034	trn_rpn_box_reg_loss: 0.015	(154.13s - 5447.87s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.236	trn_loc_loss: 0.075	trn_regr_loss: 0.092	trn_objectness_loss: 0.058	trn_rpn_box_reg_loss: 0.011	(154.54s - 5447.39s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.796	trn_loc_loss: 0.341	trn_regr_loss: 0.253	trn_objectness_loss: 0.174	trn_rpn_box_reg_loss: 0.027	(154.95s - 5447.07s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.178	trn_loc_loss: 0.052	trn_regr_loss: 0.102	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.001	(155.35s - 5446.31s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.154	trn_loc_loss: 0.058	trn_regr_loss: 0.061	trn_objectness_loss: 0.033	trn_rpn_box_reg_loss: 0.002	(155.75s - 5445.54s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.241	trn_loc_loss: 0.112	trn_regr_loss: 0.073	trn_objectness_loss: 0.055	trn_rpn_box_reg_loss: 0.001	(156.15s - 5444.86s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.301	trn_loc_loss: 0.115	trn_regr_loss: 0.130	trn_objectness_loss: 0.045	trn_rpn_box_reg_loss: 0.012	(156.55s - 5444.14s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.444	trn_loc_loss: 0.177	trn_regr_loss: 0.205	trn_objectness_loss: 0.047	trn_rpn_box_reg_loss: 0.015	(156.95s - 5443.44s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.149	trn_loc_loss: 0.061	trn_regr_loss: 0.049	trn_objectness_loss: 0.035	trn_rpn_box_reg_loss: 0.005	(157.35s - 5442.78s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.335	trn_loc_loss: 0.153	trn_regr_loss: 0.141	trn_objectness_loss: 0.037	trn_rpn_box_reg_loss: 0.004	(157.75s - 5442.07s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.154	trn_loc_loss: 0.047	trn_regr_loss: 0.041	trn_objectness_loss: 0.057	trn_rpn_box_reg_loss: 0.010	(158.15s - 5441.37s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.455	trn_loc_loss: 0.164	trn_regr_loss: 0.136	trn_objectness_loss: 0.077	trn_rpn_box_reg_loss: 0.078	(158.55s - 5440.62s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.175	trn_loc_loss: 0.063	trn_regr_loss: 0.069	trn_objectness_loss: 0.041	trn_rpn_box_reg_loss: 0.003	(158.95s - 5439.90s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.028	trn_loss: 0.191	trn_loc_loss: 0.085	trn_regr_loss: 0.046	trn_objectness_loss: 0.057	trn_rpn_box_reg_loss: 0.004	(159.35s - 5439.19s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.200	trn_loc_loss: 0.088	trn_regr_loss: 0.084	trn_objectness_loss: 0.021	trn_rpn_box_reg_loss: 0.007	(159.75s - 5438.48s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.227	trn_loc_loss: 0.074	trn_regr_loss: 0.119	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.006	(160.15s - 5437.78s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.148	trn_loc_loss: 0.045	trn_regr_loss: 0.073	trn_objectness_loss: 0.026	trn_rpn_box_reg_loss: 0.004	(160.55s - 5437.06s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.148	trn_loc_loss: 0.058	trn_regr_loss: 0.063	trn_objectness_loss: 0.025	trn_rpn_box_reg_loss: 0.002	(160.95s - 5436.33s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.153	trn_loc_loss: 0.063	trn_regr_loss: 0.069	trn_objectness_loss: 0.018	trn_rpn_box_reg_loss: 0.003	(161.35s - 5435.61s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.138	trn_loc_loss: 0.046	trn_regr_loss: 0.062	trn_objectness_loss: 0.026	trn_rpn_box_reg_loss: 0.004	(161.75s - 5434.88s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.117	trn_loc_loss: 0.049	trn_regr_loss: 0.047	trn_objectness_loss: 0.018	trn_rpn_box_reg_loss: 0.003	(162.15s - 5434.22s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.298	trn_loc_loss: 0.133	trn_regr_loss: 0.129	trn_objectness_loss: 0.032	trn_rpn_box_reg_loss: 0.004	(162.55s - 5433.52s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.131	trn_loc_loss: 0.034	trn_regr_loss: 0.055	trn_objectness_loss: 0.038	trn_rpn_box_reg_loss: 0.004	(162.95s - 5432.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.137	trn_loc_loss: 0.059	trn_regr_loss: 0.051	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.003	(163.35s - 5432.16s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.424	trn_loc_loss: 0.177	trn_regr_loss: 0.199	trn_objectness_loss: 0.029	trn_rpn_box_reg_loss: 0.018	(163.75s - 5431.49s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.256	trn_loc_loss: 0.062	trn_regr_loss: 0.106	trn_objectness_loss: 0.057	trn_rpn_box_reg_loss: 0.030	(164.15s - 5430.82s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.162	trn_loc_loss: 0.060	trn_regr_loss: 0.078	trn_objectness_loss: 0.022	trn_rpn_box_reg_loss: 0.002	(164.55s - 5430.12s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.029	trn_loss: 0.149	trn_loc_loss: 0.053	trn_regr_loss: 0.066	trn_objectness_loss: 0.028	trn_rpn_box_reg_loss: 0.002	(164.95s - 5429.52s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.030	trn_loss: 0.127	trn_loc_loss: 0.045	trn_regr_loss: 0.072	trn_objectness_loss: 0.005	trn_rpn_box_reg_loss: 0.004	(165.35s - 5428.83s remaining)-----------type(optimizer----cccc---- <class 'torch.optim.sgd.SGD'>
+
+EPOCH: 0.030	trn_loss: 0.128	trn_loc_loss: 0.069	trn_regr_loss: 0.024	trn_objectness_loss: 0.024	trn_rpn_box_reg_loss: 0.011	(165.75s - 5428.17s remaining)

@@ -1,0 +1,13 @@
+
+All these PDF Files have been downloded and are in this DIR of the Git Repo ...
+
+https://www.microsoft.com/en-us/research/uploads/prod/2020/09/dnnmem.pdf
+https://mdpi-res.com/d_attachment/applsci/applsci-11-10377/article_deploy/applsci-11-10377-v3.pdf
+
+
+### FOOBAR_OWN_ERROR Sun Mar 13 16:44:21 2022  
+RuntimeError: Input type (torch.FloatTensor) and weight type (torch.cuda.FloatTensor) should be the same or input should be a MKLDNN tensor and weight is a dense tensor
+
+SO --- https://stackoverflow.com/questions/59013109/runtimeerror-input-type-torch-floattensor-and-weight-type-torch-cuda-floatte
+
+### FOOBAR_OWN_ERROR

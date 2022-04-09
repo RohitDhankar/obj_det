@@ -1,0 +1,407 @@
+
+https://arxiv.org/pdf/1506.01497.pdf
+
+Computer Science > Computer Vision and Pattern Recognition
+[Submitted on 4 Jun 2015 (v1), last revised 6 Jan 2016 (this version, v3)]
+Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks
+Shaoqing Ren, Kaiming He, Ross Girshick, Jian Sun
+
+    State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations. Advances like SPPnet and Fast R-CNN have reduced the running time of these detection networks, exposing region proposal computation as a bottleneck. In this work, we introduce a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection. We further merge RPN and Fast R-CNN into a single network by sharing their convolutional features---using the recently popular terminology of neural networks with 'attention' mechanisms, the RPN component tells the unified network where to look. For the very deep VGG-16 model, our detection system has a frame rate of 5fps (including all steps) on a GPU, while achieving state-of-the-art object detection accuracy on PASCAL VOC 2007, 2012, and MS COCO datasets with only 300 proposals per image. In ILSVRC and COCO 2015 competitions, Faster R-CNN and RPN are the foundations of the 1st-place winning entries in several tracks. Code has been made publicly available. 
+
+Comments: 	Extended tech report
+Subjects: 	Computer Vision and Pattern Recognition (cs.CV)
+Cite as: 	arXiv:1506.01497 [cs.CV]
+  	(or arXiv:1506.01497v3 [cs.CV] for this version)
+  	
+https://doi.org/10.48550/arXiv.1506.01497
+
+
+https://medium.com/airbnb-engineering/categorizing-listing-photos-at-airbnb-f9483f3ab7e3
+
+The Airbnb Tech Blog
+Published in
+
+The Airbnb Tech Blog
+Shijing Yao
+Shijing Yao
+
+May 3, 2018
+·
+11 min read
+·
+Categorizing Listing Photos at Airbnb
+Large-scale deep learning models are changing the way we think about images of homes on our platform.
+
+Authors: Shijing Yao, Qiang Zhu, Phillippe Siclait
+Walking into our new office in San Francisco, meeting rooms evoke the variety of our listing photos in a search!
+
+Airbnb is a marketplace featuring millions of homes. Travelers around the world search on the platform and discover the best homes for their trips. Aside from location and price, listing photos are one of the most critical factors for decision-making during a guest’s search journey. However until very recently, we knew very little about these important photos. When a guest interacted with listing photos of a home, we had no way to help guests find the most informative images, ensure the information conveyed in the photos was accurate or advise hosts about how to improve the appeal of their images in a scalable way.
+
+Thanks to the recent advancement in computer vision and deep learning, we are able to leverage technology to solve these problems at scale. We started with a project that aimed to categorize our listing photos into different room types. For one thing, categorization makes possible a simple home tour where photos with the same room type can be grouped together. For another, categorization makes it much easier to validate the number of certain rooms and check whether the basic room information is correct. Going forward, we believe there are lots of exciting opportunities to further enhance our knowledge of image content on Airbnb. We will show some examples at the end of this post.
+Image Classification
+
+The ability to correctly classify the room type for a given listing photo is incredibly useful for optimizing the user experience. On the guest side, it facilitates re-ranking and re-layout of photos based on distinct room types so that the ones people are most interested in will be surfaced first. On the host side, it helps us automatically review listings to ensure they abide by our marketplace’s high standards. Accurate photo categorization is the backbone for these core functions.
+
+The first batch of room types we sought to classify included Bedrooms, Bathrooms, Living Rooms, Kitchens, Swimming Pools and Views. We expect to add other room types based on the needs from product teams.
+
+The room-type classification problem largely resembles the ImageNet classification problem except that our model outcomes are customized room- types. This makes the off-the-shelf state-of-the-art deep neural network (DNN) models such as like VGG, ResNet and Inception not directly applicable in our case. There are a number of great posts online which tell people how to cope with this issue. Basically we should 1) modify the last (top) few layers of the DNN to make sure the output dimension matches ours and 2) re-train the DNN to certain degree and achieve satisfactory performance. After a few experiments with these models, we chose ResNet50 as our powerhouse due to its good balance between model performance and computation time. To make it compatible with our use case, we added two extra fully connected layers and a Softmax activation in the end. We also experimented with a few training options, which will be discussed in the next section.
+Re-train a Modified ResNet50
+Architecture of a Modified ResNet50. Graph of the base model cited from Kaiming He.
+
+Re-training ResNet50 falls in three scenarios:
+
+    Keep the base ResNet50 model fixed and only re-train the added two layers using minimal data. This is also often called fine-tuning.
+    Do the same fine tuning as in 1, but with much more data.
+    Re-train the whole modified ResNet50 from scratch.
+
+Most of the online tutorials use the first approach because it’s fast and usually leads to decent results. We tried the first approach and indeed got some reasonable initial results. However in order to launch high-quality image product, we needed to improve the model performance dramatically — ideally achieving 95%+ precision, and 80%+ recall.
+
+To achieve high precision and high recall simultaneously, we realized using massive data to re-train the DNN was inevitable. However there were two major challenges: 1) Even though we had lots of listing photos uploaded by hosts, we didn’t have accurate room-type labels associated with them, if any at all. 2) Re-training a DNN like ResNet50 was highly non-trivial — There were more than 25 million parameters to train and this required substantial GPU support. These two challenges will be addressed in the next two sections.
+Supervision With Image Captions
+
+Many companies leverage third-party vendors to obtain high-quality labels for image data. This is obviously not the most economical solution for us, when millions of photos need to be labeled. To balance cost and performance, we approached this labeling problem in a hybrid way. On one side, we asked vendors to label relatively small number of photos, usually in thousands or tens of thousands. This chunk of labeled data would be used as a golden set for us to evaluate models. We used random sampling to get this golden set and ensured the data was unbiased. On the other side, we leveraged image captions created by hosts as a proxy for room-type information and extracted labels out of it. This idea was huge for us because it made the expensive labeling task essentially free. We only needed a judicious way to ensure that room-type labels extracted from image caption were accurate and reliable.
+
+A tempting method to extract room-type label from image caption is as follows: If a certain room type keyword is found in the caption of an image, the image will be labeled as that type. However the real world is more complicated than that. If you examined the results of this rule, you’d be very disappointed. We found numerous cases where the image caption was far off the actual content of that image. Below are a few bad examples.
+Incorrect Labels Extracted from Image Caption
+
+To filter out bad examples like this, we added extra rules when extracting room-type labels from image captions. After several rounds of filtering and checking, the label quality was greatly improved. Below is an example for how we filtered Kitchen data to obtain relatively “clean” Kitchen images.
+Filters applied on Kitchen images
+
+Due to these extra filters, we lost quite a lot of image data. This was okay for us because even with such an aggressive filtering, we still ended up with a few million photos, a few hundred thousand in each room type. More over, the label quality of these photos were now much better. Here we assumed the data distribution didn’t shift with the filtering, which would be validated once we tested out the model on an unbiased golden dataset.
+
+Having said that, we might have been able to use some NLP Techniques to dynamically cluster image captions instead of using rule-based heuristics. However we decided to stay with heuristics for now, and pushed NLP work to the future.
+Model Building, Evaluating, and Production
+Left: GPU performance for 8-core parallel training. Right: Distributed SGD: Graph cited from Quoc V. Le.
+
+Re-training a DNN like ResNet50 using a few million images requires a lot of computational resources. In our implementation, we used an AWS P2.8xlarge Instance with Nvidia 8-core K80 GPU, and sent a batch of 128 images to 8 GPUs per training step. We did parallel training with Tensorflow as the backend. We compiled the model after parallelizing it because otherwise the training wouldn’t work. To further speed up training, we initialized model weights with pre-trained imagenet weights loaded from keras.applications.resnet50.ResNet50. The best model was obtained after 3 epochs of training, which lasted about 6 hours. Afterward the model started to overfit and the performance on validation set stopped improving.
+
+One important note is that we built in production multiple binary-class models for different room types instead of building a multi-class model to cover all room types. This was not ideal but since our model serving was mostly offline, the extra delay due to multiple model calls affected us minimally. We will transit to a multi-class model in production soon.
+
+We evaluated our models based on precision and recall. We also monitored metrics like F1 score and accuracy. Their definitions are reiterated as below. In a nutshell, precision describes how confident we are about the accuracy of our positive predictions, and recall describes how much percent our positive predictions cover all actual positives. Precision and recall usually go against each other. In our context, we set a high bar (95%) for precision because when we claim the photo is a certain room type, we should really have a high confidence about that claim.
+TP: True Positive, TN: True Negative, FP: False Positive, FN: False Negative
+
+A confusion matrix is the key to calculate these metrics. Our model’s raw output is a probability score from 0 to 1 for each image. To compute a confusion matrix for a set of predictions, one has to first set a particular threshold to translate the predicted scores into 0 and 1. A precision-recall (P-R) curve is then generated by sweeping the thresholds from 0 to 1. In principle the closer to 1 the AUC (Area Under Curve) of a P-R curve is, the more accurate the model is.
+
+In evaluating the models, we used the aforementioned golden set where the ground truth labels were provided by humans. Interestingly we found accuracy differed from room type to room type. Bedroom and Bathroom models were the most accurate ones while other models were less accurate. For brevity, we only show the P-R curve of a Bedroom and Living Room here. The cross point of the dotted lines represents the final performance given a particular threshold. We append a summary of the metrics on the chart.
+P-R Curve of Bedroom
+P-R Curve of Living Room
+
+There are two important observations:
+
+    The overall performance of the Bedroom model is much better than that of the a Living Room. There could be two explanations: 1) A Bedroom is easier to classify than a Living Room because Bedroom setting is relatively standard while Living Room can have a lot more varieties. 2) The labels extracted from Bedroom photos have higher quality than those extracted from Living Room photos since Living Room photos occasionally also include Dining Rooms or even Kitchens.
+    Within each room type, a fully re-trained model (red curve) has better performance than the partially re-trained (blue curve) model, and the gap is larger between Living Room models than between Bedroom models. This suggests re-training a full ResNet50 model has different impact for difficult room types.
+
+For the 6 models we shipped, precision is generally above 95% and recall is generally above 50%. By setting different threshold values people can make trade-offs. The model is set to power a number of different products across multiple product teams inside Airbnb.
+
+The users compared our results of to well-known third-party image recognition APIs. It was reported that the in-house model overall outperformed third-party generic models. This implies by taking advantage of your own data, you have a chance to outperform even the industry state-of-the-art model for a particular task you are interested in.
+
+At the end of this section, we’d like to showcase a few concrete examples that exemplify the power of this model.
+The left two photos were correctly predicted as bedrooms; The right two photos were correctly predicted NOT as bedrooms.
+The left two photos were correctly predicted as bathrooms; The right two photos were correctly predicted NOT as bathrooms.
+The left two photos were correctly predicted as pools; The right two photos were correctly predicted NOT as pools, because they were aquarium and waterfront.
+Beyond Classification
+
+When doing this project, we also tried a few interesting ideas beyond room type classification. We want to show two examples here and give people an idea how exciting these problems are.
+Unsupervised Scene Classification
+
+When we first tried out room type classification using pre-trained ResNet50 model, we generated image embeddings (2048x1 vectors) for listing cover- page photos. To interpret what these embeddings meant, we projected these long vectors onto a 2D plane using PCA techniques. Much to our surprise, the projected data are naturally clustered into two groups. Looking into these two clusters, we found that the left group were almost exclusively indoor scenes and the right group were almost exclusively outdoor scenes. This meant without any re-training and simply by setting a cut line on the first principal component of the image embedding, we were able determine indoor and outdoor scenes. This finding opened the door to some really interesting domain where transfer learning (embedding) met unsupervised learning.
+Indoor and Outdoor photos are automatically clustered by the first and second principal component.
+Object Detection
+
+Another area that we tried pursuing was object detection. A pre-trained Faster R-CNN model on Open Images Dataset already provided stunning results. As you see in the example below, the model is able to detect Window, Door, Dining Table and their locations. Using Tensorflow Object Detection API, we did some quick evaluations on our listing photos. A lot of the home amenities could be detected using the off-the-shelf result. In the future, we plan to retrain the Faster R-CNN model using Airbnb’s customized amenity labels. Since some of these labels are missing in the open source data, We will likely create labels on our own. With these algorithm-detected amenities, we are able to verify the quality of the listings from hosts and make it much easier for guests to find homes with specific amenity needs. This will push the frontier of photo intelligence at Airbnb to the next level.
+Window, Door and Dining Table are successfully detected.
+Conclusion
+
+Here are a few key take-aways that might be helpful for other deep learning practitioners:
+
+First, deep learning is nothing but one particular kind of supervised learning. One cannot overestimate the importance of high-quality labels to the data. Since deep learning usually requires a significant amount of training data to achieve state-of-the-art performance, finding an efficient way to do labeling is crucial. Fortunately we found a hybrid approach which is economical, scalable and reliable.
+
+Second, training a DNN like ResNet50 from scratch can be quite involved. Try to start in a simple and fast way — train only top layers using a small dataset. If you do have a large trainable dataset, re-training a DNN from scratch might give you state-of-the-art performance.
+
+Third, parallelize the training if you can. In our case we gained about 6x (quasi-linear) speed-up by using 8 GPUs. This makes building a complex DNN model computationally viable and it is much easier to iterate over hyper parameters and model structures.
+
+Interested in applying deep learning on high-impact problems like this? We’re always looking for talented people to join our Data Science and Analytics team!
+
+This work is in collaboration with Krishna Puttaswamy, Xiaohan Zeng and Alfredo Luque. People across the company helped launch this feature in products. We would also like to thank the contributors of open source libraries such as Keras, Tensorflow, Open Images Data, ImageNet and the original inventors of ResNet. We benefit tremendously from this friendly open source community. Finally, we thank Jeff Feng and Rebecca Rosenfelt for their kind help in proofreading.
+
+More from The Airbnb Tech Blog
+
+Creative engineers and data scientists building a world where you can belong anywhere. http://airbnb.io
+Mihajlo Grbovic
+
+Mihajlo Grbovic
+
+·Mar 13, 2018
+Listing Embeddings in Search Ranking
+
+Listing Embeddings for Similar Listing Recommendations and Real-time Personalization in Search Ranking — By Mihajlo Grbovic, Haibin Cheng, Qing Zhang, Lynn Yang, Phillippe Siclait and Matt Jones Airbnb’s marketplace contains millions of diverse listings which potential guests explore through search results generated from a sophisticated Machine Learning model that uses more than hundred signals to decide how to rank a particular listing on…
+Machine Learning
+
+11 min read
+Listing Embeddings in Search Ranking
+
+Share your ideas with millions of readers.
+Write on Medium
+David Press
+
+David Press
+
+·Feb 6, 2018
+Fighting Financial Fraud with Targeted Friction
+
+David from the Trust team walks us through how Airbnb battles chargebacks while minimizing impact to good guests. — On any given night, nearly two million people are staying in Airbnb listings in 191 countries around the world. The rapid growth of our global community is predicated on one thing: trust. We take a comprehensive approach to trust, which consists of both robust proactive measures and reactive support, but…
+Fraud
+
+9 min read
+Fighting Financial Fraud with Targeted Friction
+Tao Cui
+
+Tao Cui
+
+·Jan 31, 2018
+Contextual Calendar Reminders
+
+Successful hosting has everything to do with an up-to-date calendar. — By Tao Cui and Yuting Gu Airbnb’s mission is to create a world where anyone can belong anywhere. So when hosts forget to update their calendars and are booked by guests on dates that don’t work, the host has to cancel the reservation. This definitely does not make the guests…
+Machine Learning
+
+8 min read
+Contextual Calendar Reminders
+Ninad Khisti
+
+Ninad Khisti
+
+·Jan 17, 2018
+Measuring Transactional Integrity in Airbnb’s Distributed Payment Ecosystem
+
+In a distributed payment ecosystem, it is critical to accurately measure and track a transaction’s end to end state and contents to ensure consistency throughout the payment cycle. — By Ninad Khisti and William Betz In a distributed payment ecosystem, it is critical to accurately measure and track a transaction’s end to end state and contents to ensure consistency throughout the payment cycle. Without robust tracking, data leakage and errors can occur, resulting in either lost revenue or increased…
+Transactions
+
+12 min read
+Measuring Transactional Integrity in Airbnb’s Distributed Payment Ecosystem
+Gary Borton
+
+Gary Borton
+
+·Jan 10, 2018
+Server Rendering, Code Splitting, and Lazy Loading with React Router v4
+
+“Godspeed those who attempt the server-rendered, code-split apps.” — Ryan Florence, Co-Creator of React Router Challenge accepted. Some Background on Server Rendering at Airbnb Historically, Airbnb has been a Rails app. A few years back that started to change, we began using Rails simply as a data layer, and all render logic started migrating into JavaScript in…
+React
+
+4 min read
+Server Rendering, Code Splitting, and Lazy Loading with React Router v4
+Read more from The Airbnb Tech Blog
+Upgrade
+Shijing Yao
+Shijing Yao
+
+Staff Machine Learning Scientist @ Airbnb
+Related
+Multilingual message content moderation at scale
+Explainable and Accessible AI: Using Push Notifications to Broaden the Reach of ML at Headspace
+Say hello to ADI: a parameterizable and content-based recommender system (part 1)
+Read Instead of Listen: How Speech Recognition Works on VKontakte
+
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Knowable
+
+
+
+1
+Faster R-CNN: Towards Real-Time Object
+Detection with Region Proposal Networks
+Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun
+Abstract—State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations.
+Advances like SPPnet [1] and Fast R-CNN [2] have reduced the running time of these detection networks, exposing region
+proposal computation as a bottleneck. In this work, we introduce a Region Proposal Network (RPN) that shares full-image
+convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional
+network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to
+generate high-quality region proposals, which are used by Fast R-CNN for detection. We further merge RPN and Fast R-CNN
+into a single network by sharing their convolutional features—using the recently popular terminology of neural networks with
+“attention” mechanisms, the RPN component tells the unified network where to look. For the very deep VGG-16 model [3],
+our detection system has a frame rate of 5fps (including all steps) on a GPU, while achieving state-of-the-art object detection
+accuracy on PASCAL VOC 2007, 2012, and MS COCO datasets with only 300 proposals per image. In ILSVRC and COCO
+2015 competitions, Faster R-CNN and RPN are the foundations of the 1st-place winning entries in several tracks. Code has been
+made publicly available.
+Index Terms—Object Detection, Region Proposal, Convolutional Neural Network.
+F
+1 INTRODUCTION
+Recent advances in object detection are driven by
+the success of region proposal methods (e.g., [4])
+and region-based convolutional neural networks (R-
+CNNs) [5]. Although region-based CNNs were com-
+putationally expensive as originally developed in [5],
+their cost has been drastically reduced thanks to shar-
+ing convolutions across proposals [1], [2]. The latest
+incarnation, Fast R-CNN [2], achieves near real-time
+rates using very deep networks [3], when ignoring the
+time spent on region proposals. Now, proposals are the
+test-time computational bottleneck in state-of-the-art
+detection systems.
+Region proposal methods typically rely on inex-
+pensive features and economical inference schemes.
+Selective Search [4], one of the most popular meth-
+ods, greedily merges superpixels based on engineered
+low-level features. Yet when compared to efficient
+detection networks [2], Selective Search is an order of
+magnitude slower, at 2 seconds per image in a CPU
+implementation. EdgeBoxes [6] currently provides the
+best tradeoff between proposal quality and speed,
+at 0.2 seconds per image. Nevertheless, the region
+proposal step still consumes as much running time
+as the detection network.
+• S. Ren is with University of Science and Technology of China, Hefei,
+China. This work was done when S. Ren was an intern at Microsoft
+Research. Email: sqren@mail.ustc.edu.cn
+• K. He and J. Sun are with Visual Computing Group, Microsoft
+Research. E-mail: {kahe,jiansun}@microsoft.com
+• R. Girshick is with Facebook AI Research. The majority of this work
+was done when R. Girshick was with Microsoft Research. E-mail:
+rbg@fb.com
+One may note that fast region-based CNNs take
+advantage of GPUs, while the region proposal meth-
+ods used in research are implemented on the CPU,
+making such runtime comparisons inequitable. An ob-
+vious way to accelerate proposal computation is to re-
+implement it for the GPU. This may be an effective en-
+gineering solution, but re-implementation ignores the
+down-stream detection network and therefore misses
+important opportunities for sharing computation.
+In this paper, we show that an algorithmic change—
+computing proposals with a deep convolutional neu-
+ral network—leads to an elegant and effective solution
+where proposal computation is nearly cost-free given
+the detection network’s computation. To this end, we
+introduce novel Region Proposal Networks (RPNs) that
+share convolutional layers with state-of-the-art object
+detection networks [1], [2]. By sharing convolutions at
+test-time, the marginal cost for computing proposals
+is small (e.g., 10ms per image).
+Our observation is that the convolutional feature
+maps used by region-based detectors, like Fast R-
+CNN, can also be used for generating region pro-
+posals. On top of these convolutional features, we
+construct an RPN by adding a few additional con-
+volutional layers that simultaneously regress region
+bounds and objectness scores at each location on a
+regular grid. The RPN is thus a kind of fully convo-
+lutional network (FCN) [7] and can be trained end-to-
+end specifically for the task for generating detection
+proposals.
+RPNs are designed to efficiently predict region pro-
+posals with a wide range of scales and aspect ratios. In
+contrast to prevalent methods [8], [9], [1], [2] that use
+arXiv:1506.01497v3 [cs.CV] 6 Jan 2016
+2multiple scaled images
+multiple filter sizes multiple references
+(a) (b) (c)
+image
+feature map
+image
+feature map
+image
+feature map
+Figure 1: Different schemes for addressing multiple scales and sizes. (a) Pyramids of images and feature maps
+are built, and the classifier is run at all scales. (b) Pyramids of filters with multiple scales/sizes are run on
+the feature map. (c) We use pyramids of reference boxes in the regression functions.
+pyramids of images (Figure 1, a) or pyramids of filters
+(Figure 1, b), we introduce novel “anchor” boxes
+that serve as references at multiple scales and aspect
+ratios. Our scheme can be thought of as a pyramid
+of regression references (Figure 1, c), which avoids
+enumerating images or filters of multiple scales or
+aspect ratios. This model performs well when trained
+and tested using single-scale images and thus benefits
+running speed.
+To unify RPNs with Fast R-CNN [2] object detec-
+tion networks, we propose a training scheme that
+alternates between fine-tuning for the region proposal
+task and then fine-tuning for object detection, while
+keeping the proposals fixed. This scheme converges
+quickly and produces a unified network with convo-
+lutional features that are shared between both tasks.1
+We comprehensively evaluate our method on the
+PASCAL VOC detection benchmarks [11] where RPNs
+with Fast R-CNNs produce detection accuracy bet-
+ter than the strong baseline of Selective Search with
+Fast R-CNNs. Meanwhile, our method waives nearly
+all computational burdens of Selective Search at
+test-time—the effective running time for proposals
+is just 10 milliseconds. Using the expensive very
+deep models of [3], our detection method still has
+a frame rate of 5fps (including all steps) on a GPU,
+and thus is a practical object detection system in
+terms of both speed and accuracy. We also report
+results on the MS COCO dataset [12] and investi-
+gate the improvements on PASCAL VOC using the
+COCO data. Code has been made publicly available
+at https://github.com/shaoqingren/faster_
+rcnn (in MATLAB) and https://github.com/
+rbgirshick/py-faster-rcnn (in Python).
+A preliminary version of this manuscript was pub-
+lished previously [10]. Since then, the frameworks of
+RPN and Faster R-CNN have been adopted and gen-
+eralized to other methods, such as 3D object detection
+[13], part-based detection [14], instance segmentation
+[15], and image captioning [16]. Our fast and effective
+object detection system has also been built in com-
+1. Since the publication of the conference version of this paper
+[10], we have also found that RPNs can be trained jointly with Fast
+R-CNN networks leading to less training time.
+mercial systems such as at Pinterests [17], with user
+engagement improvements reported.
+In ILSVRC and COCO 2015 competitions, Faster
+R-CNN and RPN are the basis of several 1st-place
+entries [18] in the tracks of ImageNet detection, Ima-
+geNet localization, COCO detection, and COCO seg-
+mentation. RPNs completely learn to propose regions
+from data, and thus can easily benefit from deeper
+and more expressive features (such as the 101-layer
+residual nets adopted in [18]). Faster R-CNN and RPN
+are also used by several other leading entries in these
+competitions2. These results suggest that our method
+is not only a cost-efficient solution for practical usage,
+but also an effective way of improving object detec-
+tion accuracy.
+2 RELATED WORK
+Object Proposals. There is a large literature on object
+proposal methods. Comprehensive surveys and com-
+parisons of object proposal methods can be found in
+[19], [20], [21]. Widely used object proposal methods
+include those based on grouping super-pixels (e.g.,
+Selective Search [4], CPMC [22], MCG [23]) and those
+based on sliding windows (e.g., objectness in windows
+[24], EdgeBoxes [6]). Object proposal methods were
+adopted as external modules independent of the de-
+tectors (e.g., Selective Search [4] object detectors, R-
+CNN [5], and Fast R-CNN [2]).
+Deep Networks for Object Detection. The R-CNN
+method [5] trains CNNs end-to-end to classify the
+proposal regions into object categories or background.
+R-CNN mainly plays as a classifier, and it does not
+predict object bounds (except for refining by bounding
+box regression). Its accuracy depends on the perfor-
+mance of the region proposal module (see compar-
+isons in [20]). Several papers have proposed ways of
+using deep networks for predicting object bounding
+boxes [25], [9], [26], [27]. In the OverFeat method [9],
+a fully-connected layer is trained to predict the box
+coordinates for the localization task that assumes a
+single object. The fully-connected layer is then turned
+2. http://image-net.org/challenges/LSVRC/2015/results
+

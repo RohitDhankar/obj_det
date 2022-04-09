@@ -1,0 +1,114 @@
+(pytorch_venv) dhankar@dhankar-1:~/.../PyTorch_main_March22$ pip install pycocotools
+Collecting pycocotools
+  Downloading pycocotools-2.0.4.tar.gz (106 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 106.6/106.6 KB 885.2 kB/s eta 0:00:00
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Requirement already satisfied: matplotlib>=2.1.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from pycocotools) (3.3.1)
+Requirement already satisfied: numpy in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from pycocotools) (1.22.2)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib>=2.1.0->pycocotools) (2.4.7)
+Requirement already satisfied: certifi>=2020.06.20 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib>=2.1.0->pycocotools) (2020.6.20)
+Requirement already satisfied: python-dateutil>=2.1 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib>=2.1.0->pycocotools) (2.8.1)
+Requirement already satisfied: pillow>=6.2.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib>=2.1.0->pycocotools) (7.2.0)
+Requirement already satisfied: cycler>=0.10 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib>=2.1.0->pycocotools) (0.10.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib>=2.1.0->pycocotools) (1.2.0)
+Requirement already satisfied: six in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from cycler>=0.10->matplotlib>=2.1.0->pycocotools) (1.15.0)
+Building wheels for collected packages: pycocotools
+  Building wheel for pycocotools (pyproject.toml) ... done
+  Created wheel for pycocotools: filename=pycocotools-2.0.4-cp38-cp38-linux_x86_64.whl size=311649 sha256=298443712fde69d3b337788b97bb7ee2c17411be6577d7aa9a1fd43577c91569
+  Stored in directory: /home/dhankar/.cache/pip/wheels/dd/e2/43/3e93cd653b3346b3d702bb0509bc611189f95d60407bff1484
+Successfully built pycocotools
+Installing collected packages: pycocotools
+Successfully installed pycocotools-2.0.4
+(pytorch_venv) dhankar@dhankar-1:~/.../PyTorch_main_March22$ 
+
+
+
+
+
+
+
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ python get_kaggle_data.py 
+Traceback (most recent call last):
+  File "get_kaggle_data.py", line 7, in <module>
+    from torch_snippets import *
+ModuleNotFoundError: No module named 'torch_snippets'
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ pip install torch_snippets
+Collecting torch_snippets
+  Downloading torch_snippets-0.480-py3-none-any.whl (42 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.0/43.0 KB 321.7 kB/s eta 0:00:00
+Collecting rich
+  Downloading rich-11.2.0-py3-none-any.whl (217 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 217.3/217.3 KB 3.4 MB/s eta 0:00:00
+Collecting catalogue
+  Downloading catalogue-2.0.6-py3-none-any.whl (17 kB)
+Requirement already satisfied: pandas in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (1.1.1)
+Collecting loguru
+  Downloading loguru-0.6.0-py3-none-any.whl (58 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.3/58.3 KB 221.5 kB/s eta 0:00:00
+Collecting pydantic
+  Downloading pydantic-1.9.0-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (12.6 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.6/12.6 MB 13.8 MB/s eta 0:00:00
+Requirement already satisfied: typing-extensions in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (4.1.1)
+Requirement already satisfied: matplotlib in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (3.3.1)
+Collecting wasabi
+  Downloading wasabi-0.9.0-py3-none-any.whl (25 kB)
+Collecting dill
+  Downloading dill-0.3.4-py2.py3-none-any.whl (86 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 86.9/86.9 KB 1.1 MB/s eta 0:00:00
+Collecting fastcore
+  Downloading fastcore-1.3.29-py3-none-any.whl (55 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.0/56.0 KB 806.1 kB/s eta 0:00:00
+Requirement already satisfied: numpy in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (1.22.2)
+Requirement already satisfied: tqdm in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (4.62.3)
+Collecting srsly
+  Downloading srsly-2.4.2-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (454 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 454.5/454.5 KB 5.1 MB/s eta 0:00:00
+Requirement already satisfied: ipython in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (7.18.1)
+Requirement already satisfied: Pillow in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (7.2.0)
+Requirement already satisfied: PyYAML in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from torch_snippets) (5.3.1)
+Collecting altair
+  Downloading altair-4.2.0-py3-none-any.whl (812 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 812.8/812.8 KB 7.2 MB/s eta 0:00:00
+Requirement already satisfied: entrypoints in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from altair->torch_snippets) (0.3)
+Collecting toolz
+  Downloading toolz-0.11.2-py3-none-any.whl (55 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 55.8/55.8 KB 966.9 kB/s eta 0:00:00
+Requirement already satisfied: jsonschema>=3.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from altair->torch_snippets) (3.2.0)
+Requirement already satisfied: jinja2 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from altair->torch_snippets) (2.11.2)
+Requirement already satisfied: pytz>=2017.2 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from pandas->torch_snippets) (2020.1)
+Requirement already satisfied: python-dateutil>=2.7.3 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from pandas->torch_snippets) (2.8.1)
+Requirement already satisfied: pip in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from fastcore->torch_snippets) (22.0.3)
+Requirement already satisfied: packaging in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from fastcore->torch_snippets) (20.4)
+Requirement already satisfied: traitlets>=4.2 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (5.0.0)
+Requirement already satisfied: decorator in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (4.4.2)
+Requirement already satisfied: backcall in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (0.2.0)
+Requirement already satisfied: pygments in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (2.6.1)
+Requirement already satisfied: setuptools>=18.5 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (49.2.0.post20200714)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (3.0.7)
+Requirement already satisfied: pickleshare in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (0.7.5)
+Requirement already satisfied: jedi>=0.10 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (0.17.2)
+Requirement already satisfied: pexpect>4.3 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from ipython->torch_snippets) (4.8.0)
+Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib->torch_snippets) (2.4.7)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib->torch_snippets) (1.2.0)
+Requirement already satisfied: cycler>=0.10 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib->torch_snippets) (0.10.0)
+Requirement already satisfied: certifi>=2020.06.20 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from matplotlib->torch_snippets) (2020.6.20)
+Collecting colorama<0.5.0,>=0.4.0
+  Downloading colorama-0.4.4-py2.py3-none-any.whl (16 kB)
+Collecting commonmark<0.10.0,>=0.9.0
+  Downloading commonmark-0.9.1-py2.py3-none-any.whl (51 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 51.1/51.1 KB 636.5 kB/s eta 0:00:00
+Requirement already satisfied: six in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from cycler>=0.10->matplotlib->torch_snippets) (1.15.0)
+Requirement already satisfied: parso<0.8.0,>=0.7.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from jedi>=0.10->ipython->torch_snippets) (0.7.1)
+Requirement already satisfied: pyrsistent>=0.14.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from jsonschema>=3.0->altair->torch_snippets) (0.16.0)
+Requirement already satisfied: attrs>=17.4.0 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from jsonschema>=3.0->altair->torch_snippets) (18.1.0)
+Requirement already satisfied: ptyprocess>=0.5 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from pexpect>4.3->ipython->torch_snippets) (0.6.0)
+Requirement already satisfied: wcwidth in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython->torch_snippets) (0.2.5)
+Requirement already satisfied: ipython-genutils in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from traitlets>=4.2->ipython->torch_snippets) (0.2.0)
+Requirement already satisfied: MarkupSafe>=0.23 in /home/dhankar/anaconda3/envs/pytorch_venv/lib/python3.8/site-packages (from jinja2->altair->torch_snippets) (1.1.1)
+Installing collected packages: wasabi, commonmark, toolz, pydantic, loguru, dill, colorama, catalogue, srsly, rich, fastcore, altair, torch_snippets
+Successfully installed altair-4.2.0 catalogue-2.0.6 colorama-0.4.4 commonmark-0.9.1 dill-0.3.4 fastcore-1.3.29 loguru-0.6.0 pydantic-1.9.0 rich-11.2.0 srsly-2.4.2 toolz-0.11.2 torch_snippets-0.480 wasabi-0.9.0
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ 
+(pytorch_venv) dhankar@dhankar-1:~/.../_book_4$ 
