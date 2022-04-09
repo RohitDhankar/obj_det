@@ -1,3 +1,9 @@
+
+
+## SOURCE -- 
+# “Programming PyTorch for DeepLearning by Ian Pointer (O’Reilly). Copyright 2019 Ian Pointer, 978-1-492-04535-9.”
+
+
 import numpy as np
 import cv2
 import torch

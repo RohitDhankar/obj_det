@@ -52,13 +52,7 @@ print("train_dataset.class_indices---",a)
 
 
 
-
-
-
-
-
-
-#### KAggle below here 
+#### KAggle below here --- SOURCE >> # https://www.kaggle.com/sriharipramod/loading-images-multiclass-image-classification
 
 # We specify image augmentation parameters as the arguments
 # Train - test/validation split can be done with the argument - validation_split

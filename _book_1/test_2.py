@@ -1,6 +1,4 @@
 
-## Book Page --- 33
-
 import numpy as np
 
 class FullyConnectedLayer(object):
