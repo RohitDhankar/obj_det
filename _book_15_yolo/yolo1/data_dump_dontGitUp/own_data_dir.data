@@ -1,5 +1,0 @@
-classes = 2
-train = data/train.txt
-test = data/test.txt
-names = data/own_data_dir.names
-backup = backup/
